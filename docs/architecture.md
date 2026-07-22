@@ -54,5 +54,3 @@ Git: <https://github.com/TheBreakingPanda/jlpt_srs_cli>
 cd /home/violet/project_base/jlpt_srs_cli
 source .venv/bin/activate
 ```
-
-> These Obsidian docs mirror `docs/` in the repo (architecture / data-model / commands) at a planning level; the repo copies are the implementation reference.
