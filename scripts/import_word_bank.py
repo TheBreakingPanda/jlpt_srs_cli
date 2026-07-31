@@ -12,21 +12,6 @@ fabricated cards. This script is disposable: delete it once `jlpt import` lands.
 Run:
     python scripts/import_word_bank.py             # uses data/word_bank.csv
     python scripts/import_word_bank.py some.csv    # or point at another export
-
---------------------------------------------------------------------------
-HOW TO USE THIS FILE
-Each function has a signature, a docstring, and a `# TODO(you):` block with
-hints. Fill in the bodies top to bottom, then run it. Schema and column mapping
-are settled — focus on the Python pipeline.
-
-WATCH OUT (from the actual exporter):
-  * The export STANDARD is capitalised headers: ID,Theme,Kanji,Reading,Romaji,
-    English. read_rows() lowercases the keys defensively (so a mis-cased file
-    still imports), but capitalised is canonical — that's what you map against.
-  * The export is named word_bank_YYYY-MM-DD.csv. Rename/move it to
-    data/word_bank.csv, or pass its path as the argument.
-  * It's ~605 rows, so report() prints a COUNT, not every card.
---------------------------------------------------------------------------
 """
 
 from __future__ import annotations
