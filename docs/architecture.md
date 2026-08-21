@@ -48,9 +48,3 @@ Review CLI            (jlpt review — prompt, grade, reschedule)
 ```
 
 Git: <https://github.com/TheBreakingPanda/jlpt_srs_cli>
-
-**Start working:**
-```bash
-cd /home/violet/project_base/jlpt_srs_cli
-source .venv/bin/activate
-```
