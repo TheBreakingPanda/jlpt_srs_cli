@@ -41,8 +41,3 @@ jlpt add
 ## Grading (SM-2 quality)
 
 `0` blackout · `1` wrong, familiar · `2` wrong, easy recall on seeing · `3` correct, hard · `4` correct, hesitant · `5` correct, instant.
-
-## Notes
-
-- Phase 0 is a throwaway prototype (`scripts/import_word_bank.py`) — a bare-bones dry run of the same job. `jlpt import` proper lands in Phase 1, at which point the script is deleted.
-- Full flag/option details live in the repo's `docs/commands.md`.
