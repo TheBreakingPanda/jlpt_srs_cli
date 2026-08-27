@@ -41,3 +41,30 @@ jlpt add
 ## Grading (SM-2 quality)
 
 `0` blackout · `1` wrong, familiar · `2` wrong, easy recall on seeing · `3` correct, hard · `4` correct, hesitant · `5` correct, instant.
+
+## Development & Testing
+
+One-time setup - editable install (so `jlpt` and the `jlpt` package are importable) plus pytest:
+
+```bash
+pip install -e . pytest
+```
+
+Run the tests from the project root, venv active:
+
+```bash
+pytest                          # run everything
+pytest -v                       # verbose - one line per test
+pytest tests/test_importer.py   # a single file
+pytest -k reimport              # only tests matching a keyword
+```
+
+Test layout (`tests/`):
+
+| File | Covers |
+|------|--------|
+| `conftest.py` | shared `conn` fixture - a fresh temp DB per test |
+| `test_models.py` | `Card.from_export_row` column mapping |
+| `test_db.py` | schema creation, column defaults, FK enforcement |
+| `test_importer.py` | fresh import, content-only upsert (SRS state preserved), unchanged re-import is a no-op |
+| `test_srs.py` | SM-2 scheduling - **Phase 2**; empty until the engine exists |
