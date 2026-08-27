@@ -33,34 +33,46 @@ def read_rows(csv_path: Path) -> list[dict[str, str]]:
 def import_cards(conn: sqlite3.Connection, cards: list[Card]) -> tuple[int, int]:
     """Upsert cards by card_id. Return (new, updated).
 
-    Content-only sync: DO UPDATE touches front/back/reading and bumps updated_at.
-    ease_factor, interval, repetitions, due_date, created_at and source are left
-    out of the SET clause on purpose, so a re-import preserves SRS state and the
-    original origin/creation stamp.
-
-    Counting: cursor.rowcount can't distinguish insert from update for an upsert,
-    so ask the DB which ids already exist BEFORE writing — afterward every id is
-    present and the distinction is gone. Assumes card_ids are unique within one
-    file (true for a Word Bank export).
+    Content-diff sync: a card is only written if it's new or its content
+    (front/back/reading) actually differs from what's stored. Unchanged cards
+    are skipped entirely — no write, no updated_at bump. So re-importing an
+    unchanged file reports (0, 0) and touches nothing. updated_at bumps only on
+    rows whose content genuinely changed; SRS state is never touched.
     """
-    existing = {r[0] for r in conn.execute("SELECT card_id FROM cards")}
-    new = sum(1 for c in cards if c.card_id not in existing)
-    updated = len(cards) - new
+    # Snapshot current content, keyed by card_id, for the diff.
+    existing = {
+        row["card_id"]: (row["front"], row["back"], row["reading"])
+        for row in conn.execute("SELECT card_id, front, back, reading FROM cards")
+    }
 
-    params = [(c.card_id, c.source, c.front, c.back, c.reading) for c in cards]
-    conn.executemany(
-        """
-        INSERT INTO cards (card_id, source, front, back, reading)
-        VALUES (?, ?, ?, ?, ?)
-        ON CONFLICT(card_id) DO UPDATE SET
-            front      = excluded.front,
-            back       = excluded.back,
-            reading    = excluded.reading,
-            updated_at = date('now')
-        """,
-        params,
-    )
-    conn.commit()
+    new = 0
+    to_write: list[tuple] = []
+    for c in cards:
+        current = existing.get(c.card_id)
+        if current is None:                       # not in the DB yet
+            new += 1
+            to_write.append((c.card_id, c.source, c.front, c.back, c.reading))
+        elif current != (c.front, c.back, c.reading):   # exists, content differs
+            to_write.append((c.card_id, c.source, c.front, c.back, c.reading))
+        # else: exists and identical -> skip, don't write
+
+    updated = len(to_write) - new
+
+    if to_write:
+        conn.executemany(
+            """
+            INSERT INTO cards (card_id, source, front, back, reading)
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(card_id) DO UPDATE SET
+                front      = excluded.front,
+                back       = excluded.back,
+                reading    = excluded.reading,
+                updated_at = date('now')
+            """,
+            to_write,
+        )
+        conn.commit()
+
     return new, updated
 
 
