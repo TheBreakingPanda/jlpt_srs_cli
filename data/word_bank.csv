@@ -1,606 +1,638 @@
 ID,Theme,Kanji,Reading,Romaji,English
-EO001,Everyday Objects,本,ほん,hon,book
-EO002,Everyday Objects,辞書,じしょ,jisho,dictionary
-EO003,Everyday Objects,雑誌,ざっし,zasshi,magazine
-EO004,Everyday Objects,新聞,しんぶん,shinbun,newspaper
-EO005,Everyday Objects,ノート,ノート,nōto,notebook
-EO006,Everyday Objects,手帳,てちょう,techō,pocket notebook
-EO007,Everyday Objects,名刺,めいし,meishi,business card
-EO008,Everyday Objects,カード,カード,kādo,card
-EO009,Everyday Objects,鉛筆,えんぴつ,enpitsu,pencil
-EO010,Everyday Objects,ボールペン,ボールペン,bōrupen,ballpoint pen
-EO011,Everyday Objects,シャーペン,シャーペン,shāpen,mechanical pencil
-EO012,Everyday Objects,鍵,かぎ,kagi,key
-EO013,Everyday Objects,時計,とけい,tokei,watch / clock
-EO014,Everyday Objects,傘,かさ,kasa,umbrella
-EO015,Everyday Objects,鞄,かばん,kaban,bag / briefcase
-EO016,Everyday Objects,靴,くつ,kutsu,shoes
-EO017,Everyday Objects,ネクタイ,ネクタイ,nekutai,necktie
-EO018,Everyday Objects,紙,かみ,kami,paper
-EO019,Everyday Objects,箱,はこ,hako,box
-EO020,Everyday Objects,荷物,にもつ,nimotsu,baggage / parcel
-EO021,Everyday Objects,はさみ,はさみ,hasami,scissors
-EO022,Everyday Objects,ナイフ,ナイフ,naifu,knife
-EO023,Everyday Objects,ホッチキス,ホッチキス,hotchikisu,stapler
-EO024,Everyday Objects,消しゴム,けしごむ,keshigomu,eraser
-EO025,Everyday Objects,目覚まし,めざまし,mezamashi,alarm (clock)
-EO026,Everyday Objects,スイッチ,スイッチ,suicchi,switch
-EO027,Everyday Objects,シャツ,シャツ,shatsu,shirt
-EO028,Everyday Objects,せいふく,せいふく,seifuku,uniform
-EO029,Everyday Objects,プレゼント,プレゼント,purezento,present
-EO030,Everyday Objects,[お]土産,おみやげ,omiyage,souvenir
-EO031,Everyday Objects,切手,きって,kitte,postage stamp
-EO032,Everyday Objects,葉書,はがき,hagaki,postcard
-EO033,Everyday Objects,封筒,ふうとう,fūtō,envelope
-FD001,Food & Drink,ご飯,ごはん,gohan,cooked rice / meal
-FD002,Food & Drink,朝ごはん,あさごはん,asagohan,breakfast
-FD003,Food & Drink,昼ごはん,ひるごはん,hirugohan,lunch
-FD004,Food & Drink,晩ごはん,ばんごはん,bangohan,dinner
-FD005,Food & Drink,水,みず,mizu,water
-FD006,Food & Drink,牛乳,ぎゅうにゅう,gyūnyū,milk
-FD007,Food & Drink,紅茶,こうちゃ,kōcha,black tea
-FD008,Food & Drink,お茶,おちゃ,ocha,tea / green tea
-FD009,Food & Drink,コーヒー,コーヒー,kōhī,coffee
-FD010,Food & Drink,ジュース,ジュース,jūsu,juice
-FD011,Food & Drink,ビール,ビール,bīru,beer
-FD012,Food & Drink,ワイン,ワイン,wain,wine
-FD013,Food & Drink,[お]酒,[お]さけ,[o]sake,alcohol
-FD014,Food & Drink,パン,パン,pan,bread
-FD015,Food & Drink,卵,たまご,tamago,egg
-FD016,Food & Drink,魚,さかな,sakana,fish
-FD017,Food & Drink,野菜,やさい,yasai,vegetable
-FD018,Food & Drink,果物,くだもの,kudamono,fruit
-FD019,Food & Drink,肉,にく,niku,meat
-FD020,Food & Drink,豚肉,ぶたにく,butaniku,pork
-FD021,Food & Drink,牛肉,ぎゅうにく,gyūniku,beef
-FD022,Food & Drink,鶏肉,とりにく,toriniku,chicken
-FD023,Food & Drink,チョコレート,チョコレート,chokorēto,chocolate
-FD024,Food & Drink,りんご,りんご,ringo,apple
-FD025,Food & Drink,みかん,みかん,mikan,orange
-FD026,Food & Drink,カレーライス,カレーライス,karē raisu,curry and rice
-FD027,Food & Drink,食べ物,たべもの,tabemono,food
-FD028,Food & Drink,飲み物,のみもの,nomimono,drinks
-FD029,Food & Drink,料理,りょうり,ryōri,cooking / cooked food
-FD030,Food & Drink,日本料理,にほんりょうり,nihon ryōri,Japanese cuisine / food
-FD031,Food & Drink,クロワッサン,クロワッサン,kurowassan,croissant
-FD032,Food & Drink,デザート,デザート,dezaato,dessert
-FD033,Food & Drink,ゆず,ゆず,yuzu,yuzu (citrus fruit)
-FD034,Food & Drink,チーズケーキ,チーズケーキ,chiizukeeki,cheesecake
-FD035,Food & Drink,ハンバーガー,ハンバーガー,hanbaagaa,hamburger
-FD036,Food & Drink,グルメッテン,グルメッテン,gurumetten,gourmetten (Dutch tabletop grill)
-FD037,Food & Drink,すき焼き,すきやき,sukiyaki,sukiyaki
-FD038,Food & Drink,刺身,さしみ,sashimi,sashimi
-FD039,Food & Drink,[お]寿司,おすし,osushi,sushi
-FD040,Food & Drink,天ぷら,てんぷら,tenpura,tempura
-FD041,Food & Drink,ピーマン,ピーマン,pīman,bell pepper / green pepper
-FD042,Food & Drink,クッキー,クッキー,kukkī,cookie
-PB001,Places & Buildings,教室,きょうしつ,kyōshitsu,classroom
-PB002,Places & Buildings,食堂,しょくどう,shokudō,cafeteria
-PB003,Places & Buildings,事務所,じむしょ,jimusho,office
-PB004,Places & Buildings,会議室,かいぎしつ,kaigishitsu,meeting room
-PB005,Places & Buildings,受付,うけつけ,uketsuke,reception
-PB006,Places & Buildings,ロビー,ロビー,robī,lobby
-PB007,Places & Buildings,部屋,へや,heya,room
-PB008,Places & Buildings,トイレ,トイレ,toire,toilet
-PB009,Places & Buildings,家,いえ,ie,home
-PB010,Places & Buildings,国,くに,kuni,country
-PB011,Places & Buildings,会社,かいしゃ,kaisha,company
-PB012,Places & Buildings,学校,がっこう,gakkō,school
-PB013,Places & Buildings,図書館,としょかん,toshokan,library
-PB014,Places & Buildings,銀行,ぎんこう,ginkō,bank
-PB015,Places & Buildings,郵便局,ゆうびんきょく,yūbinkyoku,post office
-PB016,Places & Buildings,博物館,はくぶつかん,hakubutsukan,museum
-PB017,Places & Buildings,美術館,びじゅつかん,bijutsukan,art museum
-PB018,Places & Buildings,百貨店,ひゃっかてん,hyakkaten,department store
-PB019,Places & Buildings,えいがかん,えいがかん,eigakan,movie theater
-PB020,Places & Buildings,喫茶店,きっさてん,kissaten,coffee shop
-PB021,Places & Buildings,本屋,ほんや,honya,bookstore
-PB022,Places & Buildings,公園,こうえん,kōen,park
-PB023,Places & Buildings,店,みせ,mise,store / shop
-PB024,Places & Buildings,レストラン,レストラン,resutoran,restaurant
-PB025,Places & Buildings,スーパー,スーパー,sūpā,supermarket
-PB026,Places & Buildings,駅,えき,eki,station
-PB027,Places & Buildings,乗り場,のりば,noriba,boarding place
-PB028,Places & Buildings,階段,かいだん,kaidan,staircase
-PB029,Places & Buildings,エレベーター,エレベーター,erebētā,elevator
-PB030,Places & Buildings,エスカレーター,エスカレーター,esukarētā,escalator
-PB031,Places & Buildings,窓,まど,mado,window
-PB032,Places & Buildings,ドア,ドア,doa,door
-PB033,Places & Buildings,ビル,ビル,biru,building
-PB034,Places & Buildings,ポスト,ポスト,posuto,postbox
-PB035,Places & Buildings,ホテル,ホテル,hoteru,hotel
-PB036,Places & Buildings,空港,くうこう,kuukou,airport
-PB037,Places & Buildings,プール,プール,pūru,swimming pool
-TR001,Transport,車,くるま,kuruma,car
-TR002,Transport,電車,でんしゃ,densha,train
-TR003,Transport,バス,バス,basu,bus
-TR004,Transport,地下鉄,ちかてつ,chikatetsu,subway
-TR005,Transport,新幹線,しんかんせん,shinkansen,bullet train
-TR006,Transport,船,ふね,fune,ship
-TR007,Transport,飛行機,ひこうき,hikōki,airplane
-TR008,Transport,自転車,じてんしゃ,jitensha,bicycle
-TR009,Transport,タクシー,タクシー,takushī,taxi
-TR010,Transport,歩いて,あるいて,aruite,on foot
-TR011,Transport,バイク,バイク,baiku,motorcycle
-TR012,Transport,バス停,バスてい,basutei,bus stop
-TR013,Transport,旅行時間,りょこうじかん,ryokou jikan,travel time
-FA001,Furniture & Appliances,机,つくえ,tsukue,desk
-FA002,Furniture & Appliances,椅子,いす,isu,chair
-FA003,Furniture & Appliances,テーブル,テーブル,tēburu,table
-FA004,Furniture & Appliances,ベッド,ベッド,beddo,bed
-FA005,Furniture & Appliances,棚,たな,tana,shelf
-FA006,Furniture & Appliances,冷蔵庫,れいぞうこ,reizōko,refrigerator
-FA007,Furniture & Appliances,テレビ,テレビ,terebi,television
-FA008,Furniture & Appliances,ラジオ,ラジオ,rajio,radio
-FA009,Furniture & Appliances,カメラ,カメラ,kamera,camera
-FA010,Furniture & Appliances,コンピューター,コンピューター,konpyūtā,computer
-FA011,Furniture & Appliances,パソコン,パソコン,pasokon,personal computer
-FA012,Furniture & Appliances,電話,でんわ,denwa,telephone
-FA013,Furniture & Appliances,電気,でんき,denki,electric
-FA014,Furniture & Appliances,電気グリル,でんきぐりる,denki guriru,electric grill
-UT001,Utensils & Tools,手,て,te,hand
-UT002,Utensils & Tools,箸,はし,hashi,chopsticks
-UT003,Utensils & Tools,スプーン,スプーン,supūn,spoon
-UT004,Utensils & Tools,フォーク,フォーク,fōku,fork
-PF001,People & Family,友達,ともだち,tomodachi,friend
-PF002,People & Family,彼,かれ,kare,he / boyfriend
-PF003,People & Family,彼女,かのじょ,kanojo,she / girlfriend
-PF004,People & Family,家族,かぞく,kazoku,family
-PF005,People & Family,両親,りょうしん,ryōshin,parents
-PF006,People & Family,兄弟,きょうだい,kyōdai,siblings
-PF007,People & Family,お父さん,おとうさん,otōsan,someone else's father
-PF008,People & Family,お母さん,おかあさん,okāsan,someone else's mother
-PF009,People & Family,お兄さん,おにいさん,onīsan,someone else's older brother
-PF010,People & Family,お姉さん,おねえさん,onēsan,someone else's older sister
-PF011,People & Family,弟さん,おとうとさん,otōtosan,someone else's younger brother
-PF012,People & Family,妹さん,いもうとさん,imōtosan,someone else's younger sister
-PF013,People & Family,主人 / 夫,しゅじん / おっと,shujin / otto,my husband
-PF014,People & Family,ご主人,ごしゅじん,goshujin,someone else's husband
-PF015,People & Family,妻,つま,tsuma,my wife
-PF016,People & Family,奥さん,おくさん,okusan,someone else's wife
-PF017,People & Family,男の人,おとこのひと,otoko no hito,man
-PF018,People & Family,女の人,おんなのひと,onna no hito,woman
-PF019,People & Family,男の子,おとこのこ,otoko no ko,boy
-PF020,People & Family,女の子,おんなのこ,onna no ko,girl
-PF021,People & Family,一人で,ひとりで,hitori de,alone / by oneself
-PF022,People & Family,研究者,けんきゅうしゃ,kenkyūsha,researcher
-PF023,People & Family,親友,しんゆう,shinyuu,best friend
-PF024,People & Family,娘,むすめ,musume,daughter
-PF025,People & Family,息子,むすこ,musuko,son
-PF026,People & Family,イケメン,イケメン,ikemen,good-looking guy (casual)
-NA001,Nature & Animals,猫,ねこ,neko,cat
-NA002,Nature & Animals,犬,いぬ,inu,dog
-NA003,Nature & Animals,花,はな,hana,flower / blossom
-NA004,Nature & Animals,木,き,ki,tree / wood
-NA005,Nature & Animals,桜,さくら,sakura,cherry blossom
-NA006,Nature & Animals,山,やま,yama,mountain
-NA007,Nature & Animals,妖怪,ようかい,youkai,yokai (supernatural creatures)
-NA008,Nature & Animals,海,うみ,umi,sea / ocean
-NA009,Nature & Animals,紅葉,もみじ,momiji,maple / red leaves of autumn
-NA010,Nature & Animals,季節,きせつ,kisetsu,season
-NA011,Nature & Animals,春,はる,haru,spring
-NA012,Nature & Animals,夏,なつ,natsu,summer
-NA013,Nature & Animals,秋,あき,aki,autumn / fall
-NA014,Nature & Animals,冬,ふゆ,fuyu,winter
-NA015,Nature & Animals,天気,てんき,tenki,weather
-NA016,Nature & Animals,雨,あめ,ame,rain
-NA017,Nature & Animals,雪,ゆき,yuki,snow
-NA018,Nature & Animals,曇り,くもり,kumori,cloudy
-NA019,Nature & Animals,川,かわ,kawa,river
-PD001,Position & Direction,中,なか,naka,in / inside
-PD002,Position & Direction,外,そと,soto,outside
-PD003,Position & Direction,右,みぎ,migi,right
-PD004,Position & Direction,左,ひだり,hidari,left
-PD005,Position & Direction,前,まえ,mae,front / before
-PD006,Position & Direction,後ろ,うしろ,ushiro,back / behind
-PD007,Position & Direction,上,うえ,ue,on / above
-PD008,Position & Direction,下,した,shita,under / below
-PD009,Position & Direction,隣,となり,tonari,next to
-PD010,Position & Direction,間,あいだ,aida,between
-PD011,Position & Direction,近く,ちかく,chikaku,near
-PD012,Position & Direction,真ん中,まんなか,mannaka,middle / center
-DM001,Demonstratives (こそあど),これ,これ,kore,this (thing)
-DM002,Demonstratives (こそあど),それ,それ,sore,"that (thing, near listener)"
-DM003,Demonstratives (こそあど),あれ,あれ,are,"that (thing, over there)"
-DM004,Demonstratives (こそあど),どれ,どれ,dore,which (thing)?
-DM005,Demonstratives (こそあど),この,この,kono,this [noun]
-DM006,Demonstratives (こそあど),その,その,sono,that [noun] (near listener)
-DM007,Demonstratives (こそあど),あの,あの,ano,that [noun] (over there)
-DM008,Demonstratives (こそあど),どの,どの,dono,which [noun]?
-DM009,Demonstratives (こそあど),ここ,ここ,koko,here
-DM010,Demonstratives (こそあど),そこ,そこ,soko,there (near listener)
-DM011,Demonstratives (こそあど),あそこ,あそこ,asoko,over there
-DM012,Demonstratives (こそあど),どこ,どこ,doko,where?
-DM013,Demonstratives (こそあど),こちら / こっち,こちら / こっち,kochira / kocchi,this way / here
-DM014,Demonstratives (こそあど),そちら / そっち,そちら / そっち,sochira / socchi,that way / there
-DM015,Demonstratives (こそあど),あちら / あっち,あちら / あっち,achira / acchi,that way over there
-DM016,Demonstratives (こそあど),どちら / どっち,どちら / どっち,dochira / docchi,which way? / where?
-DM017,Demonstratives (こそあど),この人,このひと,kono hito,this person
-DM018,Demonstratives (こそあど),その人,そのひと,sono hito,that person
-DM019,Demonstratives (こそあど),あの人,あのひと,ano hito,that person (over there)
-DM020,Demonstratives (こそあど),どの人,どのひと,dono hito,which person?
-DM021,Demonstratives (こそあど),こんな,こんな,konna,this kind of
-DM022,Demonstratives (こそあど),そんな,そんな,sonna,that kind of
-DM023,Demonstratives (こそあど),あんな,あんな,anna,that kind of (over there)
-DM024,Demonstratives (こそあど),どんな,どんな,donna,what kind of?
-EH001,Entertainment & Hobbies,映画,えいが,eiga,movie
-EH002,Entertainment & Hobbies,写真,しゃしん,shashin,photograph
-EH003,Entertainment & Hobbies,音楽,おんがく,ongaku,music
-EH004,Entertainment & Hobbies,歌,うた,uta,song
-EH005,Entertainment & Hobbies,絵,え,e,picture / drawing
-EH006,Entertainment & Hobbies,ゲーム,ゲーム,gēmu,games
-EH007,Entertainment & Hobbies,テニス,テニス,tenisu,tennis
-EH008,Entertainment & Hobbies,サッカー,サッカー,sakkā,soccer
-EH009,Entertainment & Hobbies,野球,やきゅう,yakyū,baseball
-EH010,Entertainment & Hobbies,スポーツ,スポーツ,supōtsu,sport
-EH011,Entertainment & Hobbies,ダンス,ダンス,dansu,dance
-EH012,Entertainment & Hobbies,カラオケ,カラオケ,karaoke,karaoke
-EH013,Entertainment & Hobbies,チケット,チケット,chiketto,ticket
-EH014,Entertainment & Hobbies,シーディー,シーディー,shīdī,CD
-EH015,Entertainment & Hobbies,旅行,りょこう,ryokō,travel
-EH016,Entertainment & Hobbies,乗り物,のりもの,norimono,rides
-EH017,Entertainment & Hobbies,遊園地,ゆうえんち,yuuenchi,amusement
-EH018,Entertainment & Hobbies,バイオハザード,ばいおはざーど,baiohazaado,Biohazard (Resident Evil)
-EH019,Entertainment & Hobbies,イベント,イベント,ibento,event / convention
-EH020,Entertainment & Hobbies,お祭り,おまつり,omatsuri,fair / festival
-EH021,Entertainment & Hobbies,パーティー,パーティー,paatii,party
-EH022,Entertainment & Hobbies,美術,びじゅつ,bijutsu,art
-EH023,Entertainment & Hobbies,釣り,つり,tsuri,fishing
-EH024,Entertainment & Hobbies,スキー,スキー,sukī,skiing
-EH025,Entertainment & Hobbies,ホラー映画,ホラーえいが,horā eiga,horror movie
-EH026,Entertainment & Hobbies,デート,デート,dēto,date (romantic)
-MP001,Mail & Postal,手紙,てがみ,tegami,letter
-MP002,Mail & Postal,速達,そくたつ,sokutatsu,special delivery
-MP003,Mail & Postal,書留,かきとめ,kakitome,registered mail
-MP004,Mail & Postal,航空便,こうくうびん,kōkūbin,airmail
-MP005,Mail & Postal,船便,ふなびん,funabin,sea mail
-MP006,Mail & Postal,封筒,ふうとう,fuutou,envelope
-MP007,Mail & Postal,葉書,はがき,hagaki,post card
-WS001,Work & Study,仕事,しごと,shigoto,work / job
-WS002,Work & Study,勉強,べんきょう,benkyō,study
-WS003,Work & Study,宿題,しゅくだい,shukudai,homework
-WS004,Work & Study,しつもん,しつもん,shitsumon,question
-WS005,Work & Study,こたえ,こたえ,kotae,answer
-WS006,Work & Study,たんご,たんご,tango,word / vocabulary
-WS007,Work & Study,予定,よてい,yotei,plans / schedule
-WS008,Work & Study,会議,かいぎ,kaigi,meeting
-WS009,Work & Study,同僚,どうりょう,douryou,colleague
-WS010,Work & Study,準備,じゅんび,junbi,preparation
-WS011,Work & Study,練習,れんしゅう,renshuu,practice / training
-WS012,Work & Study,スケジュール,すけじゅーる,sukejuuru,schedule
-WS013,Work & Study,結婚記念日,けっこんきねんび,kekkon kinenbi,wedding anniversary
-WS014,Work & Study,免許,めんきょ,menkyo,driver's license
-WS015,Work & Study,結婚式,けっこんしき,kekkonshiki,wedding
-WS016,Work & Study,[お]金,おかね,okane,money
-WS017,Work & Study,細かいお金,こまかいおかね,komakai okane,small change
-WS018,Work & Study,じかん,じかん,jikan,hours
-WS019,Work & Study,誕生日,たんじょうび,tanjōbi,birthday
-WS020,Work & Study,やすみ,やすみ,yasumi,day off
-WS021,Work & Study,しゅうまつ,しゅうまつ,shūmatsu,weekend
-WS022,Work & Study,試験,しけん,shiken,examination
-VB001,Verbs,食べます,たべます,tabemasu,eat
-VB002,Verbs,飲みます,のみます,nomimasu,drink
-VB003,Verbs,見ます,みます,mimasu,watch
-VB004,Verbs,読みます,よみます,yomimasu,read
-VB005,Verbs,書きます,かきます,kakimasu,write / draw
-VB006,Verbs,聴きます,ききます,kikimasu,listen
-VB007,Verbs,行きます,いきます,ikimasu,go
-VB008,Verbs,来ます,きます,kimasu,come
-VB009,Verbs,帰ります,かえります,kaerimasu,go home
-VB010,Verbs,買います,かいます,kaimasu,buy
-VB011,Verbs,会います,あいます,aimasu,meet / see (a friend)
-VB012,Verbs,撮ります,とります,torimasu,take (a photo)
-VB013,Verbs,吸います,すいます,suimasu,smoke
-VB014,Verbs,勉強します,べんきょうします,benkyō shimasu,study
-VB015,Verbs,終わります,おわります,owarimasu,finish
-VB016,Verbs,休みます,やすみます,yasumimasu,rest / take a day off
-VB017,Verbs,働きます,はたらきます,hatarakimasu,work
-VB018,Verbs,します,します,shimasu,do
-VB019,Verbs,あります,あります,arimasu,exist (inanimate) / have
-VB020,Verbs,います,います,imasu,exist (animate)
-VB021,Verbs,分かります,わかります,wakarimasu,understand
-VB022,Verbs,教えます,おしえます,oshiemasu,teach
-VB023,Verbs,習います,ならいます,naraimasu,learn
-VB024,Verbs,貸します,かします,kashimasu,lend
-VB025,Verbs,借ります,かります,karimasu,borrow
-VB026,Verbs,あげます,あげます,agemasu,give
-VB027,Verbs,もらいます,もらいます,moraimasu,receive
-VB028,Verbs,送ります,おくります,okurimasu,send
-VB029,Verbs,切ります,きります,kirimasu,cut / slice
-VB030,Verbs,かけます [電話を],かけます,kakemasu,make a phone call
-VB031,Verbs,手伝います,てつだいます,tetsudaimasu,help
-VB032,Verbs,おぼえます,おぼえます,oboemasu,memorize
-VB033,Verbs,ひっこします,ひっこします,hikkoshimasu,move out
-VB034,Verbs,とまります,とまります,tomarimasu,stay
-VB035,Verbs,ちゅうもんします,ちゅうもんします,chūmon shimasu,order
-VB036,Verbs,きます [服を],きます,kimasu,wear / put on
-VB037,Verbs,かかります [お金が],かかります,kakarimasu,cost (money)
-VB038,Verbs,かかります [時間が],かかります,kakarimasu,take (time)
-VB039,Verbs,整理します,せいりします,seirishimasu,to organize
-VB040,Verbs,掃除します,そうじします,soujishimasu,to clean
-VB041,Verbs,満足します,まんぞくします,manzokushimasu,to be satisfied
-VB042,Verbs,乗ります,のります,norimasu,to ride
-VB043,Verbs,ゆっくりします,ゆっくりします,yukkurishimasu,to relax
-VB044,Verbs,出ます,でます,demasu,to leave
-VB045,Verbs,つきます,つきます,tsukimasu,to arrive
-VB046,Verbs,過ごします,すごします,sugoshimasu,to spend (time)
-VB047,Verbs,続けます,つづけます,tsuzukemasu,to continue
-VB048,Verbs,戻ります,もどります,modorimasu,to return / go back
-VB049,Verbs,散歩します,さんぽします,sanpo shimasu,to take a walk
-VB050,Verbs,焼きます,やきます,yakimasu,to grill / roast
-VB051,Verbs,始まります,はじまります,hajimarimasu,to start / begin
-VB052,Verbs,参加します,さんかします,sanka shimasu,to participate
-VB053,Verbs,疲れます,つかれます,tsukaremasu,to get tired
-VB054,Verbs,リラックスします,リラックスします,rirakkusu shimasu,to relax
-VB055,Verbs,持ってきます,もってきます,motte kimasu,to bring (from somewhere)
-VB056,Verbs,遊びます,あそびます,asobimasu,play / hang out
-VB057,Verbs,泳ぎます,およぎます,oyogimasu,swim
-VB058,Verbs,迎えます,むかえます,mukaemasu,go to meet / welcome
-VB059,Verbs,出します [手紙を],だします,dashimasu,send / post [a letter]
-VB060,Verbs,入ります [〜に],はいります,hairimasu,enter
-VB061,Verbs,結婚します,けっこんします,kekkon shimasu,marry
-VB062,Verbs,買い物します,かいものします,kaimono shimasu,do shopping
-VB063,Verbs,食事します,しょくじします,shokuji shimasu,have a meal
-VB064,Verbs,運転します,うんてんします,unten shimasu,to drive
-IA001,い-Adjectives,新しい,あたらしい,atarashii,new
-IA002,い-Adjectives,古い,ふるい,furui,old
-IA003,い-Adjectives,大きい,おおきい,ōkii,big
-IA004,い-Adjectives,小さい,ちいさい,chiisai,small
-IA005,い-Adjectives,高い,たかい,takai,tall / expensive
-IA006,い-Adjectives,低い,ひくい,hikui,low
-IA007,い-Adjectives,安い,やすい,yasui,cheap
-IA008,い-Adjectives,良い,いい,ii,good
-IA009,い-Adjectives,悪い,わるい,warui,bad
-IA010,い-Adjectives,暑い,あつい,atsui,hot (weather)
-IA011,い-Adjectives,寒い,さむい,samui,cold (weather)
-IA012,い-Adjectives,熱い,あつい,atsui,hot (touch)
-IA013,い-Adjectives,冷たい,つめたい,tsumetai,cold (touch)
-IA014,い-Adjectives,易しい,やさしい,yasashii,easy
-IA015,い-Adjectives,難しい,むずかしい,muzukashii,difficult
-IA016,い-Adjectives,忙しい,いそがしい,isogashii,busy
-IA017,い-Adjectives,おもしろい,おもしろい,omoshiroi,interesting
-IA018,い-Adjectives,楽しい,たのしい,tanoshii,fun
-IA019,い-Adjectives,気持ちいい,きもちいい,kimochi ii,feels good / comfortable
-IA020,い-Adjectives,おいしい,おいしい,oishii,delicious
-IA021,い-Adjectives,白い,しろい,shiroi,white
-IA022,い-Adjectives,赤い,あかい,akai,red
-IA023,い-Adjectives,黒い,くろい,kuroi,black
-IA024,い-Adjectives,青い,あおい,aoi,blue
-IA025,い-Adjectives,怖い,こわい,kowai,scary
-IA026,い-Adjectives,近い,ちかい,chikai,near
-IA027,い-Adjectives,遠い,とおい,tooi,far
-IA028,い-Adjectives,早い,はやい,hayai,early
-IA029,い-Adjectives,速い,はやい,hayai,fast
-IA030,い-Adjectives,遅い,おそい,osoi,late / slow
-IA031,い-Adjectives,多い,おおい,ooi,many / much
-IA032,い-Adjectives,少ない,すくない,sukunai,few / a little
-IA033,い-Adjectives,暖かい,あたたかい,atatakai,warm
-IA034,い-Adjectives,涼しい,すずしい,suzushii,cool
-IA035,い-Adjectives,甘い,あまい,amai,sweet
-IA036,い-Adjectives,辛い,からい,karai,spicy
-IA037,い-Adjectives,重い,おもい,omoi,heavy
-IA038,い-Adjectives,軽い,かるい,karui,light
-IA039,い-Adjectives,欲しい,ほしい,hoshii,want
-IA040,い-Adjectives,寂しい,さびしい,sabishii,lonely
-IA041,い-Adjectives,広い,ひろい,hiroi,wide / spacious
-IA042,い-Adjectives,狭い,せまい,semai,narrow
-IA043,い-Adjectives,かっこいい,かっこいい,kakkoii,cool / good-looking
-IA044,い-Adjectives,温かい,あたたかい,atatakai,warm (to the touch)
-NJ001,な-Adjectives,親切,しんせつ,shinsetsu,kind
-NJ002,な-Adjectives,元気,げんき,genki,healthy / cheerful
-NJ003,な-Adjectives,暇,ひま,hima,free (time)
-NJ004,な-Adjectives,有名,ゆうめい,yūmei,famous
-NJ005,な-Adjectives,綺麗,きれい,kirei,beautiful / clean
-NJ006,な-Adjectives,静か,しずか,shizuka,quiet
-NJ007,な-Adjectives,ハンサム,ハンサム,hansamu,handsome
-NJ008,な-Adjectives,にぎやか,にぎやか,nigiyaka,lively
-NJ009,な-Adjectives,好き,すき,suki,like
-NJ010,な-Adjectives,嫌い,きらい,kirai,dislike
-NJ011,な-Adjectives,上手,じょうず,jōzu,good at
-NJ012,な-Adjectives,下手,へた,heta,bad at
-NJ013,な-Adjectives,穏やか,おだやか,odayaka,calm / gentle
-NJ014,な-Adjectives,自由,じゆう,jiyuu,free / freedom
-NJ015,な-Adjectives,精力的,せいりょくてき,seiryokuteki,productive / energetic
-NJ016,な-Adjectives,機能的,きのうてき,kinouteki,functional
-NJ017,な-Adjectives,特別,とくべつ,tokubetsu,special
-NJ018,な-Adjectives,簡単,かんたん,kantan,easy
-NJ019,な-Adjectives,大変,たいへん,taihen,hard / tough
-NJ020,な-Adjectives,苦手,にがて,nigate,not good at / dislike
-UP001,Useful Phrases & Connectors,どうでしたか,どうでしたか,dō deshita ka,how was (it)?
-UP002,Useful Phrases & Connectors,どうですか,どうですか,dō desu ka,how is (it)?
-UP003,Useful Phrases & Connectors,意味は何ですか,いみはなんですか,imi wa nan desu ka,what is the meaning?
-UP004,Useful Phrases & Connectors,そうですか,そうですか,sō desu ka,I see
-UP005,Useful Phrases & Connectors,違います,ちがいます,chigaimasu,it isn't / that's wrong
-UP006,Useful Phrases & Connectors,いらっしゃいませ,いらっしゃいませ,irasshaimase,welcome (shop greeting)
-UP007,Useful Phrases & Connectors,ほしいです,ほしいです,hoshii desu,I want
-UP008,Useful Phrases & Connectors,たのしみ,たのしみ,tanoshimi,something to look forward to
-UP009,Useful Phrases & Connectors,だれと,だれと,dare to,with whom
-UP010,Useful Phrases & Connectors,～のあと,～のあと,~ no ato,after ~
-UP011,Useful Phrases & Connectors,そして,そして,soshite,and then
-UP012,Useful Phrases & Connectors,それから,それから,sorekara,after that / and then
-UP013,Useful Phrases & Connectors,でも,でも,demo,but
-UP014,Useful Phrases & Connectors,いつも,いつも,itsumo,always
-UP015,Useful Phrases & Connectors,ときどき,ときどき,tokidoki,sometimes
-UP016,Useful Phrases & Connectors,一緒に,いっしょに,issho ni,together
-UP017,Useful Phrases & Connectors,いろいろな,いろいろな,iroiro na,various
-UP018,Useful Phrases & Connectors,けっこう,けっこう,kekkou,quite a lot
-UP019,Useful Phrases & Connectors,生活,せいかつ,seikatsu,life
-UP020,Useful Phrases & Connectors,いかがですか,いかがですか,ikagadesuka,would you like?
-UP021,Useful Phrases & Connectors,～ながら,～ながら,nagara,while doing
-UP022,Useful Phrases & Connectors,～ために,～ために,tame ni,in order to
-UP023,Useful Phrases & Connectors,～ぐらい,～ぐらい,gurai,about / approximately
-UP024,Useful Phrases & Connectors,～たり～たり,～たり～たり,~tari ~tari,doing things like X and Y
-UP025,Useful Phrases & Connectors,ずっと,ずっと,zutto,the whole time / continuously; much more (in comparisons)
-UP026,Useful Phrases & Connectors,別の,べつの,betsu no,another / different
-UP027,Useful Phrases & Connectors,いっぱい,いっぱい,ippai,full / packed
-UP028,Useful Phrases & Connectors,気持ち,きもち,kimochi,feeling / emotion
-UP029,Useful Phrases & Connectors,気分,きぶん,kibun,mood / feeling
-UP030,Useful Phrases & Connectors,一日中,いちにちじゅう,ichinichi juu,throughout the day
-UP031,Useful Phrases & Connectors,祝い,いわい,iwai,celebration
-UP032,Useful Phrases & Connectors,年末,ねんまつ,nenmatsu,year end
-UP033,Useful Phrases & Connectors,年越し,としこし,toshikoshi,New Year's Eve (midnight)
-UP034,Useful Phrases & Connectors,挨拶,あいさつ,aisatsu,greeting
-UP035,Useful Phrases & Connectors,あけましておめでとう,あけましておめでとう,akemashite omedetou,Happy New Year
-UP036,Useful Phrases & Connectors,実りのある,みのりのある,minori no aru,rewarding / fruitful
-UP037,Useful Phrases & Connectors,満ちたりた,みちたりた,michitarita,fulfilled / satisfied
-UP038,Useful Phrases & Connectors,どのくらい,どのくらい,donokurai,how long
-UP039,Useful Phrases & Connectors,だけ,だけ,dake,only
-UP040,Useful Phrases & Connectors,ペース,ペース,peesu,pace
-UP041,Useful Phrases & Connectors,終わり,おわり,owari,end
-UP042,Useful Phrases & Connectors,文化,ぶんか,bunka,culture
-UP043,Useful Phrases & Connectors,ワクワク,わくわく,wakuwaku,excited / thrilling
-UP044,Useful Phrases & Connectors,もうひとつ,もうひとつ,mou hitotsu,the other one
-UP045,Useful Phrases & Connectors,買い物,かいもの,kaimono,shopping / purchases
-UP046,Useful Phrases & Connectors,帰る途中,かえるとちゅう,kaeru tochuu,on the way home
-UP047,Useful Phrases & Connectors,みんなで,みんなで,minna de,everyone together
-UP048,Useful Phrases & Connectors,全部で,ぜんぶで,zenbu de,in total
-UP049,Useful Phrases & Connectors,まず,まず,mazu,first / to begin with
-UP050,Useful Phrases & Connectors,お腹がすきました,おなかがすきました,onaka ga sukimashita,I'm hungry
-UP051,Useful Phrases & Connectors,お腹がいっぱいです,おなかがいっぱいです,onaka ga ippai desu,I'm full
-UP052,Useful Phrases & Connectors,喉が渇きました,のどがかわきました,nodo ga kawakimashita,I'm thirsty
-CQ001,Counters & Quantities,一つ,ひとつ,hitotsu,one (thing)
-CQ002,Counters & Quantities,二つ,ふたつ,futatsu,two (things)
-CQ003,Counters & Quantities,三つ,みっつ,mittsu,three (things)
-CQ004,Counters & Quantities,四つ,よっつ,yottsu,four (things)
-CQ005,Counters & Quantities,五つ,いつつ,itsutsu,five (things)
-CQ006,Counters & Quantities,六つ,むっつ,muttsu,six (things)
-CQ007,Counters & Quantities,七つ,ななつ,nanatsu,seven (things)
-CQ008,Counters & Quantities,八つ,やっつ,yattsu,eight (things)
-CQ009,Counters & Quantities,九つ,ここのつ,kokonotsu,nine (things)
-CQ010,Counters & Quantities,十,とお,too,ten (things)
-CQ011,Counters & Quantities,一人,ひとり,hitori,one person
-CQ012,Counters & Quantities,二人,ふたり,futari,two people
-CQ013,Counters & Quantities,三人,さんにん,san-nin,three people
-CQ014,Counters & Quantities,四人,よにん,yo-nin,four people
-CQ015,Counters & Quantities,五人,ごにん,go-nin,five people
-CQ016,Counters & Quantities,六人,ろくにん,roku-nin,six people
-CQ017,Counters & Quantities,七人,しちにん / ななにん,shichi-nin / nana-nin,seven people
-CQ018,Counters & Quantities,八人,はちにん,hachi-nin,eight people
-CQ019,Counters & Quantities,九人,くにん / きゅうにん,ku-nin / kyuu-nin,nine people
-CQ020,Counters & Quantities,十人,じゅうにん,juu-nin,ten people
-CQ021,Counters & Quantities,一本,いっぽん,ippon,one
-CQ022,Counters & Quantities,二本,にほん,ni-hon,two
-CQ023,Counters & Quantities,三本,さんぼん,san-bon,three
-CQ024,Counters & Quantities,四本,よんほん,yon-hon,four
-CQ025,Counters & Quantities,五本,ごほん,go-hon,five
-CQ026,Counters & Quantities,六本,ろっぽん,roppon,six
-CQ027,Counters & Quantities,七本,ななほん,nana-hon,seven
-CQ028,Counters & Quantities,八本,はっぽん / はちほん,happon / hachi-hon,eight
-CQ029,Counters & Quantities,九本,きゅうほん,kyuu-hon,nine
-CQ030,Counters & Quantities,十本,じゅっぽん,juppon,ten
-CQ031,Counters & Quantities,一枚,いちまい,ichi-mai,one
-CQ032,Counters & Quantities,二枚,にまい,ni-mai,two
-CQ033,Counters & Quantities,三枚,さんまい,san-mai,three
-CQ034,Counters & Quantities,四枚,よんまい,yon-mai,four
-CQ035,Counters & Quantities,五枚,ごまい,go-mai,five
-CQ036,Counters & Quantities,六枚,ろくまい,roku-mai,six
-CQ037,Counters & Quantities,七枚,ななまい,nana-mai,seven
-CQ038,Counters & Quantities,八枚,はちまい,hachi-mai,eight
-CQ039,Counters & Quantities,九枚,きゅうまい,kyuu-mai,nine
-CQ040,Counters & Quantities,十枚,じゅうまい,juu-mai,ten
-CQ041,Counters & Quantities,一冊,いっさつ,issatsu,one
-CQ042,Counters & Quantities,二冊,にさつ,ni-satsu,two
-CQ043,Counters & Quantities,三冊,さんさつ,san-satsu,three
-CQ044,Counters & Quantities,四冊,よんさつ,yon-satsu,four
-CQ045,Counters & Quantities,五冊,ごさつ,go-satsu,five
-CQ046,Counters & Quantities,六冊,ろくさつ,roku-satsu,six
-CQ047,Counters & Quantities,七冊,ななさつ,nana-satsu,seven
-CQ048,Counters & Quantities,八冊,はっさつ,hassatsu,eight
-CQ049,Counters & Quantities,九冊,きゅうさつ,kyuu-satsu,nine
-CQ050,Counters & Quantities,十冊,じゅっさつ,jussatsu,ten
-CQ051,Counters & Quantities,一台,いちだい,ichi-dai,one
-CQ052,Counters & Quantities,二台,にだい,ni-dai,two
-CQ053,Counters & Quantities,三台,さんだい,san-dai,three
-CQ054,Counters & Quantities,四台,よんだい,yon-dai,four
-CQ055,Counters & Quantities,五台,ごだい,go-dai,five
-CQ056,Counters & Quantities,一匹,いっぴき,ippiki,one
-CQ057,Counters & Quantities,二匹,にひき,ni-hiki,two
-CQ058,Counters & Quantities,三匹,さんびき,san-biki,three
-CQ059,Counters & Quantities,四匹,よんひき,yon-hiki,four
-CQ060,Counters & Quantities,五匹,ごひき,go-hiki,five
-CQ061,Counters & Quantities,六匹,ろっぴき,roppiki,six
-CQ062,Counters & Quantities,七匹,ななひき,nana-hiki,seven
-CQ063,Counters & Quantities,八匹,はっぴき / はちひき,happiki / hachi-hiki,eight
-CQ064,Counters & Quantities,九匹,きゅうひき,kyuu-hiki,nine
-CQ065,Counters & Quantities,十匹,じゅっぴき,juppiki,ten
-CQ066,Counters & Quantities,一杯,いっぱい,ippai,one
-CQ067,Counters & Quantities,二杯,にはい,ni-hai,two
-CQ068,Counters & Quantities,三杯,さんばい,san-bai,three
-CQ069,Counters & Quantities,四杯,よんはい,yon-hai,four
-CQ070,Counters & Quantities,五杯,ごはい,go-hai,five
-CQ071,Counters & Quantities,一回,いっかい,ikkai,one time
-CQ072,Counters & Quantities,二回,にかい,ni-kai,two times
-CQ073,Counters & Quantities,三回,さんかい,san-kai,three times
-CQ074,Counters & Quantities,四回,よんかい,yon-kai,four times
-CQ075,Counters & Quantities,五回,ごかい,go-kai,five times
-CQ076,Counters & Quantities,六回,ろっかい,rokkai,six times
-CQ077,Counters & Quantities,七回,ななかい,nana-kai,seven times
-CQ078,Counters & Quantities,八回,はっかい,hakkai,eight times
-CQ079,Counters & Quantities,九回,きゅうかい,kyuu-kai,nine times
-CQ080,Counters & Quantities,十回,じゅっかい,jukkai,ten times
-CQ081,Counters & Quantities,一階,いっかい,ikkai,first floor
-CQ082,Counters & Quantities,二階,にかい,ni-kai,second floor
-CQ083,Counters & Quantities,三階,さんがい / さんかい,san-gai / san-kai,third floor
-CQ084,Counters & Quantities,四階,よんかい,yon-kai,fourth floor
-CQ085,Counters & Quantities,五階,ごかい,go-kai,fifth floor
-CQ086,Counters & Quantities,六階,ろっかい,rokkai,sixth floor
-CQ087,Counters & Quantities,七階,ななかい,nana-kai,seventh floor
-CQ088,Counters & Quantities,八階,はっかい / はちかい,hakkai / hachi-kai,eighth floor
-CQ089,Counters & Quantities,九階,きゅうかい,kyuu-kai,ninth floor
-CQ090,Counters & Quantities,十階,じゅっかい,jukkai,tenth floor
-CQ091,Counters & Quantities,一分,いっぷん,ippun,one minute
-CQ092,Counters & Quantities,二分,にふん,ni-fun,two minutes
-CQ093,Counters & Quantities,三分,さんぷん,san-pun,three minutes
-CQ094,Counters & Quantities,四分,よんぷん,yon-pun,four minutes
-CQ095,Counters & Quantities,五分,ごふん,go-fun,five minutes
-CQ096,Counters & Quantities,六分,ろっぷん,roppun,six minutes
-CQ097,Counters & Quantities,七分,ななふん,nana-fun,seven minutes
-CQ098,Counters & Quantities,八分,はちふん / はっぷん,hachi-fun / happun,eight minutes
-CQ099,Counters & Quantities,九分,きゅうふん,kyuu-fun,nine minutes
-CQ100,Counters & Quantities,十分,じゅっぷん,juppun,ten minutes
-CQ101,Counters & Quantities,十五分,じゅうごふん,juugo-fun,fifteen minutes
-CQ102,Counters & Quantities,三十分,さんじゅっぷん,san-juppun,thirty minutes
-CQ103,Counters & Quantities,一時間,いちじかん,ichi-jikan,one hour
-CQ104,Counters & Quantities,二時間,にじかん,ni-jikan,two hours
-CQ105,Counters & Quantities,三時間,さんじかん,san-jikan,three hours
-CQ106,Counters & Quantities,四時間,よじかん,yo-jikan,four hours
-CQ107,Counters & Quantities,五時間,ごじかん,go-jikan,five hours
-CQ108,Counters & Quantities,六時間,ろくじかん,roku-jikan,six hours
-CQ109,Counters & Quantities,七時間,ななじかん,nana-jikan,seven hours
-CQ110,Counters & Quantities,八時間,はちじかん,hachi-jikan,eight hours
-CQ111,Counters & Quantities,九時間,くじかん,ku-jikan,nine hours
-CQ112,Counters & Quantities,十時間,じゅうじかん,juu-jikan,ten hours
-CQ113,Counters & Quantities,一時間半,いちじかんはん,ichi-jikan han,one and a half hours
-CQ114,Counters & Quantities,一日,ついたち,tsuitachi,1st (of month)
-CQ115,Counters & Quantities,二日,ふつか,futsuka,2nd / two days
-CQ116,Counters & Quantities,三日,みっか,mikka,3rd / three days
-CQ117,Counters & Quantities,四日,よっか,yokka,4th / four days
-CQ118,Counters & Quantities,五日,いつか,itsuka,5th / five days
-CQ119,Counters & Quantities,六日,むいか,muika,6th / six days
-CQ120,Counters & Quantities,七日,なのか,nanoka,7th / seven days
-CQ121,Counters & Quantities,八日,ようか,youka,8th / eight days
-CQ122,Counters & Quantities,九日,ここのか,kokonoka,9th / nine days
-CQ123,Counters & Quantities,十日,とおか,tooka,10th / ten days
-CQ124,Counters & Quantities,十四日,じゅうよっか,juu-yokka,14th
-CQ125,Counters & Quantities,二十日,はつか,hatsuka,20th
-CQ126,Counters & Quantities,二十四日,にじゅうよっか,nijuu-yokka,24th
-CQ127,Counters & Quantities,一週間,いっしゅうかん,isshuukan,one week
-CQ128,Counters & Quantities,二週間,にしゅうかん,ni-shuukan,two weeks
-CQ129,Counters & Quantities,三週間,さんしゅうかん,san-shuukan,three weeks
-CQ130,Counters & Quantities,四週間,よんしゅうかん,yon-shuukan,four weeks
-CQ131,Counters & Quantities,一ヶ月,いっかげつ,ikkagetsu,one month
-CQ132,Counters & Quantities,二ヶ月,にかげつ,ni-kagetsu,two months
-CQ133,Counters & Quantities,三ヶ月,さんかげつ,san-kagetsu,three months
-CQ134,Counters & Quantities,四ヶ月,よんかげつ,yon-kagetsu,four months
-CQ135,Counters & Quantities,六ヶ月,ろっかげつ,rokkagetsu,six months
-CQ136,Counters & Quantities,十ヶ月,じゅっかげつ,jukkagetsu,ten months
-CQ137,Counters & Quantities,十二ヶ月,じゅうにかげつ,juuni-kagetsu,twelve months
-CQ138,Counters & Quantities,一年,いちねん,ichi-nen,one year
-CQ139,Counters & Quantities,二年,にねん,ni-nen,two years
-CQ140,Counters & Quantities,三年,さんねん,san-nen,three years
-CQ141,Counters & Quantities,四年,よねん,yo-nen,four years
-CQ142,Counters & Quantities,十年,じゅうねん,juu-nen,ten years
-CQ143,Counters & Quantities,一歳,いっさい,issai,one year old
-CQ144,Counters & Quantities,八歳,はっさい,hassai,eight years old
-CQ145,Counters & Quantities,十歳,じゅっさい,jussai,ten years old
-CQ146,Counters & Quantities,二十歳,はたち,hatachi,twenty years old
+EO001,Everyday Objects,本,ほん,Hon,Book
+EO002,Everyday Objects,辞書,じしょ,Jisho,Dictionary
+EO003,Everyday Objects,雑誌,ざっし,Zasshi,Magazine
+EO004,Everyday Objects,新聞,しんぶん,Shinbun,Newspaper
+EO005,Everyday Objects,ノート,ノート,Nōto,Notebook
+EO006,Everyday Objects,手帳,てちょう,Techō,Pocket notebook
+EO007,Everyday Objects,名刺,めいし,Meishi,Business card
+EO008,Everyday Objects,カード,カード,Kādo,Card
+EO009,Everyday Objects,鉛筆,えんぴつ,Enpitsu,Pencil
+EO010,Everyday Objects,ボールペン,ボールペン,Bōrupen,Ballpoint pen
+EO011,Everyday Objects,シャーペン,シャーペン,Shāpen,Mechanical pencil
+EO012,Everyday Objects,鍵,かぎ,Kagi,Key
+EO013,Everyday Objects,時計,とけい,Tokei,Watch / Clock
+EO014,Everyday Objects,傘,かさ,Kasa,Umbrella
+EO015,Everyday Objects,鞄,かばん,Kaban,Bag / Briefcase
+EO016,Everyday Objects,靴,くつ,Kutsu,Shoes
+EO017,Everyday Objects,ネクタイ,ネクタイ,Nekutai,Necktie
+EO018,Everyday Objects,紙,かみ,Kami,Paper
+EO019,Everyday Objects,箱,はこ,Hako,Box
+EO020,Everyday Objects,荷物,にもつ,Nimotsu,Baggage / Parcel
+EO021,Everyday Objects,はさみ,はさみ,Hasami,Scissors
+EO022,Everyday Objects,ナイフ,ナイフ,Naifu,Knife
+EO023,Everyday Objects,ホッチキス,ホッチキス,Hotchikisu,Stapler
+EO024,Everyday Objects,消しゴム,けしごむ,Keshigomu,Eraser
+EO025,Everyday Objects,目覚まし,めざまし,Mezamashi,Alarm (clock)
+EO026,Everyday Objects,スイッチ,スイッチ,Suicchi,Switch
+EO027,Everyday Objects,シャツ,シャツ,Shatsu,Shirt
+EO028,Everyday Objects,せいふく,せいふく,Seifuku,Uniform
+EO029,Everyday Objects,プレゼント,プレゼント,Purezento,Present
+EO030,Everyday Objects,[お]土産,おみやげ,Omiyage,Souvenir
+EO031,Everyday Objects,切手,きって,Kitte,Postage stamp
+EO032,Everyday Objects,葉書,はがき,Hagaki,Postcard
+EO033,Everyday Objects,封筒,ふうとう,Fūtō,Envelope
+EO034,Everyday Objects,上着,うわぎ,Uwagi,Jacket
+EO035,Everyday Objects,ぬいぐるみ,ぬいぐるみ,Nuigurumi,Stuffed toy
+FD001,Food & Drink,ご飯,ごはん,Gohan,Cooked rice / Meal
+FD002,Food & Drink,朝ごはん,あさごはん,Asagohan,Breakfast
+FD003,Food & Drink,昼ごはん,ひるごはん,Hirugohan,Lunch
+FD004,Food & Drink,晩ごはん,ばんごはん,Bangohan,Dinner
+FD005,Food & Drink,水,みず,Mizu,Water
+FD006,Food & Drink,牛乳,ぎゅうにゅう,Gyūnyū,Milk
+FD007,Food & Drink,紅茶,こうちゃ,Kōcha,Black tea
+FD008,Food & Drink,お茶,おちゃ,Ocha,Tea / Green tea
+FD009,Food & Drink,コーヒー,コーヒー,Kōhī,Coffee
+FD010,Food & Drink,ジュース,ジュース,Jūsu,Juice
+FD011,Food & Drink,ビール,ビール,Bīru,Beer
+FD012,Food & Drink,ワイン,ワイン,Wain,Wine
+FD013,Food & Drink,[お]酒,[お]さけ,[O]sake,Alcohol
+FD014,Food & Drink,パン,パン,Pan,Bread
+FD015,Food & Drink,卵,たまご,Tamago,Egg
+FD016,Food & Drink,魚,さかな,Sakana,Fish
+FD017,Food & Drink,野菜,やさい,Yasai,Vegetable
+FD018,Food & Drink,果物,くだもの,Kudamono,Fruit
+FD019,Food & Drink,肉,にく,Niku,Meat
+FD020,Food & Drink,豚肉,ぶたにく,Butaniku,Pork
+FD021,Food & Drink,牛肉,ぎゅうにく,Gyūniku,Beef
+FD022,Food & Drink,鶏肉,とりにく,Toriniku,Chicken
+FD023,Food & Drink,チョコレート,チョコレート,Chokorēto,Chocolate
+FD024,Food & Drink,りんご,りんご,Ringo,Apple
+FD025,Food & Drink,みかん,みかん,Mikan,Orange
+FD026,Food & Drink,カレーライス,カレーライス,Karē raisu,Curry and rice
+FD027,Food & Drink,食べ物,たべもの,Tabemono,Food
+FD028,Food & Drink,飲み物,のみもの,Nomimono,Drinks
+FD029,Food & Drink,料理,りょうり,Ryōri,Cooking / Cooked food
+FD030,Food & Drink,日本料理,にほんりょうり,Nihon ryōri,Japanese cuisine / Food
+FD031,Food & Drink,クロワッサン,クロワッサン,Kurowassan,Croissant
+FD032,Food & Drink,デザート,デザート,Dezaato,Dessert
+FD033,Food & Drink,ゆず,ゆず,Yuzu,Yuzu (citrus fruit)
+FD034,Food & Drink,チーズケーキ,チーズケーキ,Chiizukeeki,Cheesecake
+FD035,Food & Drink,ハンバーガー,ハンバーガー,Hanbaagaa,Hamburger
+FD036,Food & Drink,グルメッテン,グルメッテン,Gurumetten,Gourmetten (Dutch tabletop grill)
+FD037,Food & Drink,すき焼き,すきやき,Sukiyaki,Sukiyaki
+FD038,Food & Drink,刺身,さしみ,Sashimi,Sashimi
+FD039,Food & Drink,[お]寿司,おすし,Osushi,Sushi
+FD040,Food & Drink,天ぷら,てんぷら,Tenpura,Tempura
+FD041,Food & Drink,ピーマン,ピーマン,Pīman,Bell pepper / Green pepper
+FD042,Food & Drink,クッキー,クッキー,Kukkī,Cookie
+FD043,Food & Drink,ポップコーン,ポップコーン,Poppukōn,Popcorn
+PB001,Places & Buildings,教室,きょうしつ,Kyōshitsu,Classroom
+PB002,Places & Buildings,食堂,しょくどう,Shokudō,Cafeteria
+PB003,Places & Buildings,事務所,じむしょ,Jimusho,Office
+PB004,Places & Buildings,会議室,かいぎしつ,Kaigishitsu,Meeting room
+PB005,Places & Buildings,受付,うけつけ,Uketsuke,Reception
+PB006,Places & Buildings,ロビー,ロビー,Robī,Lobby
+PB007,Places & Buildings,部屋,へや,Heya,Room
+PB008,Places & Buildings,トイレ,トイレ,Toire,Toilet
+PB009,Places & Buildings,家,いえ,Ie,Home
+PB010,Places & Buildings,国,くに,Kuni,Country
+PB011,Places & Buildings,会社,かいしゃ,Kaisha,Company
+PB012,Places & Buildings,学校,がっこう,Gakkō,School
+PB013,Places & Buildings,図書館,としょかん,Toshokan,Library
+PB014,Places & Buildings,銀行,ぎんこう,Ginkō,Bank
+PB015,Places & Buildings,郵便局,ゆうびんきょく,Yūbinkyoku,Post office
+PB016,Places & Buildings,博物館,はくぶつかん,Hakubutsukan,Museum
+PB017,Places & Buildings,美術館,びじゅつかん,Bijutsukan,Art museum
+PB018,Places & Buildings,百貨店,ひゃっかてん,Hyakkaten,Department store
+PB019,Places & Buildings,えいがかん,えいがかん,Eigakan,Movie theater
+PB020,Places & Buildings,喫茶店,きっさてん,Kissaten,Coffee shop
+PB021,Places & Buildings,本屋,ほんや,Honya,Bookstore
+PB022,Places & Buildings,公園,こうえん,Kōen,Park
+PB023,Places & Buildings,店,みせ,Mise,Store / Shop
+PB024,Places & Buildings,レストラン,レストラン,Resutoran,Restaurant
+PB025,Places & Buildings,スーパー,スーパー,Sūpā,Supermarket
+PB026,Places & Buildings,駅,えき,Eki,Station
+PB027,Places & Buildings,乗り場,のりば,Noriba,Boarding place
+PB028,Places & Buildings,階段,かいだん,Kaidan,Staircase
+PB029,Places & Buildings,エレベーター,エレベーター,Erebētā,Elevator
+PB030,Places & Buildings,エスカレーター,エスカレーター,Esukarētā,Escalator
+PB031,Places & Buildings,窓,まど,Mado,Window
+PB032,Places & Buildings,ドア,ドア,Doa,Door
+PB033,Places & Buildings,ビル,ビル,Biru,Building
+PB034,Places & Buildings,ポスト,ポスト,Posuto,Postbox
+PB035,Places & Buildings,ホテル,ホテル,Hoteru,Hotel
+PB036,Places & Buildings,空港,くうこう,Kuukou,Airport
+PB037,Places & Buildings,プール,プール,Pūru,Swimming pool
+PB038,Places & Buildings,デパート,デパート,Depāto,Department store
+PB039,Places & Buildings,コンビニ,コンビニ,Konbini,Convenience store
+PB040,Places & Buildings,物販会場,ぶっぱんかいじょう,Buppan kaijō,Dealer's room / Merchandise hall
+TR001,Transport,車,くるま,Kuruma,Car
+TR002,Transport,電車,でんしゃ,Densha,Train
+TR003,Transport,バス,バス,Basu,Bus
+TR004,Transport,地下鉄,ちかてつ,Chikatetsu,Subway
+TR005,Transport,新幹線,しんかんせん,Shinkansen,Bullet train
+TR006,Transport,船,ふね,Fune,Ship
+TR007,Transport,飛行機,ひこうき,Hikōki,Airplane
+TR008,Transport,自転車,じてんしゃ,Jitensha,Bicycle
+TR009,Transport,タクシー,タクシー,Takushī,Taxi
+TR010,Transport,歩いて,あるいて,Aruite,On foot
+TR011,Transport,バイク,バイク,Baiku,Motorcycle
+TR012,Transport,バス停,バスてい,Basutei,Bus stop
+TR013,Transport,旅行時間,りょこうじかん,Ryokou jikan,Travel time
+TR014,Transport,電動自転車,でんどうじてんしゃ,Dendō jitensha,Electric bicycle
+TR015,Transport,片道,かたみち,Katamichi,One way
+FA001,Furniture & Appliances,机,つくえ,Tsukue,Desk
+FA002,Furniture & Appliances,椅子,いす,Isu,Chair
+FA003,Furniture & Appliances,テーブル,テーブル,Tēburu,Table
+FA004,Furniture & Appliances,ベッド,ベッド,Beddo,Bed
+FA005,Furniture & Appliances,棚,たな,Tana,Shelf
+FA006,Furniture & Appliances,冷蔵庫,れいぞうこ,Reizōko,Refrigerator
+FA007,Furniture & Appliances,テレビ,テレビ,Terebi,Television
+FA008,Furniture & Appliances,ラジオ,ラジオ,Rajio,Radio
+FA009,Furniture & Appliances,カメラ,カメラ,Kamera,Camera
+FA010,Furniture & Appliances,コンピューター,コンピューター,Konpyūtā,Computer
+FA011,Furniture & Appliances,パソコン,パソコン,Pasokon,Personal computer
+FA012,Furniture & Appliances,電話,でんわ,Denwa,Telephone
+FA013,Furniture & Appliances,電気,でんき,Denki,Electric
+FA014,Furniture & Appliances,電気グリル,でんきぐりる,Denki guriru,Electric grill
+UT001,Utensils & Tools,手,て,Te,Hand
+UT002,Utensils & Tools,箸,はし,Hashi,Chopsticks
+UT003,Utensils & Tools,スプーン,スプーン,Supūn,Spoon
+UT004,Utensils & Tools,フォーク,フォーク,Fōku,Fork
+PF001,People & Family,友達,ともだち,Tomodachi,Friend
+PF002,People & Family,彼,かれ,Kare,He / Boyfriend
+PF003,People & Family,彼女,かのじょ,Kanojo,She / Girlfriend
+PF004,People & Family,家族,かぞく,Kazoku,Family
+PF005,People & Family,両親,りょうしん,Ryōshin,Parents
+PF006,People & Family,兄弟,きょうだい,Kyōdai,Siblings
+PF007,People & Family,お父さん,おとうさん,Otōsan,Someone else's father
+PF008,People & Family,お母さん,おかあさん,Okāsan,Someone else's mother
+PF009,People & Family,お兄さん,おにいさん,Onīsan,Someone else's older brother
+PF010,People & Family,お姉さん,おねえさん,Onēsan,Someone else's older sister
+PF011,People & Family,弟さん,おとうとさん,Otōtosan,Someone else's younger brother
+PF012,People & Family,妹さん,いもうとさん,Imōtosan,Someone else's younger sister
+PF013,People & Family,主人 / 夫,しゅじん / おっと,Shujin / Otto,My husband
+PF014,People & Family,ご主人,ごしゅじん,Goshujin,Someone else's husband
+PF015,People & Family,妻,つま,Tsuma,My wife
+PF016,People & Family,奥さん,おくさん,Okusan,Someone else's wife
+PF017,People & Family,男の人,おとこのひと,Otoko no hito,Man
+PF018,People & Family,女の人,おんなのひと,Onna no hito,Woman
+PF019,People & Family,男の子,おとこのこ,Otoko no ko,Boy
+PF020,People & Family,女の子,おんなのこ,Onna no ko,Girl
+PF021,People & Family,一人で,ひとりで,Hitori de,Alone / By oneself
+PF022,People & Family,研究者,けんきゅうしゃ,Kenkyūsha,Researcher
+PF023,People & Family,親友,しんゆう,Shinyuu,Best friend
+PF024,People & Family,娘,むすめ,Musume,Daughter
+PF025,People & Family,息子,むすこ,Musuko,Son
+PF026,People & Family,イケメン,イケメン,Ikemen,Good-looking guy (casual)
+PF027,People & Family,私たち,わたしたち,Watashitachi,We
+NA001,Nature & Animals,猫,ねこ,Neko,Cat
+NA002,Nature & Animals,犬,いぬ,Inu,Dog
+NA003,Nature & Animals,花,はな,Hana,Flower / Blossom
+NA004,Nature & Animals,木,き,Ki,Tree / Wood
+NA005,Nature & Animals,桜,さくら,Sakura,Cherry blossom
+NA006,Nature & Animals,山,やま,Yama,Mountain
+NA007,Nature & Animals,妖怪,ようかい,Youkai,Yokai (supernatural creatures)
+NA008,Nature & Animals,海,うみ,Umi,Sea / Ocean
+NA009,Nature & Animals,紅葉,もみじ,Momiji,Maple / Red leaves of autumn
+NA010,Nature & Animals,季節,きせつ,Kisetsu,Season
+NA011,Nature & Animals,春,はる,Haru,Spring
+NA012,Nature & Animals,夏,なつ,Natsu,Summer
+NA013,Nature & Animals,秋,あき,Aki,Autumn / Fall
+NA014,Nature & Animals,冬,ふゆ,Fuyu,Winter
+NA015,Nature & Animals,天気,てんき,Tenki,Weather
+NA016,Nature & Animals,雨,あめ,Ame,Rain
+NA017,Nature & Animals,雪,ゆき,Yuki,Snow
+NA018,Nature & Animals,曇り,くもり,Kumori,Cloudy
+NA019,Nature & Animals,川,かわ,Kawa,River
+NA020,Nature & Animals,風,かぜ,Kaze,Wind
+NA021,Nature & Animals,しっぽ,しっぽ,Shippo,Tail
+PD001,Position & Direction,中,なか,Naka,In / Inside
+PD002,Position & Direction,外,そと,Soto,Outside
+PD003,Position & Direction,右,みぎ,Migi,Right
+PD004,Position & Direction,左,ひだり,Hidari,Left
+PD005,Position & Direction,前,まえ,Mae,Front / Before
+PD006,Position & Direction,後ろ,うしろ,Ushiro,Back / Behind
+PD007,Position & Direction,上,うえ,Ue,On / Above
+PD008,Position & Direction,下,した,Shita,Under / Below
+PD009,Position & Direction,隣,となり,Tonari,Next to
+PD010,Position & Direction,間,あいだ,Aida,Between
+PD011,Position & Direction,近く,ちかく,Chikaku,Near
+PD012,Position & Direction,真ん中,まんなか,Mannaka,Middle / Center
+DM001,Demonstratives (こそあど),これ,これ,Kore,This (thing)
+DM002,Demonstratives (こそあど),それ,それ,Sore,"That (thing, near listener)"
+DM003,Demonstratives (こそあど),あれ,あれ,Are,"That (thing, over there)"
+DM004,Demonstratives (こそあど),どれ,どれ,Dore,Which (thing)?
+DM005,Demonstratives (こそあど),この,この,Kono,This [noun]
+DM006,Demonstratives (こそあど),その,その,Sono,That [noun] (near listener)
+DM007,Demonstratives (こそあど),あの,あの,Ano,That [noun] (over there)
+DM008,Demonstratives (こそあど),どの,どの,Dono,Which [noun]?
+DM009,Demonstratives (こそあど),ここ,ここ,Koko,Here
+DM010,Demonstratives (こそあど),そこ,そこ,Soko,There (near listener)
+DM011,Demonstratives (こそあど),あそこ,あそこ,Asoko,Over there
+DM012,Demonstratives (こそあど),どこ,どこ,Doko,Where?
+DM013,Demonstratives (こそあど),こちら / こっち,こちら / こっち,Kochira / Kocchi,This way / Here
+DM014,Demonstratives (こそあど),そちら / そっち,そちら / そっち,Sochira / Socchi,That way / There
+DM015,Demonstratives (こそあど),あちら / あっち,あちら / あっち,Achira / Acchi,That way over there
+DM016,Demonstratives (こそあど),どちら / どっち,どちら / どっち,Dochira / Docchi,Which way? / Where?
+DM017,Demonstratives (こそあど),この人,このひと,Kono hito,This person
+DM018,Demonstratives (こそあど),その人,そのひと,Sono hito,That person
+DM019,Demonstratives (こそあど),あの人,あのひと,Ano hito,That person (over there)
+DM020,Demonstratives (こそあど),どの人,どのひと,Dono hito,Which person?
+DM021,Demonstratives (こそあど),こんな,こんな,Konna,This kind of
+DM022,Demonstratives (こそあど),そんな,そんな,Sonna,That kind of
+DM023,Demonstratives (こそあど),あんな,あんな,Anna,That kind of (over there)
+DM024,Demonstratives (こそあど),どんな,どんな,Donna,What kind of?
+EH001,Entertainment & Hobbies,映画,えいが,Eiga,Movie
+EH002,Entertainment & Hobbies,写真,しゃしん,Shashin,Photograph
+EH003,Entertainment & Hobbies,音楽,おんがく,Ongaku,Music
+EH004,Entertainment & Hobbies,歌,うた,Uta,Song
+EH005,Entertainment & Hobbies,絵,え,E,Picture / Drawing
+EH006,Entertainment & Hobbies,ゲーム,ゲーム,Gēmu,Games
+EH007,Entertainment & Hobbies,テニス,テニス,Tenisu,Tennis
+EH008,Entertainment & Hobbies,サッカー,サッカー,Sakkā,Soccer
+EH009,Entertainment & Hobbies,野球,やきゅう,Yakyū,Baseball
+EH010,Entertainment & Hobbies,スポーツ,スポーツ,Supōtsu,Sport
+EH011,Entertainment & Hobbies,ダンス,ダンス,Dansu,Dance
+EH012,Entertainment & Hobbies,カラオケ,カラオケ,Karaoke,Karaoke
+EH013,Entertainment & Hobbies,チケット,チケット,Chiketto,Ticket
+EH014,Entertainment & Hobbies,シーディー,シーディー,Shīdī,CD
+EH015,Entertainment & Hobbies,旅行,りょこう,Ryokō,Travel
+EH016,Entertainment & Hobbies,乗り物,のりもの,Norimono,Rides
+EH017,Entertainment & Hobbies,遊園地,ゆうえんち,Yuuenchi,Amusement
+EH018,Entertainment & Hobbies,バイオハザード,ばいおはざーど,Baiohazaado,Biohazard (Resident Evil)
+EH019,Entertainment & Hobbies,イベント,イベント,Ibento,Event / Convention
+EH020,Entertainment & Hobbies,お祭り,おまつり,Omatsuri,Fair / Festival
+EH021,Entertainment & Hobbies,パーティー,パーティー,Paatii,Party
+EH022,Entertainment & Hobbies,美術,びじゅつ,Bijutsu,Art
+EH023,Entertainment & Hobbies,釣り,つり,Tsuri,Fishing
+EH024,Entertainment & Hobbies,スキー,スキー,Sukī,Skiing
+EH025,Entertainment & Hobbies,ホラー映画,ホラーえいが,Horā eiga,Horror movie
+EH026,Entertainment & Hobbies,デート,デート,Dēto,Date (romantic)
+EH027,Entertainment & Hobbies,花見,はなみ,Hanami,Flower viewing
+MP001,Mail & Postal,手紙,てがみ,Tegami,Letter
+MP002,Mail & Postal,速達,そくたつ,Sokutatsu,Special delivery
+MP003,Mail & Postal,書留,かきとめ,Kakitome,Registered mail
+MP004,Mail & Postal,航空便,こうくうびん,Kōkūbin,Airmail
+MP005,Mail & Postal,船便,ふなびん,Funabin,Sea mail
+MP006,Mail & Postal,封筒,ふうとう,Fuutou,Envelope
+MP007,Mail & Postal,葉書,はがき,Hagaki,Post card
+WS001,Work & Study,仕事,しごと,Shigoto,Work / Job
+WS002,Work & Study,勉強,べんきょう,Benkyō,Study
+WS003,Work & Study,宿題,しゅくだい,Shukudai,Homework
+WS004,Work & Study,しつもん,しつもん,Shitsumon,Question
+WS005,Work & Study,こたえ,こたえ,Kotae,Answer
+WS006,Work & Study,たんご,たんご,Tango,Word / Vocabulary
+WS007,Work & Study,予定,よてい,Yotei,Plans / Schedule
+WS008,Work & Study,会議,かいぎ,Kaigi,Meeting
+WS009,Work & Study,同僚,どうりょう,Douryou,Colleague
+WS010,Work & Study,準備,じゅんび,Junbi,Preparation
+WS011,Work & Study,練習,れんしゅう,Renshuu,Practice / Training
+WS012,Work & Study,スケジュール,すけじゅーる,Sukejuuru,Schedule
+WS013,Work & Study,結婚記念日,けっこんきねんび,Kekkon kinenbi,Wedding anniversary
+WS014,Work & Study,免許,めんきょ,Menkyo,Driver's license
+WS015,Work & Study,結婚式,けっこんしき,Kekkonshiki,Wedding
+WS016,Work & Study,[お]金,おかね,Okane,Money
+WS017,Work & Study,細かいお金,こまかいおかね,Komakai okane,Small change
+WS018,Work & Study,じかん,じかん,Jikan,Hours
+WS019,Work & Study,誕生日,たんじょうび,Tanjōbi,Birthday
+WS020,Work & Study,やすみ,やすみ,Yasumi,Day off
+WS021,Work & Study,しゅうまつ,しゅうまつ,Shūmatsu,Weekend
+WS022,Work & Study,試験,しけん,Shiken,Examination
+WS023,Work & Study,授業,じゅぎょう,Jugyō,Lesson / Class
+WS024,Work & Study,最終週,さいしゅうしゅう,Saishūshū,Final week (of a month or event)
+VB001,Verbs,食べます,たべます,Tabemasu,Eat
+VB002,Verbs,飲みます,のみます,Nomimasu,Drink
+VB003,Verbs,見ます,みます,Mimasu,Watch
+VB004,Verbs,読みます,よみます,Yomimasu,Read
+VB005,Verbs,書きます,かきます,Kakimasu,Write / Draw
+VB006,Verbs,聴きます,ききます,Kikimasu,Listen
+VB007,Verbs,行きます,いきます,Ikimasu,Go
+VB008,Verbs,来ます,きます,Kimasu,Come
+VB009,Verbs,帰ります,かえります,Kaerimasu,Go home
+VB010,Verbs,買います,かいます,Kaimasu,Buy
+VB011,Verbs,会います,あいます,Aimasu,Meet / See (a friend)
+VB012,Verbs,撮ります,とります,Torimasu,Take (a photo)
+VB013,Verbs,吸います,すいます,Suimasu,Smoke
+VB014,Verbs,勉強します,べんきょうします,Benkyō shimasu,Study
+VB015,Verbs,終わります,おわります,Owarimasu,Finish
+VB016,Verbs,休みます,やすみます,Yasumimasu,Rest / Take a day off
+VB017,Verbs,働きます,はたらきます,Hatarakimasu,Work
+VB018,Verbs,します,します,Shimasu,Do
+VB019,Verbs,あります,あります,Arimasu,Exist (inanimate) / Have
+VB020,Verbs,います,います,Imasu,Exist (animate)
+VB021,Verbs,分かります,わかります,Wakarimasu,Understand
+VB022,Verbs,教えます,おしえます,Oshiemasu,Teach
+VB023,Verbs,習います,ならいます,Naraimasu,Learn
+VB024,Verbs,貸します,かします,Kashimasu,Lend
+VB025,Verbs,借ります,かります,Karimasu,Borrow
+VB026,Verbs,あげます,あげます,Agemasu,Give
+VB027,Verbs,もらいます,もらいます,Moraimasu,Receive
+VB028,Verbs,送ります,おくります,Okurimasu,Send
+VB029,Verbs,切ります,きります,Kirimasu,Cut / Slice
+VB030,Verbs,かけます [電話を],かけます,Kakemasu,Make a phone call
+VB031,Verbs,手伝います,てつだいます,Tetsudaimasu,Help
+VB032,Verbs,おぼえます,おぼえます,Oboemasu,Memorize
+VB033,Verbs,ひっこします,ひっこします,Hikkoshimasu,Move out
+VB034,Verbs,とまります,とまります,Tomarimasu,Stay
+VB035,Verbs,ちゅうもんします,ちゅうもんします,Chūmon shimasu,Order
+VB036,Verbs,きます [服を],きます,Kimasu,Wear / Put on
+VB037,Verbs,かかります [お金が],かかります,Kakarimasu,Cost (money)
+VB038,Verbs,かかります [時間が],かかります,Kakarimasu,Take (time)
+VB039,Verbs,整理します,せいりします,Seirishimasu,To organize
+VB040,Verbs,掃除します,そうじします,Soujishimasu,To clean
+VB041,Verbs,満足します,まんぞくします,Manzokushimasu,To be satisfied
+VB042,Verbs,乗ります,のります,Norimasu,To ride
+VB043,Verbs,ゆっくりします,ゆっくりします,Yukkurishimasu,To relax
+VB044,Verbs,出ます,でます,Demasu,To leave
+VB045,Verbs,つきます,つきます,Tsukimasu,To arrive
+VB046,Verbs,過ごします,すごします,Sugoshimasu,To spend (time)
+VB047,Verbs,続けます,つづけます,Tsuzukemasu,To continue
+VB048,Verbs,戻ります,もどります,Modorimasu,To return / Go back
+VB049,Verbs,散歩します,さんぽします,Sanpo shimasu,To take a walk
+VB050,Verbs,焼きます,やきます,Yakimasu,To grill / Roast
+VB051,Verbs,始まります,はじまります,Hajimarimasu,To start / Begin
+VB052,Verbs,参加します,さんかします,Sanka shimasu,To participate
+VB053,Verbs,疲れます,つかれます,Tsukaremasu,To get tired
+VB054,Verbs,リラックスします,リラックスします,Rirakkusu shimasu,To relax
+VB055,Verbs,持ってきます,もってきます,Motte kimasu,To bring (from somewhere)
+VB056,Verbs,遊びます,あそびます,Asobimasu,Play / Hang out
+VB057,Verbs,泳ぎます,およぎます,Oyogimasu,Swim
+VB058,Verbs,迎えます,むかえます,Mukaemasu,Go to meet / Welcome
+VB059,Verbs,出します [手紙を],だします,Dashimasu,Send / Post [a letter]
+VB060,Verbs,入ります [〜に],はいります,Hairimasu,Enter
+VB061,Verbs,結婚します,けっこんします,Kekkon shimasu,Marry
+VB062,Verbs,買い物します,かいものします,Kaimono shimasu,Do shopping
+VB063,Verbs,食事します,しょくじします,Shokuji shimasu,Have a meal
+VB064,Verbs,運転します,うんてんします,Unten shimasu,To drive
+VB065,Verbs,住みます,すみます,Sumimasu,Live
+VB066,Verbs,歌います,うたいます,Utaimasu,Sing
+VB067,Verbs,探します,さがします,Sagashimasu,Look for / Search
+VB068,Verbs,運動します,うんどうします,Undō shimasu,Do exercise
+VB069,Verbs,風邪を引きます,かぜをひきます,Kaze o hikimasu,Catch a cold
+VB070,Verbs,貯金します,ちょきんします,Chokin shimasu,Save money
+VB071,Verbs,ゆっくりします,ゆっくりします,Yukkuri shimasu,Relax / Take it easy
+VB072,Verbs,安心します,あんしんします,Anshin shimasu,Feel relieved
+IA001,い-Adjectives,新しい,あたらしい,Atarashii,New
+IA002,い-Adjectives,古い,ふるい,Furui,Old
+IA003,い-Adjectives,大きい,おおきい,Ōkii,Big
+IA004,い-Adjectives,小さい,ちいさい,Chiisai,Small
+IA005,い-Adjectives,高い,たかい,Takai,Tall / Expensive
+IA006,い-Adjectives,低い,ひくい,Hikui,Low
+IA007,い-Adjectives,安い,やすい,Yasui,Cheap
+IA008,い-Adjectives,良い,いい,Ii,Good
+IA009,い-Adjectives,悪い,わるい,Warui,Bad
+IA010,い-Adjectives,暑い,あつい,Atsui,Hot (weather)
+IA011,い-Adjectives,寒い,さむい,Samui,Cold (weather)
+IA012,い-Adjectives,熱い,あつい,Atsui,Hot (touch)
+IA013,い-Adjectives,冷たい,つめたい,Tsumetai,Cold (touch)
+IA014,い-Adjectives,易しい,やさしい,Yasashii,Easy
+IA015,い-Adjectives,難しい,むずかしい,Muzukashii,Difficult
+IA016,い-Adjectives,忙しい,いそがしい,Isogashii,Busy
+IA017,い-Adjectives,おもしろい,おもしろい,Omoshiroi,Interesting
+IA018,い-Adjectives,楽しい,たのしい,Tanoshii,Fun
+IA019,い-Adjectives,気持ちいい,きもちいい,Kimochi ii,Feels good / Comfortable
+IA020,い-Adjectives,おいしい,おいしい,Oishii,Delicious
+IA021,い-Adjectives,白い,しろい,Shiroi,White
+IA022,い-Adjectives,赤い,あかい,Akai,Red
+IA023,い-Adjectives,黒い,くろい,Kuroi,Black
+IA024,い-Adjectives,青い,あおい,Aoi,Blue
+IA025,い-Adjectives,怖い,こわい,Kowai,Scary
+IA026,い-Adjectives,近い,ちかい,Chikai,Near
+IA027,い-Adjectives,遠い,とおい,Tooi,Far
+IA028,い-Adjectives,早い,はやい,Hayai,Early
+IA029,い-Adjectives,速い,はやい,Hayai,Fast
+IA030,い-Adjectives,遅い,おそい,Osoi,Late / Slow
+IA031,い-Adjectives,多い,おおい,Ooi,Many / Much
+IA032,い-Adjectives,少ない,すくない,Sukunai,Few / A little
+IA033,い-Adjectives,暖かい,あたたかい,Atatakai,Warm
+IA034,い-Adjectives,涼しい,すずしい,Suzushii,Cool
+IA035,い-Adjectives,甘い,あまい,Amai,Sweet
+IA036,い-Adjectives,辛い,からい,Karai,Spicy
+IA037,い-Adjectives,重い,おもい,Omoi,Heavy
+IA038,い-Adjectives,軽い,かるい,Karui,Light
+IA039,い-Adjectives,欲しい,ほしい,Hoshii,Want
+IA040,い-Adjectives,寂しい,さびしい,Sabishii,Lonely
+IA041,い-Adjectives,広い,ひろい,Hiroi,Wide / Spacious
+IA042,い-Adjectives,狭い,せまい,Semai,Narrow
+IA043,い-Adjectives,かっこいい,かっこいい,Kakkoii,Cool / Good-looking
+IA044,い-Adjectives,温かい,あたたかい,Atatakai,Warm (to the touch)
+IA045,い-Adjectives,苦い,にがい,Nigai,Bitter
+IA046,い-Adjectives,うらやましい,うらやましい,Urayamashii,Envious / Jealous
+NJ001,な-Adjectives,親切,しんせつ,Shinsetsu,Kind
+NJ002,な-Adjectives,元気,げんき,Genki,Healthy / Cheerful
+NJ003,な-Adjectives,暇,ひま,Hima,Free (time)
+NJ004,な-Adjectives,有名,ゆうめい,Yūmei,Famous
+NJ005,な-Adjectives,綺麗,きれい,Kirei,Beautiful / Clean
+NJ006,な-Adjectives,静か,しずか,Shizuka,Quiet
+NJ007,な-Adjectives,ハンサム,ハンサム,Hansamu,Handsome
+NJ008,な-Adjectives,にぎやか,にぎやか,Nigiyaka,Lively
+NJ009,な-Adjectives,好き,すき,Suki,Like
+NJ010,な-Adjectives,嫌い,きらい,Kirai,Dislike
+NJ011,な-Adjectives,上手,じょうず,Jōzu,Good at
+NJ012,な-Adjectives,下手,へた,Heta,Bad at
+NJ013,な-Adjectives,穏やか,おだやか,Odayaka,Calm / Gentle
+NJ014,な-Adjectives,自由,じゆう,Jiyuu,Free / Freedom
+NJ015,な-Adjectives,精力的,せいりょくてき,Seiryokuteki,Productive / Energetic
+NJ016,な-Adjectives,機能的,きのうてき,Kinouteki,Functional
+NJ017,な-Adjectives,特別,とくべつ,Tokubetsu,Special
+NJ018,な-Adjectives,簡単,かんたん,Kantan,Easy
+NJ019,な-Adjectives,大変,たいへん,Taihen,Hard / Tough
+NJ020,な-Adjectives,苦手,にがて,Nigate,Not good at / Dislike
+NJ021,な-Adjectives,同じ,おなじ,Onaji,The same
+UP001,Useful Phrases & Connectors,どうでしたか,どうでしたか,Dō deshita ka,How was (it)?
+UP002,Useful Phrases & Connectors,どうですか,どうですか,Dō desu ka,How is (it)?
+UP003,Useful Phrases & Connectors,意味は何ですか,いみはなんですか,Imi wa nan desu ka,What is the meaning?
+UP004,Useful Phrases & Connectors,そうですか,そうですか,Sō desu ka,I see
+UP005,Useful Phrases & Connectors,違います,ちがいます,Chigaimasu,It isn't / That's wrong
+UP006,Useful Phrases & Connectors,いらっしゃいませ,いらっしゃいませ,Irasshaimase,Welcome (shop greeting)
+UP007,Useful Phrases & Connectors,ほしいです,ほしいです,Hoshii desu,I want
+UP008,Useful Phrases & Connectors,たのしみ,たのしみ,Tanoshimi,Something to look forward to
+UP009,Useful Phrases & Connectors,だれと,だれと,Dare to,With whom
+UP010,Useful Phrases & Connectors,～のあと,～のあと,~ no ato,After ~
+UP011,Useful Phrases & Connectors,そして,そして,Soshite,And then
+UP012,Useful Phrases & Connectors,それから,それから,Sorekara,After that / And then
+UP013,Useful Phrases & Connectors,でも,でも,Demo,But
+UP014,Useful Phrases & Connectors,いつも,いつも,Itsumo,Always
+UP015,Useful Phrases & Connectors,ときどき,ときどき,Tokidoki,Sometimes
+UP016,Useful Phrases & Connectors,一緒に,いっしょに,Issho ni,Together
+UP017,Useful Phrases & Connectors,いろいろな,いろいろな,Iroiro na,Various
+UP018,Useful Phrases & Connectors,けっこう,けっこう,Kekkou,Quite a lot
+UP019,Useful Phrases & Connectors,生活,せいかつ,Seikatsu,Life
+UP020,Useful Phrases & Connectors,いかがですか,いかがですか,Ikagadesuka,Would you like?
+UP021,Useful Phrases & Connectors,～ながら,～ながら,Nagara,While doing
+UP022,Useful Phrases & Connectors,～ために,～ために,Tame ni,In order to
+UP023,Useful Phrases & Connectors,～ぐらい,～ぐらい,Gurai,About / Approximately
+UP024,Useful Phrases & Connectors,～たり～たり,～たり～たり,~tari ~tari,Doing things like X and Y
+UP025,Useful Phrases & Connectors,ずっと,ずっと,Zutto,The whole time / Continuously; much more (in comparisons)
+UP026,Useful Phrases & Connectors,別の,べつの,Betsu no,Another / Different
+UP027,Useful Phrases & Connectors,いっぱい,いっぱい,Ippai,Full / Packed
+UP028,Useful Phrases & Connectors,気持ち,きもち,Kimochi,Feeling / Emotion
+UP029,Useful Phrases & Connectors,気分,きぶん,Kibun,Mood / Feeling
+UP030,Useful Phrases & Connectors,一日中,いちにちじゅう,Ichinichi juu,Throughout the day
+UP031,Useful Phrases & Connectors,祝い,いわい,Iwai,Celebration
+UP032,Useful Phrases & Connectors,年末,ねんまつ,Nenmatsu,Year end
+UP033,Useful Phrases & Connectors,年越し,としこし,Toshikoshi,New Year's Eve (midnight)
+UP034,Useful Phrases & Connectors,挨拶,あいさつ,Aisatsu,Greeting
+UP035,Useful Phrases & Connectors,あけましておめでとう,あけましておめでとう,Akemashite omedetou,Happy New Year
+UP036,Useful Phrases & Connectors,実りのある,みのりのある,Minori no aru,Rewarding / Fruitful
+UP037,Useful Phrases & Connectors,満ちたりた,みちたりた,Michitarita,Fulfilled / Satisfied
+UP038,Useful Phrases & Connectors,どのくらい,どのくらい,Donokurai,How long
+UP039,Useful Phrases & Connectors,だけ,だけ,Dake,Only
+UP040,Useful Phrases & Connectors,ペース,ペース,Peesu,Pace
+UP041,Useful Phrases & Connectors,終わり,おわり,Owari,End
+UP042,Useful Phrases & Connectors,文化,ぶんか,Bunka,Culture
+UP043,Useful Phrases & Connectors,ワクワク,わくわく,Wakuwaku,Excited / Thrilling
+UP044,Useful Phrases & Connectors,もうひとつ,もうひとつ,Mou hitotsu,The other one
+UP045,Useful Phrases & Connectors,買い物,かいもの,Kaimono,Shopping / Purchases
+UP046,Useful Phrases & Connectors,帰る途中,かえるとちゅう,Kaeru tochuu,On the way home
+UP047,Useful Phrases & Connectors,みんなで,みんなで,Minna de,Everyone together
+UP048,Useful Phrases & Connectors,全部で,ぜんぶで,Zenbu de,In total
+UP049,Useful Phrases & Connectors,まず,まず,Mazu,First / To begin with
+UP050,Useful Phrases & Connectors,お腹がすきました,おなかがすきました,Onaka ga sukimashita,I'm hungry
+UP051,Useful Phrases & Connectors,お腹がいっぱいです,おなかがいっぱいです,Onaka ga ippai desu,I'm full
+UP052,Useful Phrases & Connectors,喉が渇きました,のどがかわきました,Nodo ga kawakimashita,I'm thirsty
+UP053,Useful Phrases & Connectors,また,また,Mata,Again
+UP054,Useful Phrases & Connectors,たぶん,たぶん,Tabun,Maybe / Probably
+UP055,Useful Phrases & Connectors,ほかに,ほかに,Hoka ni,Else / In addition
+UP056,Useful Phrases & Connectors,わかりません,わかりません,Wakarimasen,I don't know
+UP057,Useful Phrases & Connectors,初めて,はじめて,Hajimete,First time
+UP058,Useful Phrases & Connectors,何度も,なんども,Nandomo,Many times
+UP059,Useful Phrases & Connectors,最初に,さいしょに,Saisho ni,At first / First of all
+CQ001,Counters & Quantities,一つ,ひとつ,Hitotsu,One (thing)
+CQ002,Counters & Quantities,二つ,ふたつ,Futatsu,Two (things)
+CQ003,Counters & Quantities,三つ,みっつ,Mittsu,Three (things)
+CQ004,Counters & Quantities,四つ,よっつ,Yottsu,Four (things)
+CQ005,Counters & Quantities,五つ,いつつ,Itsutsu,Five (things)
+CQ006,Counters & Quantities,六つ,むっつ,Muttsu,Six (things)
+CQ007,Counters & Quantities,七つ,ななつ,Nanatsu,Seven (things)
+CQ008,Counters & Quantities,八つ,やっつ,Yattsu,Eight (things)
+CQ009,Counters & Quantities,九つ,ここのつ,Kokonotsu,Nine (things)
+CQ010,Counters & Quantities,十,とお,Too,Ten (things)
+CQ011,Counters & Quantities,一人,ひとり,Hitori,One person
+CQ012,Counters & Quantities,二人,ふたり,Futari,Two people
+CQ013,Counters & Quantities,三人,さんにん,San-nin,Three people
+CQ014,Counters & Quantities,四人,よにん,Yo-nin,Four people
+CQ015,Counters & Quantities,五人,ごにん,Go-nin,Five people
+CQ016,Counters & Quantities,六人,ろくにん,Roku-nin,Six people
+CQ017,Counters & Quantities,七人,しちにん / ななにん,Shichi-nin / Nana-nin,Seven people
+CQ018,Counters & Quantities,八人,はちにん,Hachi-nin,Eight people
+CQ019,Counters & Quantities,九人,くにん / きゅうにん,Ku-nin / Kyuu-nin,Nine people
+CQ020,Counters & Quantities,十人,じゅうにん,Juu-nin,Ten people
+CQ021,Counters & Quantities,一本,いっぽん,Ippon,One
+CQ022,Counters & Quantities,二本,にほん,Ni-hon,Two
+CQ023,Counters & Quantities,三本,さんぼん,San-bon,Three
+CQ024,Counters & Quantities,四本,よんほん,Yon-hon,Four
+CQ025,Counters & Quantities,五本,ごほん,Go-hon,Five
+CQ026,Counters & Quantities,六本,ろっぽん,Roppon,Six
+CQ027,Counters & Quantities,七本,ななほん,Nana-hon,Seven
+CQ028,Counters & Quantities,八本,はっぽん / はちほん,Happon / Hachi-hon,Eight
+CQ029,Counters & Quantities,九本,きゅうほん,Kyuu-hon,Nine
+CQ030,Counters & Quantities,十本,じゅっぽん,Juppon,Ten
+CQ031,Counters & Quantities,一枚,いちまい,Ichi-mai,One
+CQ032,Counters & Quantities,二枚,にまい,Ni-mai,Two
+CQ033,Counters & Quantities,三枚,さんまい,San-mai,Three
+CQ034,Counters & Quantities,四枚,よんまい,Yon-mai,Four
+CQ035,Counters & Quantities,五枚,ごまい,Go-mai,Five
+CQ036,Counters & Quantities,六枚,ろくまい,Roku-mai,Six
+CQ037,Counters & Quantities,七枚,ななまい,Nana-mai,Seven
+CQ038,Counters & Quantities,八枚,はちまい,Hachi-mai,Eight
+CQ039,Counters & Quantities,九枚,きゅうまい,Kyuu-mai,Nine
+CQ040,Counters & Quantities,十枚,じゅうまい,Juu-mai,Ten
+CQ041,Counters & Quantities,一冊,いっさつ,Issatsu,One
+CQ042,Counters & Quantities,二冊,にさつ,Ni-satsu,Two
+CQ043,Counters & Quantities,三冊,さんさつ,San-satsu,Three
+CQ044,Counters & Quantities,四冊,よんさつ,Yon-satsu,Four
+CQ045,Counters & Quantities,五冊,ごさつ,Go-satsu,Five
+CQ046,Counters & Quantities,六冊,ろくさつ,Roku-satsu,Six
+CQ047,Counters & Quantities,七冊,ななさつ,Nana-satsu,Seven
+CQ048,Counters & Quantities,八冊,はっさつ,Hassatsu,Eight
+CQ049,Counters & Quantities,九冊,きゅうさつ,Kyuu-satsu,Nine
+CQ050,Counters & Quantities,十冊,じゅっさつ,Jussatsu,Ten
+CQ051,Counters & Quantities,一台,いちだい,Ichi-dai,One
+CQ052,Counters & Quantities,二台,にだい,Ni-dai,Two
+CQ053,Counters & Quantities,三台,さんだい,San-dai,Three
+CQ054,Counters & Quantities,四台,よんだい,Yon-dai,Four
+CQ055,Counters & Quantities,五台,ごだい,Go-dai,Five
+CQ056,Counters & Quantities,一匹,いっぴき,Ippiki,One
+CQ057,Counters & Quantities,二匹,にひき,Ni-hiki,Two
+CQ058,Counters & Quantities,三匹,さんびき,San-biki,Three
+CQ059,Counters & Quantities,四匹,よんひき,Yon-hiki,Four
+CQ060,Counters & Quantities,五匹,ごひき,Go-hiki,Five
+CQ061,Counters & Quantities,六匹,ろっぴき,Roppiki,Six
+CQ062,Counters & Quantities,七匹,ななひき,Nana-hiki,Seven
+CQ063,Counters & Quantities,八匹,はっぴき / はちひき,Happiki / Hachi-hiki,Eight
+CQ064,Counters & Quantities,九匹,きゅうひき,Kyuu-hiki,Nine
+CQ065,Counters & Quantities,十匹,じゅっぴき,Juppiki,Ten
+CQ066,Counters & Quantities,一杯,いっぱい,Ippai,One
+CQ067,Counters & Quantities,二杯,にはい,Ni-hai,Two
+CQ068,Counters & Quantities,三杯,さんばい,San-bai,Three
+CQ069,Counters & Quantities,四杯,よんはい,Yon-hai,Four
+CQ070,Counters & Quantities,五杯,ごはい,Go-hai,Five
+CQ071,Counters & Quantities,一回,いっかい,Ikkai,One time
+CQ072,Counters & Quantities,二回,にかい,Ni-kai,Two times
+CQ073,Counters & Quantities,三回,さんかい,San-kai,Three times
+CQ074,Counters & Quantities,四回,よんかい,Yon-kai,Four times
+CQ075,Counters & Quantities,五回,ごかい,Go-kai,Five times
+CQ076,Counters & Quantities,六回,ろっかい,Rokkai,Six times
+CQ077,Counters & Quantities,七回,ななかい,Nana-kai,Seven times
+CQ078,Counters & Quantities,八回,はっかい,Hakkai,Eight times
+CQ079,Counters & Quantities,九回,きゅうかい,Kyuu-kai,Nine times
+CQ080,Counters & Quantities,十回,じゅっかい,Jukkai,Ten times
+CQ081,Counters & Quantities,一階,いっかい,Ikkai,First floor
+CQ082,Counters & Quantities,二階,にかい,Ni-kai,Second floor
+CQ083,Counters & Quantities,三階,さんがい / さんかい,San-gai / San-kai,Third floor
+CQ084,Counters & Quantities,四階,よんかい,Yon-kai,Fourth floor
+CQ085,Counters & Quantities,五階,ごかい,Go-kai,Fifth floor
+CQ086,Counters & Quantities,六階,ろっかい,Rokkai,Sixth floor
+CQ087,Counters & Quantities,七階,ななかい,Nana-kai,Seventh floor
+CQ088,Counters & Quantities,八階,はっかい / はちかい,Hakkai / Hachi-kai,Eighth floor
+CQ089,Counters & Quantities,九階,きゅうかい,Kyuu-kai,Ninth floor
+CQ090,Counters & Quantities,十階,じゅっかい,Jukkai,Tenth floor
+CQ091,Counters & Quantities,一分,いっぷん,Ippun,One minute
+CQ092,Counters & Quantities,二分,にふん,Ni-fun,Two minutes
+CQ093,Counters & Quantities,三分,さんぷん,San-pun,Three minutes
+CQ094,Counters & Quantities,四分,よんぷん,Yon-pun,Four minutes
+CQ095,Counters & Quantities,五分,ごふん,Go-fun,Five minutes
+CQ096,Counters & Quantities,六分,ろっぷん,Roppun,Six minutes
+CQ097,Counters & Quantities,七分,ななふん,Nana-fun,Seven minutes
+CQ098,Counters & Quantities,八分,はちふん / はっぷん,Hachi-fun / Happun,Eight minutes
+CQ099,Counters & Quantities,九分,きゅうふん,Kyuu-fun,Nine minutes
+CQ100,Counters & Quantities,十分,じゅっぷん,Juppun,Ten minutes
+CQ101,Counters & Quantities,十五分,じゅうごふん,Juugo-fun,Fifteen minutes
+CQ102,Counters & Quantities,三十分,さんじゅっぷん,San-juppun,Thirty minutes
+CQ103,Counters & Quantities,一時間,いちじかん,Ichi-jikan,One hour
+CQ104,Counters & Quantities,二時間,にじかん,Ni-jikan,Two hours
+CQ105,Counters & Quantities,三時間,さんじかん,San-jikan,Three hours
+CQ106,Counters & Quantities,四時間,よじかん,Yo-jikan,Four hours
+CQ107,Counters & Quantities,五時間,ごじかん,Go-jikan,Five hours
+CQ108,Counters & Quantities,六時間,ろくじかん,Roku-jikan,Six hours
+CQ109,Counters & Quantities,七時間,ななじかん,Nana-jikan,Seven hours
+CQ110,Counters & Quantities,八時間,はちじかん,Hachi-jikan,Eight hours
+CQ111,Counters & Quantities,九時間,くじかん,Ku-jikan,Nine hours
+CQ112,Counters & Quantities,十時間,じゅうじかん,Juu-jikan,Ten hours
+CQ113,Counters & Quantities,一時間半,いちじかんはん,Ichi-jikan han,One and a half hours
+CQ114,Counters & Quantities,一日,ついたち,Tsuitachi,1St (of month)
+CQ115,Counters & Quantities,二日,ふつか,Futsuka,2Nd / Two days
+CQ116,Counters & Quantities,三日,みっか,Mikka,3Rd / Three days
+CQ117,Counters & Quantities,四日,よっか,Yokka,4Th / Four days
+CQ118,Counters & Quantities,五日,いつか,Itsuka,5Th / Five days
+CQ119,Counters & Quantities,六日,むいか,Muika,6Th / Six days
+CQ120,Counters & Quantities,七日,なのか,Nanoka,7Th / Seven days
+CQ121,Counters & Quantities,八日,ようか,Youka,8Th / Eight days
+CQ122,Counters & Quantities,九日,ここのか,Kokonoka,9Th / Nine days
+CQ123,Counters & Quantities,十日,とおか,Tooka,10Th / Ten days
+CQ124,Counters & Quantities,十四日,じゅうよっか,Juu-yokka,14Th
+CQ125,Counters & Quantities,二十日,はつか,Hatsuka,20Th
+CQ126,Counters & Quantities,二十四日,にじゅうよっか,Nijuu-yokka,24Th
+CQ127,Counters & Quantities,一週間,いっしゅうかん,Isshuukan,One week
+CQ128,Counters & Quantities,二週間,にしゅうかん,Ni-shuukan,Two weeks
+CQ129,Counters & Quantities,三週間,さんしゅうかん,San-shuukan,Three weeks
+CQ130,Counters & Quantities,四週間,よんしゅうかん,Yon-shuukan,Four weeks
+CQ131,Counters & Quantities,一ヶ月,いっかげつ,Ikkagetsu,One month
+CQ132,Counters & Quantities,二ヶ月,にかげつ,Ni-kagetsu,Two months
+CQ133,Counters & Quantities,三ヶ月,さんかげつ,San-kagetsu,Three months
+CQ134,Counters & Quantities,四ヶ月,よんかげつ,Yon-kagetsu,Four months
+CQ135,Counters & Quantities,六ヶ月,ろっかげつ,Rokkagetsu,Six months
+CQ136,Counters & Quantities,十ヶ月,じゅっかげつ,Jukkagetsu,Ten months
+CQ137,Counters & Quantities,十二ヶ月,じゅうにかげつ,Juuni-kagetsu,Twelve months
+CQ138,Counters & Quantities,一年,いちねん,Ichi-nen,One year
+CQ139,Counters & Quantities,二年,にねん,Ni-nen,Two years
+CQ140,Counters & Quantities,三年,さんねん,San-nen,Three years
+CQ141,Counters & Quantities,四年,よねん,Yo-nen,Four years
+CQ142,Counters & Quantities,十年,じゅうねん,Juu-nen,Ten years
+CQ143,Counters & Quantities,一歳,いっさい,Issai,One year old
+CQ144,Counters & Quantities,八歳,はっさい,Hassai,Eight years old
+CQ145,Counters & Quantities,十歳,じゅっさい,Jussai,Ten years old
+CQ146,Counters & Quantities,二十歳,はたち,Hatachi,Twenty years old
