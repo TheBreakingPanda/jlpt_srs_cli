@@ -17,6 +17,8 @@ dependencies = [
 dev = [
     "pytest>=8.0",
     "ruff>=0.8",
+    "pytest-sugar",
+    "pytest-html",
 ]
 
 [project.scripts]
@@ -27,6 +29,9 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "--html=report.html --self-contained-html --css=assets/report.css"
+log_level = "INFO"
+log_format = "%(levelname)-5s %(name)s: %(message)s"
 
 [tool.ruff]
 line-length = 88
