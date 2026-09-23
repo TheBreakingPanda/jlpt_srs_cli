@@ -34,6 +34,7 @@ EO032,Everyday Objects,葉書,はがき,Hagaki,Postcard
 EO033,Everyday Objects,封筒,ふうとう,Fūtō,Envelope
 EO034,Everyday Objects,上着,うわぎ,Uwagi,Jacket
 EO035,Everyday Objects,ぬいぐるみ,ぬいぐるみ,Nuigurumi,Stuffed toy
+EO036,Everyday Objects,パスポート,パスポート,Pasupōto,Passport
 FD001,Food & Drink,ご飯,ごはん,Gohan,Cooked rice / Meal
 FD002,Food & Drink,朝ごはん,あさごはん,Asagohan,Breakfast
 FD003,Food & Drink,昼ごはん,ひるごはん,Hirugohan,Lunch
@@ -77,6 +78,8 @@ FD040,Food & Drink,天ぷら,てんぷら,Tenpura,Tempura
 FD041,Food & Drink,ピーマン,ピーマン,Pīman,Bell pepper / Green pepper
 FD042,Food & Drink,クッキー,クッキー,Kukkī,Cookie
 FD043,Food & Drink,ポップコーン,ポップコーン,Poppukōn,Popcorn
+FD044,Food & Drink,塩,しお,Shio,Salt
+FD045,Food & Drink,砂糖,さとう,Satō,Sugar
 PB001,Places & Buildings,教室,きょうしつ,Kyōshitsu,Classroom
 PB002,Places & Buildings,食堂,しょくどう,Shokudō,Cafeteria
 PB003,Places & Buildings,事務所,じむしょ,Jimusho,Office
@@ -146,6 +149,7 @@ FA011,Furniture & Appliances,パソコン,パソコン,Pasokon,Personal computer
 FA012,Furniture & Appliances,電話,でんわ,Denwa,Telephone
 FA013,Furniture & Appliances,電気,でんき,Denki,Electric
 FA014,Furniture & Appliances,電気グリル,でんきぐりる,Denki guriru,Electric grill
+FA015,Furniture & Appliances,エアコン,エアコン,Eakon,Air conditioner
 UT001,Utensils & Tools,手,て,Te,Hand
 UT002,Utensils & Tools,箸,はし,Hashi,Chopsticks
 UT003,Utensils & Tools,スプーン,スプーン,Supūn,Spoon
@@ -313,7 +317,7 @@ VB018,Verbs,します,します,Shimasu,Do
 VB019,Verbs,あります,あります,Arimasu,Exist (inanimate) / Have
 VB020,Verbs,います,います,Imasu,Exist (animate)
 VB021,Verbs,分かります,わかります,Wakarimasu,Understand
-VB022,Verbs,教えます,おしえます,Oshiemasu,Teach
+VB022,Verbs,教えます,おしえます,Oshiemasu,Teach / Tell
 VB023,Verbs,習います,ならいます,Naraimasu,Learn
 VB024,Verbs,貸します,かします,Kashimasu,Lend
 VB025,Verbs,借ります,かります,Karimasu,Borrow
@@ -364,6 +368,26 @@ VB069,Verbs,風邪を引きます,かぜをひきます,Kaze o hikimasu,Catch a 
 VB070,Verbs,貯金します,ちょきんします,Chokin shimasu,Save money
 VB071,Verbs,ゆっくりします,ゆっくりします,Yukkuri shimasu,Relax / Take it easy
 VB072,Verbs,安心します,あんしんします,Anshin shimasu,Feel relieved
+VB073,Verbs,つけます,つけます,Tsukemasu,Turn on
+VB074,Verbs,消します,けします,Keshimasu,Turn off
+VB075,Verbs,開けます,あけます,Akemasu,Open
+VB076,Verbs,閉めます,しめます,Shimemasu,Close / Shut
+VB077,Verbs,急ぎます,いそぎます,Isogimasu,Hurry
+VB078,Verbs,待ちます,まちます,Machimasu,Wait
+VB079,Verbs,止めます,とめます,Tomemasu,Stop / Park
+VB080,Verbs,曲がります,まがります,Magarimasu,Turn
+VB081,Verbs,持ちます,もちます,Mochimasu,Hold
+VB082,Verbs,取ります,とります,Torimasu,Take / Pass
+VB083,Verbs,呼びます,よびます,Yobimasu,Call
+VB084,Verbs,話します,はなします,Hanashimasu,Speak / Talk
+VB085,Verbs,見せます,みせます,Misemasu,Show
+VB086,Verbs,始めます,はじめます,Hajimemasu,Start / Begin
+VB087,Verbs,降ります,ふります,Furimasu,Rain
+VB088,Verbs,コピーします,コピーします,Kopī shimasu,Copy
+VB089,Verbs,連れてきます,つれてきます,Tsurete kimasu,To bring (a person)
+VB090,Verbs,宿題します,しゅくだいします,Shukudai shimasu,Do homework
+VB091,Verbs,寝ます,ねます,Nemasu,Sleep / Go to bed
+VB092,Verbs,起きます,おきます,Okimasu,Wake up / Get up
 IA001,い-Adjectives,新しい,あたらしい,Atarashii,New
 IA002,い-Adjectives,古い,ふるい,Furui,Old
 IA003,い-Adjectives,大きい,おおきい,Ōkii,Big

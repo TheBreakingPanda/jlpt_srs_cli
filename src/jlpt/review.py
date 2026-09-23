@@ -3,25 +3,35 @@ from datetime import date
 
 from jlpt import srs
 
+DEFAULT_NEW_LIMIT = 25   # module-level, so the CLI's --new default reads the same value
 
-def due_cards(conn: sqlite3.Connection, today: date) -> list[sqlite3.Row]:
-    """Return cards due for review on `today`, soonest-due first.
+def due_cards(conn, today, new_limit=DEFAULT_NEW_LIMIT):
+    """Cards to study today: every due review, plus up to `new_limit`
+    never-seen cards."""
+    new_limit = max(0, new_limit)   # SQLite treats LIMIT -1 as "no limit"
 
-    A card is due when it has never been reviewed (due_date IS NULL)
-    or its due_date is on/before `today`. Assumes conn.row_factory is
-    sqlite3.Row (set once when the connection is opened).
-    """
-    cur = conn.execute(
+    reviews = conn.execute(
         """
-        SELECT card_id, front, reading, back,
-               ease_factor, interval, repetitions, due_date
+        SELECT card_id, front, reading, back, ease_factor, interval, repetitions, due_date
         FROM cards
-        WHERE due_date IS NULL OR due_date <= ?
-        ORDER BY due_date IS NULL, due_date
+        WHERE due_date IS NOT NULL AND due_date <= ?
+        ORDER BY due_date
         """,
         (today.isoformat(),),
-    )
-    return cur.fetchall()
+    ).fetchall()
+
+    new = conn.execute(
+        """
+        SELECT card_id, front, reading, back, ease_factor, interval, repetitions, due_date
+        FROM cards
+        WHERE due_date IS NULL
+        ORDER BY card_id
+        LIMIT ?
+        """,
+        (new_limit,),
+    ).fetchall()
+
+    return reviews + new
 
 
 def apply_review(conn, card_id, grade, today):
