@@ -30,9 +30,12 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--html=report.html --self-contained-html --css=assets/report.css"
-log_level = "INFO"
+log_level = "INFO"                       # -> captured into the report
 log_format = "%(levelname)-5s %(name)s: %(message)s"
 
+log_cli = true                           # -> ALSO stream live to the terminal
+log_cli_level = "INFO"
+log_cli_format = "%(levelname)-5s %(name)s: %(message)s"
 [tool.ruff]
 line-length = 88
 target-version = "py312"
