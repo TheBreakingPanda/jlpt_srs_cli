@@ -1,5 +1,3 @@
-import sqlite3
-from datetime import date
 
 from jlpt import srs
 
