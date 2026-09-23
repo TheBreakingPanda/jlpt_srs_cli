@@ -1,0 +1,181 @@
+/* ============================================================
+   pytest-html custom theme — "Clarity Dark"
+   Apply with:  pytest --css=report.css
+   Loaded AFTER pytest-html's default style.css, so these win.
+   ============================================================ */
+
+:root {
+  --bg:       #0e1116;   /* page canvas   */
+  --card:     #161b22;   /* table surface */
+  --elevated: #1b2130;   /* header row    */
+  --ink:      #e6edf3;   /* primary text  */
+  --ink-soft: #9aa4b2;   /* muted text    */
+  --line:     #2a3038;   /* borders       */
+  --accent:   #d7b26a;   /* candlelit gold */
+
+  --pass:     #3fb950;
+  --pass-bg:  rgba(63, 185, 80, 0.13);
+  --fail:     #f85149;
+  --fail-bg:  rgba(248, 81, 73, 0.13);
+  --warn:     #d29922;
+  --warn-bg:  rgba(210, 153, 34, 0.13);
+
+  --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "Courier New", monospace;
+}
+
+/* ---- Page ---- */
+html { background: var(--bg); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  min-width: 0;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 28px 72px;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #f4f7fb;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px;
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-soft);
+}
+
+p { color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Environment + results as cards ---- */
+#environment,
+#results-table {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+#environment { width: 100%; margin-bottom: 24px; }
+#environment td {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 9px 12px;
+  color: var(--ink);
+}
+#environment tr:nth-child(odd) { background: #1a2029; }
+#environment tr:last-child td { border-bottom: none; }
+
+/* ---- Controls (filters / collapse) ---- */
+.controls { margin: 8px 0 16px; }
+.filters button,
+.collapse button {
+  color: var(--accent);
+  text-decoration: none;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.filters button:hover,
+.collapse button:hover { color: #ecd8a6; background: rgba(215, 178, 106, 0.12); }
+.filter__label { color: var(--ink-soft); margin-right: 10px; }
+
+/* ---- Reload button ---- */
+.summary__reload__button {
+  background: var(--accent);
+  color: #1a1406;
+  border-radius: 8px;
+}
+.summary__reload__button:hover { background: #e6c583; }
+
+/* ---- Results table ---- */
+#results-table { width: 100%; font-size: 13px; color: var(--ink); }
+#results-table th,
+#results-table td {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 12px;
+}
+
+#results-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--elevated);
+  color: #c9d1d9;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--line);
+}
+
+/* zebra striping + row hover */
+.collapsible td { transition: background 0.12s ease; }
+.results-table-row:nth-child(even) .collapsible td { background: #1a2029; }
+.collapsible:hover td { background: #222b38; }
+
+/* status cells — tinted + accent bar for at-a-glance scanning
+   (!important so the status colour survives zebra + hover) */
+.col-result { width: 120px; font-weight: 600; }
+.passed td.col-result {
+  background: var(--pass-bg) !important;
+  color: var(--pass) !important;
+  box-shadow: inset 4px 0 0 var(--pass);
+}
+.failed td.col-result,
+.error td.col-result,
+.xpassed td.col-result {
+  background: var(--fail-bg) !important;
+  color: var(--fail) !important;
+  box-shadow: inset 4px 0 0 var(--fail);
+}
+.skipped td.col-result,
+.xfailed td.col-result,
+.rerun td.col-result {
+  background: var(--warn-bg) !important;
+  color: var(--warn) !important;
+  box-shadow: inset 4px 0 0 var(--warn);
+}
+
+/* summary count badges kept in sync */
+span.passed { color: var(--pass); font-weight: 600; }
+span.failed, span.error, span.xpassed { color: var(--fail); font-weight: 600; }
+span.skipped, span.xfailed, span.rerun { color: var(--warn); font-weight: 600; }
+
+/* ---- Traceback / log block ---- */
+.logwrapper {
+  max-height: 320px;
+  background: #0a0d12;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 6px 12px 14px;
+}
+.logwrapper .log {
+  border: none;
+  color: #e6edf3;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  padding: 14px 16px;
+}
+.logwrapper .logexpander {
+  background: #1b2130;
+  color: #c9d1d9;
+  border-color: var(--line);
+  border-radius: 6px;
+}
+.logwrapper .logexpander:hover { color: #fff; border-color: var(--accent); }
+
+/* ---- Sort arrows: neutral light grey ---- */
+.sortable.desc:after { border-top-color: var(--ink-soft); }
+.sortable.asc:after  { border-bottom-color: var(--ink-soft); }
