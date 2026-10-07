@@ -12,21 +12,6 @@ from .importer import import_csv
 app = typer.Typer(help="JLPT SRS — a spaced-repetition trainer for JLPT vocabulary.")
 
 
-@app.command("import")
-def import_(
-    csv_path: Path = typer.Argument(Path("data/word_bank.csv"),
-                                    help="Path to a Word Bank CSV export."),
-    source: str = typer.Option("word_bank", help="Origin tag stamped on new cards."),
-) -> None:
-    """Import/sync a Word Bank CSV export into the deck."""
-    conn = init_db()
-    try:
-        new, updated = import_csv(conn, csv_path, source)
-        typer.echo(f"Imported {new + updated} cards ({new} new, {updated} updated).")
-    finally:
-        conn.close()
-
-
 def _ask_part(label, check, expected) -> tuple[bool, bool]:
     """Ask one part (reading or meaning), allowing one retry.
 
@@ -63,6 +48,21 @@ def _quiz_card(card, kana_mode) -> int:
     return grade
 
 
+@app.command("import")
+def import_(
+    csv_path: Path = typer.Argument(Path("data/word_bank.csv"),
+                                    help="Path to a Word Bank CSV export."),
+    source: str = typer.Option("word_bank", help="Origin tag stamped on new cards."),
+) -> None:
+    """Import/sync a Word Bank CSV export into the deck."""
+    conn = init_db()
+    try:
+        new, updated = import_csv(conn, csv_path, source)
+        typer.echo(f"Imported {new + updated} cards ({new} new, {updated} updated).")
+    finally:
+        conn.close()
+
+
 @app.command("review")
 def review(
     kana: bool = typer.Option(False, "--kana",
@@ -93,7 +93,49 @@ def review(
 @app.command("add")
 def add() -> None:
     """Add a new card to the deck."""
-    # Implementation for adding a new card would go here
+    front = typer.prompt("Kanji")
+    reading = typer.prompt("Reading (kana)")
+    back = typer.prompt("Meaning (English)")
+    conn = init_db()
+    try:
+        row = conn.execute(
+            "SELECT card_id FROM cards WHERE card_id LIKE 'USR%' "
+            "ORDER BY card_id DESC LIMIT 1"
+        ).fetchone()
+        next_num = int(row["card_id"][3:]) + 1 if row else 1
+        card_id = f"USR{next_num:03d}"
+
+        conn.execute(
+            "INSERT INTO cards (card_id, source, front, back, reading) "
+            "VALUES (?, 'user', ?, ?, ?)",
+            (card_id, front, back, reading),
+        )
+        conn.commit()
+        typer.echo(f"Added {card_id}.")
+    finally:
+        conn.close()
+
+
+@app.command("remove")
+def remove(card_id: str) -> None:
+    """Remove a card (and its review history) from the deck."""
+    conn = init_db()
+    try:
+        exists = conn.execute(
+            "SELECT 1 FROM cards WHERE card_id = ?", (card_id,)
+        ).fetchone()
+        if exists is None:
+            typer.echo(f"No card with ID {card_id}.")
+            raise typer.Exit(code=1)
+
+        typer.confirm(f"Delete {card_id} and its review history?", abort=True)
+
+        with conn:
+            conn.execute("DELETE FROM reviews WHERE card_id = ?", (card_id,))
+            conn.execute("DELETE FROM cards WHERE card_id = ?", (card_id,))
+        typer.echo(f"Removed {card_id}.")
+    finally:
+        conn.close()
 
 
 @app.command("stats")
