@@ -13,6 +13,8 @@ from pathlib import Path
 from .models import Card
 
 
+# --- read the CSV (dumb reader) ----------------------------------------------
+
 def read_rows(csv_path: Path) -> list[dict[str, str]]:
     """Read the export CSV and return one dict per row, keyed by LOWERCASE names.
 
@@ -30,6 +32,8 @@ def read_rows(csv_path: Path) -> list[dict[str, str]]:
     return rows
 
 
+# --- upsert (content-diff sync) ----------------------------------------------
+
 def import_cards(conn: sqlite3.Connection, cards: list[Card]) -> tuple[int, int]:
     """Upsert cards by card_id. Return (new, updated).
 
@@ -45,6 +49,7 @@ def import_cards(conn: sqlite3.Connection, cards: list[Card]) -> tuple[int, int]
         for row in conn.execute("SELECT card_id, front, back, reading FROM cards")
     }
 
+    # Decide what to write: new ids, and existing ids whose content changed.
     new = 0
     to_write: list[tuple] = []
     for c in cards:
@@ -58,6 +63,7 @@ def import_cards(conn: sqlite3.Connection, cards: list[Card]) -> tuple[int, int]
 
     updated = len(to_write) - new
 
+    # One upsert for everything that changed; SRS columns stay out of the SET.
     if to_write:
         conn.executemany(
             """
@@ -75,6 +81,8 @@ def import_cards(conn: sqlite3.Connection, cards: list[Card]) -> tuple[int, int]
 
     return new, updated
 
+
+# --- orchestration -----------------------------------------------------------
 
 def import_csv(
     conn: sqlite3.Connection, csv_path: Path, source: str = "word_bank"

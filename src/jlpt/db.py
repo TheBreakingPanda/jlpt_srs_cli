@@ -1,7 +1,15 @@
+"""SQLite access: open a connection, create the schema, or do both (init_db).
+
+The schema defined here is the single source of truth - the tests build their
+in-memory databases by calling `create_schema`, not a hand-copied CREATE TABLE.
+"""
+
 import sqlite3
 from pathlib import Path
 from typing import Optional
 
+
+# --- connection --------------------------------------------------------------
 
 def get_db_connection(db_path: Optional[str] = None) -> sqlite3.Connection:
     """Create and return a database connection.
@@ -20,19 +28,21 @@ def get_db_connection(db_path: Optional[str] = None) -> sqlite3.Connection:
 
     conn = sqlite3.connect(str(path))
     conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA foreign_keys = ON")   # off by default in SQLite
     return conn
 
 
+# --- schema ------------------------------------------------------------------
+
 def create_schema(conn: sqlite3.Connection) -> None:
     """Create database schema for cards and reviews tables.
-    
+
     Args:
         conn: Database connection object
     """
     cursor = conn.cursor()
-    
-    # Create cards table
+
+    # cards: vocabulary content + SRS scheduling state.
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS cards (
             card_id     TEXT PRIMARY KEY,
@@ -48,8 +58,8 @@ def create_schema(conn: sqlite3.Connection) -> None:
             updated_at  TEXT DEFAULT (date('now'))
         )
     """)
-    
-    # Create reviews table
+
+    # reviews: one row per graded review, FK back to the card.
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS reviews (
             id             INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -61,16 +71,18 @@ def create_schema(conn: sqlite3.Connection) -> None:
             FOREIGN KEY (card_id) REFERENCES cards(card_id)
         )
     """)
-    
+
     conn.commit()
 
 
+# --- init (connect + schema) -------------------------------------------------
+
 def init_db(db_path: Optional[str] = None) -> sqlite3.Connection:
     """Initialize database connection and create schema if needed.
-    
+
     Args:
         db_path: Path to the database file
-        
+
     Returns:
         sqlite3.Connection: Initialized database connection
     """

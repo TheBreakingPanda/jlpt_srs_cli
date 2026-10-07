@@ -1,6 +1,14 @@
+"""Pure answer-checking and grading for the review quiz.
+
+No database, no prompts, no I/O - just string normalisation and the
+attempts-to-grade mapping, so these are fast and exhaustively unit-testable.
+"""
+
 import re
 import unicodedata
 
+
+# --- grading -----------------------------------------------------------------
 
 def grade_from_attempts(attempts: int, passed: bool) -> int:
     """Map a card's outcome to an SM-2 grade.
@@ -14,6 +22,8 @@ def grade_from_attempts(attempts: int, passed: bool) -> int:
     return 5 if attempts == 1 else 3
 
 
+# --- answer checking: reading ------------------------------------------------
+
 def check_reading(expected: str, typed: str) -> bool:
     """True if the typed kana matches the expected reading."""
     # NFKC folds half-width kana to full-width (and full-width ASCII to
@@ -22,6 +32,8 @@ def check_reading(expected: str, typed: str) -> bool:
     typed_norm = unicodedata.normalize("NFKC", typed).strip()
     return expected_norm == typed_norm
 
+
+# --- answer checking: meaning ------------------------------------------------
 
 def _normalize_meaning(s: str) -> str:
     """Fold one English meaning to a canonical form for comparison."""
@@ -35,6 +47,7 @@ def _normalize_meaning(s: str) -> str:
 
 def check_meaning(expected: str, typed: str) -> bool:
     """True if the typed English matches any accepted meaning in ``expected``."""
+    # `expected` (a card's `back`) may list several accepted answers.
     candidates = {_normalize_meaning(c) for c in re.split(r"[,;/]", expected)}
     candidates.discard("")        # ignore blanks from a stray separator
     return _normalize_meaning(typed) in candidates

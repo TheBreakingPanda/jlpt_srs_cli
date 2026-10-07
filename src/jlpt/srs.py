@@ -18,13 +18,16 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, timedelta
 
-# --- SM-2 constants --------------------------------------------------------
+# --- SM-2 constants ----------------------------------------------------------
+
 DEFAULT_EASE = 2.5      # ease factor of a brand-new card
 MIN_EASE = 1.3          # floor; intervals must never collapse to nothing
 PASS_THRESHOLD = 3      # grade >= this is a pass; below it is a fail
 FIRST_INTERVAL = 1      # days, after the 1st successful review
 SECOND_INTERVAL = 6     # days, after the 2nd successful review
 
+
+# --- the schedule result -----------------------------------------------------
 
 @dataclass(frozen=True)
 class Schedule:
@@ -35,6 +38,8 @@ class Schedule:
     repetitions: int
     due_date: date
 
+
+# --- the scheduler -----------------------------------------------------------
 
 def schedule(
     ease_factor: float,
@@ -81,6 +86,8 @@ def schedule(
     due_date = today + timedelta(days=next_interval)
     return Schedule(next_ease, next_interval, next_repetitions, due_date)
 
+
+# --- ease-factor update ------------------------------------------------------
 
 def _update_ease(ease_factor: float, grade: int) -> float:
     """SM-2 ease update:  EF + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))."""

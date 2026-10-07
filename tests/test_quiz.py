@@ -7,6 +7,8 @@ from jlpt.quiz import check_meaning, check_reading, grade_from_attempts
 logger = logging.getLogger(__name__)
 
 
+# --- grade_from_attempts -----------------------------------------------------
+
 @pytest.mark.parametrize(
     ("attempts", "correct", "expected"),
     [
@@ -29,6 +31,8 @@ def test_grade_from_attempts_returns_minimum_for_incorrect_answers(attempts):
     assert actual == 1
 
 
+# --- check_reading -----------------------------------------------------------
+
 @pytest.mark.parametrize("typed", ["がくせい", "  がくせい  "])
 def test_check_reading_accepts_exact_and_surrounding_whitespace(typed):
     actual = check_reading("がくせい", typed)
@@ -48,6 +52,8 @@ def test_check_reading_rejects_invalid_answers(typed):
     logger.info("check_reading(%r, %r) = %r; expected False", "がくせい", typed, actual)
     assert actual is False
 
+
+# --- check_meaning -----------------------------------------------------------
 
 @pytest.mark.parametrize("typed", ["book", " BOOK ", "the book", "book."])
 def test_check_meaning_accepts_expected_answers(typed):

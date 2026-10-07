@@ -12,6 +12,8 @@ from .importer import import_csv
 app = typer.Typer(help="JLPT SRS — a spaced-repetition trainer for JLPT vocabulary.")
 
 
+# --- interactive quiz helpers ------------------------------------------------
+
 def _ask_part(label, check, expected) -> tuple[bool, bool]:
     """Ask one part (reading or meaning), allowing one retry.
 
@@ -48,6 +50,8 @@ def _quiz_card(card, kana_mode) -> int:
     return grade
 
 
+# --- import ------------------------------------------------------------------
+
 @app.command("import")
 def import_(
     csv_path: Path = typer.Argument(Path("data/word_bank.csv"),
@@ -62,6 +66,8 @@ def import_(
     finally:
         conn.close()
 
+
+# --- review ------------------------------------------------------------------
 
 @app.command("review")
 def review(
@@ -90,6 +96,8 @@ def review(
         conn.close()
 
 
+# --- add ---------------------------------------------------------------------
+
 @app.command("add")
 def add() -> None:
     """Add a new card to the deck."""
@@ -98,6 +106,8 @@ def add() -> None:
     back = typer.prompt("Meaning (English)")
     conn = init_db()
     try:
+        # Mint the next USR id from the highest existing one (MAX + 1), so a
+        # removed card never causes a later collision the way a count would.
         row = conn.execute(
             "SELECT card_id FROM cards WHERE card_id LIKE 'USR%' "
             "ORDER BY card_id DESC LIMIT 1"
@@ -116,6 +126,8 @@ def add() -> None:
         conn.close()
 
 
+# --- remove ------------------------------------------------------------------
+
 @app.command("remove")
 def remove(card_id: str) -> None:
     """Remove a card (and its review history) from the deck."""
@@ -130,6 +142,8 @@ def remove(card_id: str) -> None:
 
         typer.confirm(f"Delete {card_id} and its review history?", abort=True)
 
+        # Delete the reviews first, then the card, in one transaction - the FK
+        # from reviews.card_id would otherwise block deleting a reviewed card.
         with conn:
             conn.execute("DELETE FROM reviews WHERE card_id = ?", (card_id,))
             conn.execute("DELETE FROM cards WHERE card_id = ?", (card_id,))
@@ -137,6 +151,8 @@ def remove(card_id: str) -> None:
     finally:
         conn.close()
 
+
+# --- stats / list / show / undo (not yet implemented) ------------------------
 
 @app.command("stats")
 def stats() -> None:
@@ -161,6 +177,8 @@ def undo() -> None:
     """Undo the last review action."""
     # Implementation for undoing the last review would go here
 
+
+# --- entry point -------------------------------------------------------------
 
 @app.callback()
 def main() -> None:

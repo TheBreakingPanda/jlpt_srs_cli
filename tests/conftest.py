@@ -9,6 +9,8 @@ from jlpt import db
 logger = logging.getLogger("jlpt.tests")
 
 
+# --- database & date fixtures ------------------------------------------------
+
 @pytest.fixture
 def conn():
     logger.info("setup: in-memory SQLite, foreign_keys ON, schema loaded")
@@ -25,6 +27,8 @@ def conn():
 def today():
     return date(2026, 9, 23)
 
+
+# --- logging fixtures (step narration) --------------------------------------
 
 @pytest.fixture
 def step():

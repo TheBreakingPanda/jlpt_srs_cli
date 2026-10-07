@@ -5,6 +5,8 @@ import pytest
 from jlpt.review import apply_review, due_cards
 
 
+# --- helpers -----------------------------------------------------------------
+
 def insert_card(conn, card_id, due_date):
     """Insert a minimal card; due_date is the only field this suite cares about."""
     conn.execute(
@@ -13,6 +15,8 @@ def insert_card(conn, card_id, due_date):
         (card_id, due_date),
     )
 
+
+# --- due-card selection ------------------------------------------------------
 
 def test_due_selection_and_ordering(conn, today, step):
     step("insert C001 (due today), C002 (future), C003 (overdue), C004 (never reviewed)")
@@ -54,6 +58,8 @@ def test_due_selection_all_due(conn, today, step):
     step(f"due_ids = {due_ids}")
     assert due_ids == ["C002", "C001", "C003"]
 
+
+# --- new-card cap ------------------------------------------------------------
 
 def test_new_cards_capped_at_limit(conn, today, step):
     step("insert 30 never-reviewed cards")
@@ -106,6 +112,8 @@ def test_negative_new_limit_is_clamped(conn, today, step):
     step("a negative new_limit must clamp to 0 (SQLite treats LIMIT -1 as unlimited)")
     assert due_cards(conn, today, new_limit=-5) == []
 
+
+# --- apply_review (persistence) ----------------------------------------------
 
 def test_apply_review_updates_card_and_records_review(conn, today, step):
     step("insert C001 with known SRS state (ease 2.5, interval 1, reps 1)")
