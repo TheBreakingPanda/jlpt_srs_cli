@@ -57,7 +57,7 @@ def apply_review(conn, card_id, grade, today):
     """
     # Load current SRS state; a missing id is a programming error, not a no-op.
     cur = conn.execute(
-        "SELECT ease_factor, interval, repetitions FROM cards WHERE card_id = ?",
+        "SELECT ease_factor, interval, repetitions, due_date FROM cards WHERE card_id = ?",
         (card_id,),
     )
     card = cur.fetchone()
@@ -83,10 +83,17 @@ def apply_review(conn, card_id, grade, today):
         )
         conn.execute(
             """
-            INSERT INTO reviews (card_id, grade, interval_after, ease_after)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO reviews (
+                card_id, grade, interval_after, ease_after,
+                ease_before, interval_before, repetitions_before, due_before
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """,
-            (card_id, grade, sched.interval, sched.ease_factor),
+            (
+                card_id, grade, sched.interval, sched.ease_factor,
+                card["ease_factor"], card["interval"], card["repetitions"],
+                card["due_date"],
+            ),
         )
 
     return new_due_date

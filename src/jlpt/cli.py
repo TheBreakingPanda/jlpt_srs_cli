@@ -5,6 +5,7 @@ import typer
 
 from jlpt import quiz
 from jlpt.review import DEFAULT_NEW_LIMIT, apply_review, due_cards
+from jlpt import stats as stats_report   # aliased to avoid clashing with the stats command
 
 from .db import init_db
 from .importer import import_csv
@@ -152,30 +153,161 @@ def remove(card_id: str) -> None:
         conn.close()
 
 
-# --- stats / list / show / undo (not yet implemented) ------------------------
+# --- stats ------------------------------------------------------------------
 
 @app.command("stats")
 def stats() -> None:
     """Display statistics about the deck."""
-    # Implementation for displaying stats would go here
+    conn = init_db()
+    try:
+        s = stats_report.gather_stats(conn, date.today())
+        typer.echo(f"Total cards: {s['total_cards']}")
+        typer.echo(f"Due today: {s['due_today']}")
+        typer.echo(f"Reviewed today: {s['reviews_today']}")
+        typer.echo(f"Streak: {s['streak']} days")
+        typer.echo(
+            f"Accuracy: {s['accuracy']:.0f}% "
+            f"({s['total_passes']}/{s['total_reviews']})"
+        )
+    finally:
+        conn.close()
 
+
+# --- list ------------------------------------------------------------------
 
 @app.command("list")
-def list_cards() -> None:
-    """List all cards in the deck."""
-    # Implementation for listing cards would go here
+def list_cards(
+    query: str = typer.Argument(
+        None, help="Filter by text in the front / reading / back."),
+    source: str = typer.Option(
+        None, "--source", help="Only cards from this source (e.g. user, word_bank)."),
+    due: bool = typer.Option(
+        False, "--due", help="Only cards that are due for review."),
+    limit: int = typer.Option(
+        0, "--limit", help="Max cards to show (0 = all)."),
+) -> None:
+    """List cards in the deck, optionally filtered."""
+    conn = init_db()
+    try:
+        conditions: list[str] = []
+        params: list = []
 
+        if source is not None:
+            conditions.append("source = ?")
+            params.append(source)
+        if due:
+            conditions.append("due_date IS NOT NULL AND due_date <= ?")
+            params.append(date.today().isoformat())
+        if query:
+            conditions.append("(front LIKE ? OR reading LIKE ? OR back LIKE ?)")
+            like = f"%{query}%"
+            params += [like, like, like]
+
+        sql = "SELECT card_id, front, reading, back FROM cards"
+        if conditions:
+            sql += " WHERE " + " AND ".join(conditions)
+        sql += " ORDER BY card_id"
+        if limit > 0:
+            sql += " LIMIT ?"
+            params.append(limit)
+
+        rows = conn.execute(sql, params).fetchall()
+        if not rows:
+            typer.echo("No cards match." if conditions else "No cards in the deck.")
+            return
+
+        for row in rows:
+            typer.echo(
+                f"{row['card_id']}: {row['front']} ({row['reading']}) — {row['back']}"
+            )
+    finally:
+        conn.close()
+
+
+# --- show ------------------------------------------------------------------
 
 @app.command("show")
 def show_card(card_id: str) -> None:
     """Show details for a specific card."""
-    # Implementation for showing a specific card would go here
+    conn = init_db()
+    try:
+        row = conn.execute(
+            "SELECT card_id, source, front, reading, back, "
+            "ease_factor, interval, repetitions, due_date "
+            "FROM cards WHERE card_id = ?",
+            (card_id,),
+        ).fetchone()
+        if row is None:
+            typer.echo(f"No card with ID {card_id}.")
+            raise typer.Exit(code=1)
 
+        typer.echo(f"ID: {row['card_id']}")
+        typer.echo(f"Source: {row['source']}")
+        typer.echo(f"Kanji: {row['front']}")
+        typer.echo(f"Reading: {row['reading']}")
+        typer.echo(f"Meaning: {row['back']}")
+        typer.echo(
+            f"SRS: ease {row['ease_factor']}, interval {row['interval']}d, "
+            f"reps {row['repetitions']}"
+        )
+        typer.echo(f"Due: {row['due_date'] or 'new (not scheduled)'}")
+
+        reviews = conn.execute(
+            "SELECT reviewed_at, grade, interval_after, ease_after "
+            "FROM reviews WHERE card_id = ? ORDER BY reviewed_at",
+            (card_id,),
+        ).fetchall()
+        if not reviews:
+            typer.echo("History: no reviews yet.")
+        else:
+            typer.echo(f"History ({len(reviews)} reviews):")
+            for r in reviews:
+                typer.echo(
+                    f"  {r['reviewed_at']}  grade {r['grade']}  "
+                    f"-> interval {r['interval_after']}d, ease {r['ease_after']}"
+                )
+    finally:
+        conn.close()
+
+
+# --- undo ------------------------------------------------------------------
 
 @app.command("undo")
 def undo() -> None:
-    """Undo the last review action."""
-    # Implementation for undoing the last review would go here
+    """Undo the most recent review, restoring the card's prior state."""
+    conn = init_db()
+    try:
+        last = conn.execute(
+            "SELECT * FROM reviews ORDER BY id DESC LIMIT 1"
+        ).fetchone()
+        if last is None:
+            typer.echo("Nothing to undo.")
+            return
+
+        # Restore the card to the snapshot taken before that review, then delete
+        # the review row - both in one transaction so they can't desync.
+        with conn:
+            conn.execute(
+                """
+                UPDATE cards
+                SET ease_factor = ?, interval = ?, repetitions = ?, due_date = ?
+                WHERE card_id = ?
+                """,
+                (
+                    last["ease_before"], last["interval_before"],
+                    last["repetitions_before"], last["due_before"],
+                    last["card_id"],
+                ),
+            )
+            conn.execute("DELETE FROM reviews WHERE id = ?", (last["id"],))
+
+        due = last["due_before"] or "new (not scheduled)"
+        typer.echo(
+            f"Undid review of {last['card_id']} (grade {last['grade']}) — "
+            f"restored interval {last['interval_before']}, due {due}."
+        )
+    finally:
+        conn.close()
 
 
 # --- entry point -------------------------------------------------------------

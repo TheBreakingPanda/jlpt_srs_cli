@@ -68,6 +68,10 @@ def create_schema(conn: sqlite3.Connection) -> None:
             grade          INTEGER NOT NULL,
             interval_after INTEGER,
             ease_after     REAL,
+            ease_before        REAL,
+            interval_before    INTEGER,
+            repetitions_before INTEGER,
+            due_before         TEXT,
             FOREIGN KEY (card_id) REFERENCES cards(card_id)
         )
     """)

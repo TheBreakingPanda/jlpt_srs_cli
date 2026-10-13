@@ -176,3 +176,20 @@ def test_apply_review_nonexistent_card(conn, today, step):
     step("apply_review on a bogus card_id -> expect ValueError")
     with pytest.raises(ValueError, match="Card with ID C999 not found."):
         apply_review(conn, "C999", grade=4, today=today)
+
+# --- apply_review before-state snapshot --------------------------------------
+
+def test_apply_review_records_before_state(conn, today, step):
+    step("insert a brand-new card (ease 2.5, interval 0, reps 0, due NULL)")
+    insert_card(conn, "C1", None)
+    conn.commit()
+
+    step("apply a review, then read the snapshot stored on the reviews row")
+    apply_review(conn, "C1", grade=5, today=today)
+    row = conn.execute("SELECT * FROM reviews WHERE card_id='C1'").fetchone()
+
+    step("the *_before columns hold the card's pre-review state (what undo restores)")
+    assert row["ease_before"] == 2.5
+    assert row["interval_before"] == 0
+    assert row["repetitions_before"] == 0
+    assert row["due_before"] is None
