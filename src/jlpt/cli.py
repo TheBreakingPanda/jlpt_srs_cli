@@ -6,6 +6,7 @@ import typer
 from jlpt import quiz
 from jlpt.review import DEFAULT_NEW_LIMIT, apply_review, due_cards
 from jlpt import stats as stats_report   # aliased to avoid clashing with the stats command
+from jlpt import ui
 
 from .db import init_db
 from .importer import import_csv
@@ -25,21 +26,21 @@ def _ask_part(label, check, expected) -> tuple[bool, bool]:
     if check(expected, typed):
         return True, False
 
-    typer.echo("Incorrect — try again.")
+    ui.warn("Incorrect — try again.")
     typed = typer.prompt(f"{label}? (retry)")
     passed = check(expected, typed)
     if not passed:
-        typer.echo(f"The answer was: {expected}")
+        ui.info(f"The answer was: {expected}")
     return passed, True
 
 
 def _quiz_card(card, kana_mode) -> int:
     """Show one card, quiz the required parts, return an SM-2 grade."""
     if kana_mode:
-        typer.echo(f"Reading: {card['reading']}")
+        ui.info(f"Reading: {card['reading']}")
         passed, used_retry = _ask_part("Meaning", quiz.check_meaning, card["back"])
     else:
-        typer.echo(f"Kanji: {card['front']}")
+        ui.info(f"Kanji: {card['front']}")
         passed, used_retry = _ask_part("Reading", quiz.check_reading, card["reading"])
         if passed:
             passed, retried = _ask_part("Meaning", quiz.check_meaning, card["back"])
@@ -47,7 +48,7 @@ def _quiz_card(card, kana_mode) -> int:
 
     attempts = 2 if used_retry else 1
     grade = quiz.grade_from_attempts(attempts, passed)
-    typer.echo(f"Grade: {grade}")
+    ui.console.print(f"[bold]Grade: {grade}[/bold]")
     return grade
 
 
@@ -63,7 +64,7 @@ def import_(
     conn = init_db()
     try:
         new, updated = import_csv(conn, csv_path, source)
-        typer.echo(f"Imported {new + updated} cards ({new} new, {updated} updated).")
+        ui.success(f"Imported {new + updated} cards ({new} new, {updated} updated).")
     finally:
         conn.close()
 
@@ -83,7 +84,7 @@ def review(
         today = date.today()
         cards = due_cards(conn, today, new)
         if not cards:
-            typer.echo("Nothing's due today.")
+            ui.info("Nothing's due today.")
             return
 
         reviewed = 0
@@ -92,7 +93,7 @@ def review(
             apply_review(conn, card["card_id"], grade, today)
             reviewed += 1
 
-        typer.echo(f"Reviewed {reviewed} card(s).")
+        ui.success(f"Reviewed {reviewed} card(s).")
     finally:
         conn.close()
 
@@ -122,7 +123,7 @@ def add() -> None:
             (card_id, front, back, reading),
         )
         conn.commit()
-        typer.echo(f"Added {card_id}.")
+        ui.success(f"Added {card_id}.")
     finally:
         conn.close()
 
@@ -138,7 +139,7 @@ def remove(card_id: str) -> None:
             "SELECT 1 FROM cards WHERE card_id = ?", (card_id,)
         ).fetchone()
         if exists is None:
-            typer.echo(f"No card with ID {card_id}.")
+            ui.error(f"No card with ID {card_id}.")
             raise typer.Exit(code=1)
 
         typer.confirm(f"Delete {card_id} and its review history?", abort=True)
@@ -148,7 +149,7 @@ def remove(card_id: str) -> None:
         with conn:
             conn.execute("DELETE FROM reviews WHERE card_id = ?", (card_id,))
             conn.execute("DELETE FROM cards WHERE card_id = ?", (card_id,))
-        typer.echo(f"Removed {card_id}.")
+        ui.success(f"Removed {card_id}.")
     finally:
         conn.close()
 
@@ -161,14 +162,7 @@ def stats() -> None:
     conn = init_db()
     try:
         s = stats_report.gather_stats(conn, date.today())
-        typer.echo(f"Total cards: {s['total_cards']}")
-        typer.echo(f"Due today: {s['due_today']}")
-        typer.echo(f"Reviewed today: {s['reviews_today']}")
-        typer.echo(f"Streak: {s['streak']} days")
-        typer.echo(
-            f"Accuracy: {s['accuracy']:.0f}% "
-            f"({s['total_passes']}/{s['total_reviews']})"
-        )
+        ui.console.print(ui.render_stats(s))
     finally:
         conn.close()
 
@@ -213,13 +207,10 @@ def list_cards(
 
         rows = conn.execute(sql, params).fetchall()
         if not rows:
-            typer.echo("No cards match." if conditions else "No cards in the deck.")
+            ui.info("No cards match." if conditions else "No cards in the deck.")
             return
 
-        for row in rows:
-            typer.echo(
-                f"{row['card_id']}: {row['front']} ({row['reading']}) — {row['back']}"
-            )
+        ui.console.print(ui.render_card_list(rows))
     finally:
         conn.close()
 
@@ -238,34 +229,15 @@ def show_card(card_id: str) -> None:
             (card_id,),
         ).fetchone()
         if row is None:
-            typer.echo(f"No card with ID {card_id}.")
+            ui.error(f"No card with ID {card_id}.")
             raise typer.Exit(code=1)
-
-        typer.echo(f"ID: {row['card_id']}")
-        typer.echo(f"Source: {row['source']}")
-        typer.echo(f"Kanji: {row['front']}")
-        typer.echo(f"Reading: {row['reading']}")
-        typer.echo(f"Meaning: {row['back']}")
-        typer.echo(
-            f"SRS: ease {row['ease_factor']}, interval {row['interval']}d, "
-            f"reps {row['repetitions']}"
-        )
-        typer.echo(f"Due: {row['due_date'] or 'new (not scheduled)'}")
 
         reviews = conn.execute(
             "SELECT reviewed_at, grade, interval_after, ease_after "
             "FROM reviews WHERE card_id = ? ORDER BY reviewed_at",
             (card_id,),
         ).fetchall()
-        if not reviews:
-            typer.echo("History: no reviews yet.")
-        else:
-            typer.echo(f"History ({len(reviews)} reviews):")
-            for r in reviews:
-                typer.echo(
-                    f"  {r['reviewed_at']}  grade {r['grade']}  "
-                    f"-> interval {r['interval_after']}d, ease {r['ease_after']}"
-                )
+        ui.console.print(ui.render_card(row, reviews))
     finally:
         conn.close()
 
@@ -281,7 +253,7 @@ def undo() -> None:
             "SELECT * FROM reviews ORDER BY id DESC LIMIT 1"
         ).fetchone()
         if last is None:
-            typer.echo("Nothing to undo.")
+            ui.info("Nothing to undo.")
             return
 
         # Restore the card to the snapshot taken before that review, then delete
@@ -302,7 +274,7 @@ def undo() -> None:
             conn.execute("DELETE FROM reviews WHERE id = ?", (last["id"],))
 
         due = last["due_before"] or "new (not scheduled)"
-        typer.echo(
+        ui.success(
             f"Undid review of {last['card_id']} (grade {last['grade']}) — "
             f"restored interval {last['interval_before']}, due {due}."
         )
@@ -310,11 +282,23 @@ def undo() -> None:
         conn.close()
 
 
+# --- help --------------------------------------------------------------------
+
+@app.command("help")
+def help_() -> None:
+    """Show the command reference."""
+    ui.console.print(ui.render_help())
+
+
 # --- entry point -------------------------------------------------------------
 
-@app.callback()
-def main() -> None:
+@app.callback(invoke_without_command=True)
+def main(ctx: typer.Context) -> None:
     """JLPT SRS — a spaced-repetition trainer for JLPT vocabulary."""
+    # Bare `jlpt` (no subcommand) lands on the styled reference instead of a
+    # terse "Missing command" usage error.
+    if ctx.invoked_subcommand is None:
+        ui.console.print(ui.render_help())
 
 
 if __name__ == "__main__":

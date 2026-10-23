@@ -291,14 +291,27 @@ def test_remove_abort_keeps_card(file_db):
 
 # --- stats -------------------------------------------------------------------
 
+def _stat_line(output, label):
+    """The rendered stats row containing `label`.
+
+    stats is now a Rich two-column table (label | value), not "Label: value"
+    lines, so a row's value lives on the same physical line as its label but
+    with no colon. Pull that line and assert the value is on it.
+    """
+    for line in output.splitlines():
+        if label in line:
+            return line
+    return ""
+
+
 def test_stats_empty_deck(seed):
     seed([])
     result = runner.invoke(cli.app, ["stats"])
     assert result.exit_code == 0
-    assert "Total cards: 0" in result.output
-    assert "Due today: 0" in result.output
-    assert "Reviewed today: 0" in result.output
-    assert "Streak: 0 days" in result.output
+    assert "0" in _stat_line(result.output, "Total cards")
+    assert "0" in _stat_line(result.output, "Due today")
+    assert "0" in _stat_line(result.output, "Reviewed today")
+    assert "0 days" in _stat_line(result.output, "Streak")
 
 
 def test_stats_totals_and_due(seed):
@@ -309,8 +322,8 @@ def test_stats_totals_and_due(seed):
     ])
     result = runner.invoke(cli.app, ["stats"])
     assert result.exit_code == 0
-    assert "Total cards: 3" in result.output
-    assert "Due today: 2" in result.output
+    assert "3" in _stat_line(result.output, "Total cards")
+    assert "2" in _stat_line(result.output, "Due today")
 
 
 def test_stats_reviewed_today_and_streak(seed):
@@ -323,8 +336,8 @@ def test_stats_reviewed_today_and_streak(seed):
     conn.commit()
     result = runner.invoke(cli.app, ["stats"])
     assert result.exit_code == 0
-    assert "Reviewed today: 1" in result.output
-    assert "Streak: 1 days" in result.output
+    assert "1" in _stat_line(result.output, "Reviewed today")
+    assert "1 days" in _stat_line(result.output, "Streak")
 
 
 def test_stats_accuracy(seed):
@@ -338,7 +351,7 @@ def test_stats_accuracy(seed):
     conn.commit()
     result = runner.invoke(cli.app, ["stats"])
     assert result.exit_code == 0
-    assert "Accuracy: 50%" in result.output
+    assert "50%" in _stat_line(result.output, "Accuracy")
 
 
 # --- list -------------------------------------------------------------------
