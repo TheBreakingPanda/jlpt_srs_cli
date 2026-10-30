@@ -1,0 +1,2 @@
+db_path = "/home/violet/.local/share/jlpt/jlpt.db"
+new_limit = 20

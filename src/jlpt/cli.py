@@ -1,17 +1,27 @@
+import os
 from datetime import date
 from pathlib import Path
 
 import typer
 
 from jlpt import quiz
-from jlpt.review import DEFAULT_NEW_LIMIT, apply_review, due_cards
+from jlpt.review import apply_review, due_cards
 from jlpt import stats as stats_report   # aliased to avoid clashing with the stats command
 from jlpt import ui
+from jlpt import config
 
 from .db import init_db
 from .importer import import_csv
 
 app = typer.Typer(help="JLPT SRS — a spaced-repetition trainer for JLPT vocabulary.")
+
+
+# --- shared helpers ----------------------------------------------------------
+
+def _db(ctx: typer.Context):
+    """Open the configured deck. The path was resolved once in the callback and
+    stashed on ctx.obj, so every command opens the same database."""
+    return init_db(ctx.obj["db_path"])
 
 
 # --- interactive quiz helpers ------------------------------------------------
@@ -56,12 +66,13 @@ def _quiz_card(card, kana_mode) -> int:
 
 @app.command("import")
 def import_(
+    ctx: typer.Context,
     csv_path: Path = typer.Argument(Path("data/word_bank.csv"),
                                     help="Path to a Word Bank CSV export."),
     source: str = typer.Option("word_bank", help="Origin tag stamped on new cards."),
 ) -> None:
     """Import/sync a Word Bank CSV export into the deck."""
-    conn = init_db()
+    conn = _db(ctx)
     try:
         new, updated = import_csv(conn, csv_path, source)
         ui.success(f"Imported {new + updated} cards ({new} new, {updated} updated).")
@@ -73,16 +84,25 @@ def import_(
 
 @app.command("review")
 def review(
+    ctx: typer.Context,
     kana: bool = typer.Option(False, "--kana",
         help="Prompt with the kana reading instead of the kanji."),
-    new: int = typer.Option(DEFAULT_NEW_LIMIT, "--new",
-        help="Max new (never-seen) cards to introduce this session."),
+    new: int | None = typer.Option(None, "--new",
+        help="Max new (never-seen) cards this session (overrides config)."),
 ) -> None:
     """Quiz the due cards; the grade is derived from your answers."""
-    conn = init_db()
+    # Resolve the new-card cap before touching the DB, so a bad config value
+    # fails fast with a clean message rather than mid-session.
+    try:
+        new_limit = config.resolve_new_limit(new, os.environ, ctx.obj["file_cfg"])
+    except config.ConfigError as e:
+        ui.error(str(e))
+        raise typer.Exit(code=1)
+
+    conn = _db(ctx)
     try:
         today = date.today()
-        cards = due_cards(conn, today, new)
+        cards = due_cards(conn, today, new_limit)
         if not cards:
             ui.info("Nothing's due today.")
             return
@@ -101,12 +121,12 @@ def review(
 # --- add ---------------------------------------------------------------------
 
 @app.command("add")
-def add() -> None:
+def add(ctx: typer.Context) -> None:
     """Add a new card to the deck."""
     front = typer.prompt("Kanji")
     reading = typer.prompt("Reading (kana)")
     back = typer.prompt("Meaning (English)")
-    conn = init_db()
+    conn = _db(ctx)
     try:
         # Mint the next USR id from the highest existing one (MAX + 1), so a
         # removed card never causes a later collision the way a count would.
@@ -131,9 +151,9 @@ def add() -> None:
 # --- remove ------------------------------------------------------------------
 
 @app.command("remove")
-def remove(card_id: str) -> None:
+def remove(ctx: typer.Context, card_id: str) -> None:
     """Remove a card (and its review history) from the deck."""
-    conn = init_db()
+    conn = _db(ctx)
     try:
         exists = conn.execute(
             "SELECT 1 FROM cards WHERE card_id = ?", (card_id,)
@@ -157,9 +177,9 @@ def remove(card_id: str) -> None:
 # --- stats ------------------------------------------------------------------
 
 @app.command("stats")
-def stats() -> None:
+def stats(ctx: typer.Context) -> None:
     """Display statistics about the deck."""
-    conn = init_db()
+    conn = _db(ctx)
     try:
         s = stats_report.gather_stats(conn, date.today())
         ui.console.print(ui.render_stats(s))
@@ -171,6 +191,7 @@ def stats() -> None:
 
 @app.command("list")
 def list_cards(
+    ctx: typer.Context,
     query: str = typer.Argument(
         None, help="Filter by text in the front / reading / back."),
     source: str = typer.Option(
@@ -181,7 +202,7 @@ def list_cards(
         0, "--limit", help="Max cards to show (0 = all)."),
 ) -> None:
     """List cards in the deck, optionally filtered."""
-    conn = init_db()
+    conn = _db(ctx)
     try:
         conditions: list[str] = []
         params: list = []
@@ -218,9 +239,9 @@ def list_cards(
 # --- show ------------------------------------------------------------------
 
 @app.command("show")
-def show_card(card_id: str) -> None:
+def show_card(ctx: typer.Context, card_id: str) -> None:
     """Show details for a specific card."""
-    conn = init_db()
+    conn = _db(ctx)
     try:
         row = conn.execute(
             "SELECT card_id, source, front, reading, back, "
@@ -245,9 +266,9 @@ def show_card(card_id: str) -> None:
 # --- undo ------------------------------------------------------------------
 
 @app.command("undo")
-def undo() -> None:
+def undo(ctx: typer.Context) -> None:
     """Undo the most recent review, restoring the card's prior state."""
-    conn = init_db()
+    conn = _db(ctx)
     try:
         last = conn.execute(
             "SELECT * FROM reviews ORDER BY id DESC LIMIT 1"
@@ -293,8 +314,22 @@ def help_() -> None:
 # --- entry point -------------------------------------------------------------
 
 @app.callback(invoke_without_command=True)
-def main(ctx: typer.Context) -> None:
+def main(
+    ctx: typer.Context,
+    db: str | None = typer.Option(
+        None, "--db", help="Path to the SQLite deck (overrides config/env)."),
+) -> None:
     """JLPT SRS — a spaced-repetition trainer for JLPT vocabulary."""
+    # Resolve configuration ONCE here, before any command runs, and hand it to
+    # every command via ctx.obj. First run also writes a default config file.
+    cfg_path = config.config_path()
+    config.ensure_file(cfg_path)
+    file_cfg = config.load_config_file(cfg_path)
+    ctx.obj = {
+        "db_path": config.resolve_db_path(db, os.environ, file_cfg),
+        "file_cfg": file_cfg,
+    }
+
     # Bare `jlpt` (no subcommand) lands on the styled reference instead of a
     # terse "Missing command" usage error.
     if ctx.invoked_subcommand is None:

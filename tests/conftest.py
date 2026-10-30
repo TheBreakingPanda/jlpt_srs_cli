@@ -52,3 +52,20 @@ def _log_boundaries(request):
     logger.info("START %s", request.node.name)
     yield
     logger.info("END   %s", request.node.name)
+
+
+# --- hermetic environment ----------------------------------------------------
+
+@pytest.fixture(autouse=True)
+def _sandbox_env(tmp_path, monkeypatch):
+    """Keep config/DB resolution off the real home directory.
+
+    The CLI callback reads and first-run-creates a config file; point the XDG
+    dirs at a per-test temp location so tests never read or write the user's
+    real ~/.config or ~/.local/share, and drop any ambient JLPT_* overrides so
+    the developer's own environment can't leak into a test.
+    """
+    monkeypatch.setenv("XDG_CONFIG_HOME", str(tmp_path / "xdg_config"))
+    monkeypatch.setenv("XDG_DATA_HOME", str(tmp_path / "xdg_data"))
+    monkeypatch.delenv("JLPT_DB", raising=False)
+    monkeypatch.delenv("JLPT_NEW_LIMIT", raising=False)
