@@ -93,3 +93,4 @@ def _update_ease(ease_factor: float, grade: int) -> float:
     """SM-2 ease update:  EF + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))."""
     q = grade
     return ease_factor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
+

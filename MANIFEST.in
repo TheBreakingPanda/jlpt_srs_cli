@@ -1,0 +1,6 @@
+# Extra files for the source distribution (sdist), so its test suite runs as-is.
+# setuptools only auto-includes tests/test*.py; pytest also needs conftest.py
+# and the report theme that pyproject's addopts point at.
+include tests/conftest.py
+include assets/report.css
+global-exclude __pycache__ *.py[cod]

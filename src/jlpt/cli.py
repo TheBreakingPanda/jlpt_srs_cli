@@ -14,7 +14,7 @@ from jlpt import stats as stats_report   # aliased to avoid clashing with the st
 from jlpt import ui
 
 from .db import init_db
-from .importer import import_csv
+from .importer import CsvFormatError, import_csv
 
 app = typer.Typer(help="JLPT SRS — a spaced-repetition trainer for JLPT vocabulary.")
 
@@ -97,10 +97,19 @@ def import_(
     source: str = typer.Option("word_bank", help="Origin tag stamped on new cards."),
 ) -> None:
     """Import/sync a Word Bank CSV export into the deck."""
+    # Check the path before opening the deck: the default is relative to the
+    # current folder, so outside the repo it usually won't exist.
+    if not csv_path.is_file():
+        ui.error(f"No file at {csv_path} - pass the path to your Word Bank CSV.")
+        raise typer.Exit(code=1)
+
     conn = _db(ctx)
     try:
         new, updated = import_csv(conn, csv_path, source)
         ui.success(f"Imported {new + updated} cards ({new} new, {updated} updated).")
+    except CsvFormatError as e:
+        ui.error(str(e))
+        raise typer.Exit(code=1)
     finally:
         conn.close()
 

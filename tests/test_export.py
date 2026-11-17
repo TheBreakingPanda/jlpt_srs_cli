@@ -140,3 +140,4 @@ def test_reading_foreign_csv_raises(tmp_path):
     path.write_text("ID,Theme,Kanji,Reading,Romaji,English\n", encoding="utf-8")
     with pytest.raises(ExportError, match="unexpected columns"):
         read_export(path)
+

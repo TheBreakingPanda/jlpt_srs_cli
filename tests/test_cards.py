@@ -116,3 +116,4 @@ def test_rejection_writes_nothing_even_alongside_valid_field(conn):
     with pytest.raises(ValueError):
         update_card(conn, "C1", {"reading": "もと", "back": ""})
     assert _row(conn)["reading"] == "ほん"         # validation precedes any write
+

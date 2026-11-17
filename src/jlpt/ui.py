@@ -158,3 +158,4 @@ def render_help() -> RenderableType:
             table.add_row(command, summary)
     hint = Text("Run  jlpt COMMAND --help  for a command's options.", style="dim")
     return Group(title, "", table, hint)
+

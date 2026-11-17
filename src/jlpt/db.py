@@ -140,3 +140,4 @@ def init_db(db_path: Optional[str] = None) -> sqlite3.Connection:
     create_schema(conn)
     migrate(conn)
     return conn
+

@@ -173,3 +173,4 @@ def read_csv(path: Path) -> Backup:
 def read_export(path: Path) -> Backup:
     """Load a backup written by `export_deck` (format from its suffix)."""
     return read_json(path) if format_for(path) == "json" else read_csv(path)
+

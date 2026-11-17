@@ -51,3 +51,4 @@ def check_meaning(expected: str, typed: str) -> bool:
     candidates = {_normalize_meaning(c) for c in re.split(r"[,;/]", expected)}
     candidates.discard("")        # ignore blanks from a stray separator
     return _normalize_meaning(typed) in candidates
+

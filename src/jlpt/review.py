@@ -97,3 +97,4 @@ def apply_review(conn, card_id, grade, today):
         )
 
     return new_due_date
+

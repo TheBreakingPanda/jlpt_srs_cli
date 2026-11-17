@@ -90,3 +90,4 @@ def test_invalid_grade_raises(step):
     step("grade 6 is out of range 0..5 -> expect ValueError")
     with pytest.raises(ValueError):
         schedule(2.5, interval=1, repetitions=0, grade=6, today=TODAY)
+

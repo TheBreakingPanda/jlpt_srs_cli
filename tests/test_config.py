@@ -103,3 +103,4 @@ def test_ensure_file_is_idempotent(tmp_path):
     path.write_text('new_limit = 7\n', encoding="utf-8")   # user edits it
     config.ensure_file(path)                                # must NOT clobber
     assert config.load_config_file(path)["new_limit"] == 7
+

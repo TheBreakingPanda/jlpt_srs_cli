@@ -4,16 +4,38 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jlpt-srs-cli"
-version = "0.1.0"
-description = "Terminal-based JLPT vocabulary spaced repetition tool"
+version = "1.0.0"
+description = "A terminal spaced-repetition (SM-2) trainer for JLPT vocabulary"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.12"
+authors = [{ name = "TheBreakingPanda" }]
+keywords = ["jlpt", "japanese", "vocabulary", "srs", "spaced-repetition", "sm-2", "flashcards", "cli"]
+# No "License ::" classifier: with a PEP 639 `license` expression above, it's
+# redundant and setuptools rejects the combination.
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Education",
+    "Intended Audience :: End Users/Desktop",
+    "Natural Language :: English",
+    "Natural Language :: Japanese",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Education",
+]
 dependencies = [
     "rich>=13.0",
     "typer>=0.12",
 ]
+
+[project.urls]
+Homepage = "https://github.com/TheBreakingPanda/jlpt_srs_cli"
+Repository = "https://github.com/TheBreakingPanda/jlpt_srs_cli"
+Issues = "https://github.com/TheBreakingPanda/jlpt_srs_cli/issues"
 
 [project.optional-dependencies]
 dev = [

@@ -144,3 +144,4 @@ module by module, and `docs/` has the architecture, command and data-model notes
 
 [MIT](LICENSE) © 2026 TheBreakingPanda - covering the code and the sample word
 list in `data/word_bank.csv`.
+

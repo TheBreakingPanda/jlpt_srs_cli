@@ -157,3 +157,4 @@ def test_init_db_migrates_an_old_file(tmp_path, step):
     conn = db.init_db(str(path))
     assert _SNAPSHOT <= _review_columns(conn)
     conn.close()
+

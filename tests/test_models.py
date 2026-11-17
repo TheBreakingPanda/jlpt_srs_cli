@@ -16,3 +16,4 @@ def test_from_export_row_source_override(step):
     row = {"id": "EO001", "theme": "x", "kanji": "本",
            "reading": "ほん", "romaji": "hon", "english": "book"}
     assert Card.from_export_row(row, source="n5_core").source == "n5_core"
+

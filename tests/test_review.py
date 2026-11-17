@@ -193,3 +193,4 @@ def test_apply_review_records_before_state(conn, today, step):
     assert row["interval_before"] == 0
     assert row["repetitions_before"] == 0
     assert row["due_before"] is None
+

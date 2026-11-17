@@ -12,6 +12,13 @@ import sqlite3
 from pathlib import Path
 from .models import Card
 
+# The columns Card.from_export_row reads (Theme and Romaji are allowed but unused).
+REQUIRED_COLUMNS = frozenset({"id", "kanji", "reading", "english"})
+
+
+class CsvFormatError(ValueError):
+    """The file isn't a Word Bank export: required columns are missing."""
+
 
 # --- read the CSV (dumb reader) ----------------------------------------------
 
@@ -23,9 +30,19 @@ def read_rows(csv_path: Path) -> list[dict[str, str]]:
     row["id"], row["kanji"], ... even if a file is mis-cased. Return the rows raw
     otherwise — the column -> card-field mapping happens in Card.from_export_row,
     keeping this a dumb reader.
+
+    The one check it does make is the header: a file without the required
+    columns raises CsvFormatError up front, instead of a KeyError mid-mapping.
     """
     with open(csv_path, encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
+        header = {name.lower() for name in reader.fieldnames or ()}
+        missing = REQUIRED_COLUMNS - header
+        if missing:
+            raise CsvFormatError(
+                f"{csv_path} isn't a Word Bank export - missing column(s): "
+                f"{', '.join(sorted(missing))}."
+            )
         rows = []
         for row in reader:
             rows.append({k.lower(): v for k, v in row.items()})

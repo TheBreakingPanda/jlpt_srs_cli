@@ -701,3 +701,31 @@ def test_undo_refuses_a_review_without_snapshot(file_db):
     conn.close()
     assert (card["ease_factor"], card["interval"], card["due_date"]) == (2.6, 6, "2026-10-10")
     assert n_reviews == 1                                    # review kept too
+
+
+# --- import error paths (an installed user, outside the repo) ----------------
+
+def test_import_missing_file_is_a_clean_error(file_db, tmp_path):
+    result = runner.invoke(cli.app, ["import", str(tmp_path / "nope.csv")])
+    assert result.exit_code == 1
+    assert "No file at" in _flat(result.output)
+    assert isinstance(result.exception, SystemExit)        # not a traceback
+
+
+def test_import_default_path_outside_repo_is_a_clean_error(file_db, tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)                            # no data/word_bank.csv here
+    result = runner.invoke(cli.app, ["import"])
+    assert result.exit_code == 1
+    assert "pass the path to your Word Bank CSV" in _flat(result.output)
+
+
+def test_import_wrong_columns_is_a_clean_error(file_db, tmp_path):
+    path = tmp_path / "backup.csv"
+    path.write_text("card_id,front\nEO001,本\n", encoding="utf-8")
+    result = runner.invoke(cli.app, ["import", str(path)])
+    assert result.exit_code == 1
+    assert "isn't a Word Bank export" in _flat(result.output)
+    assert isinstance(result.exception, SystemExit)
+    conn = _connect(file_db)
+    assert conn.execute("SELECT COUNT(*) FROM cards").fetchone()[0] == 0
+    conn.close()

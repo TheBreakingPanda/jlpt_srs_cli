@@ -69,3 +69,4 @@ def _sandbox_env(tmp_path, monkeypatch):
     monkeypatch.setenv("XDG_DATA_HOME", str(tmp_path / "xdg_data"))
     monkeypatch.delenv("JLPT_DB", raising=False)
     monkeypatch.delenv("JLPT_NEW_LIMIT", raising=False)
+

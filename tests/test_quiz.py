@@ -80,3 +80,4 @@ def test_check_meaning_rejects_invalid_answers(typed):
     actual = check_meaning("book", typed)
     logger.info("check_meaning(%r, %r) = %r; expected False", "book", typed, actual)
     assert actual is False
+

@@ -1,5 +1,7 @@
+import pytest
+
 from jlpt.models import Card
-from jlpt.importer import import_cards
+from jlpt.importer import CsvFormatError, import_cards, read_rows
 
 
 def test_fresh_import_inserts_all(conn, step):
@@ -59,3 +61,25 @@ def test_reimport_unchanged_is_noop(conn, step):
     step("assert updated_at untouched (true no-op)")
     row = conn.execute("SELECT updated_at FROM cards WHERE card_id='EO001'").fetchone()
     assert row["updated_at"] == "2000-01-01"      # untouched
+
+
+# --- header validation -------------------------------------------------------
+
+def test_read_rows_rejects_a_file_missing_required_columns(tmp_path):
+    path = tmp_path / "not_a_word_bank.csv"
+    path.write_text("ID,Kanji\nEO001,本\n", encoding="utf-8")
+    with pytest.raises(CsvFormatError, match="missing column\\(s\\): english, reading"):
+        read_rows(path)
+
+
+def test_read_rows_rejects_an_empty_file(tmp_path):
+    path = tmp_path / "empty.csv"
+    path.write_text("", encoding="utf-8")
+    with pytest.raises(CsvFormatError):
+        read_rows(path)
+
+
+def test_read_rows_accepts_mixed_case_headers(tmp_path):
+    path = tmp_path / "wb.csv"
+    path.write_text("id,KANJI,Reading,english\nEO001,本,ほん,book\n", encoding="utf-8")
+    assert read_rows(path)[0]["kanji"] == "本"

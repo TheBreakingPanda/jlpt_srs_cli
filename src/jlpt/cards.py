@@ -67,3 +67,4 @@ def update_card(
             [cleaned[column] for column in changed] + [card_id],
         )
     return changed
+
