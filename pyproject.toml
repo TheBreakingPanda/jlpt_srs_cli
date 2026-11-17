@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=77"]   # 77+ understands the SPDX `license` string below
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,6 +7,8 @@ name = "jlpt-srs-cli"
 version = "0.1.0"
 description = "Terminal-based JLPT vocabulary spaced repetition tool"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "rich>=13.0",

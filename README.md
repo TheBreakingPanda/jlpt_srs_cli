@@ -139,3 +139,8 @@ ruff check .      # lint
 Project layout: `src/jlpt/` holds the package (`cli.py` is the entry point,
 `srs.py` the SM-2 maths, `ui.py` all terminal formatting), `tests/` mirrors it
 module by module, and `docs/` has the architecture, command and data-model notes.
+
+## License
+
+[MIT](LICENSE) © 2026 TheBreakingPanda - covering the code and the sample word
+list in `data/word_bank.csv`.
