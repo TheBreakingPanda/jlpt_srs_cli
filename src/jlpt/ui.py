@@ -127,14 +127,17 @@ _HELP_GROUPS = [
         ("jlpt add", "Add a new card by hand."),
         ("jlpt list", "List, search, or filter the deck."),
         ("jlpt show <id>", "One card's content, SRS state, and history."),
+        ("jlpt edit <id>", "Correct a card (--kanji, --reading, --meaning)."),
         ("jlpt remove <id>", "Delete a card and its review history."),
         ("jlpt undo", "Revert the most recent review."),
     ]),
     ("Data", [
         ("jlpt import <csv>", "Import or sync a Word Bank CSV export."),
+        ("jlpt export <file>", "Back up the deck: .json (full) or .csv (cards)."),
     ]),
     ("Help", [
         ("jlpt help", "Show this command reference."),
+        ("jlpt version", "Print the installed version (also --version)."),
     ]),
 ]
 

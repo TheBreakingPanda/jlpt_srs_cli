@@ -1,14 +1,17 @@
 import os
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 import typer
 
+from jlpt import __version__
+from jlpt import cards
+from jlpt import config
+from jlpt import export as exporter      # aliased to avoid clashing with the export command
 from jlpt import quiz
 from jlpt.review import apply_review, due_cards
 from jlpt import stats as stats_report   # aliased to avoid clashing with the stats command
 from jlpt import ui
-from jlpt import config
 
 from .db import init_db
 from .importer import import_csv
@@ -22,6 +25,28 @@ def _db(ctx: typer.Context):
     """Open the configured deck. The path was resolved once in the callback and
     stashed on ctx.obj, so every command opens the same database."""
     return init_db(ctx.obj["db_path"])
+
+
+def _fetch_card(conn, card_id: str):
+    """One card's full row plus its review history, for `render_card`.
+
+    Return (row, reviews), or (None, []) if no card has that ID. Shared by
+    `show` and `edit`, which both end by displaying the card.
+    """
+    row = conn.execute(
+        "SELECT card_id, source, front, reading, back, "
+        "ease_factor, interval, repetitions, due_date "
+        "FROM cards WHERE card_id = ?",
+        (card_id,),
+    ).fetchone()
+    if row is None:
+        return None, []
+    reviews = conn.execute(
+        "SELECT reviewed_at, grade, interval_after, ease_after "
+        "FROM reviews WHERE card_id = ? ORDER BY reviewed_at",
+        (card_id,),
+    ).fetchall()
+    return row, reviews
 
 
 # --- interactive quiz helpers ------------------------------------------------
@@ -243,21 +268,61 @@ def show_card(ctx: typer.Context, card_id: str) -> None:
     """Show details for a specific card."""
     conn = _db(ctx)
     try:
-        row = conn.execute(
-            "SELECT card_id, source, front, reading, back, "
-            "ease_factor, interval, repetitions, due_date "
-            "FROM cards WHERE card_id = ?",
-            (card_id,),
-        ).fetchone()
+        row, reviews = _fetch_card(conn, card_id)
         if row is None:
             ui.error(f"No card with ID {card_id}.")
             raise typer.Exit(code=1)
+        ui.console.print(ui.render_card(row, reviews))
+    finally:
+        conn.close()
 
-        reviews = conn.execute(
-            "SELECT reviewed_at, grade, interval_after, ease_after "
-            "FROM reviews WHERE card_id = ? ORDER BY reviewed_at",
-            (card_id,),
-        ).fetchall()
+
+# --- edit ------------------------------------------------------------------
+
+@app.command("edit")
+def edit(
+    ctx: typer.Context,
+    card_id: str,
+    kanji: str | None = typer.Option(None, "--kanji", help="New kanji (front)."),
+    reading: str | None = typer.Option(None, "--reading", help="New kana reading."),
+    meaning: str | None = typer.Option(None, "--meaning", help="New English meaning."),
+) -> None:
+    """Correct a card's kanji, reading, or meaning. SRS progress is kept."""
+    # Flag name -> column. Only flags actually passed become changes, so None
+    # ("not given") stays distinct from a value the user typed.
+    changes = {
+        column: value
+        for column, value in (("front", kanji), ("reading", reading), ("back", meaning))
+        if value is not None
+    }
+    if not changes:
+        ui.error("Nothing to edit - pass at least one of --kanji, --reading, --meaning.")
+        raise typer.Exit(code=1)
+
+    conn = _db(ctx)
+    try:
+        try:
+            changed = cards.update_card(conn, card_id, changes)
+        except cards.CardNotFoundError:
+            ui.error(f"No card with ID {card_id}.")
+            raise typer.Exit(code=1)
+        except ValueError as e:
+            ui.error(str(e))
+            raise typer.Exit(code=1)
+
+        if not changed:
+            ui.info(f"No changes - {card_id} already has those values.")
+            return
+
+        labels = ", ".join(cards.FIELD_LABELS[column] for column in changed)
+        ui.success(f"Updated {card_id} ({labels}).")
+        row, reviews = _fetch_card(conn, card_id)
+        if row["source"] != "user":
+            # import syncs content by card_id, so it would silently revert this.
+            ui.warn(
+                f"{card_id} came from '{row['source']}' - the next import will "
+                "overwrite this edit unless you fix it in the source file too."
+            )
         ui.console.print(ui.render_card(row, reviews))
     finally:
         conn.close()
@@ -303,6 +368,65 @@ def undo(ctx: typer.Context) -> None:
         conn.close()
 
 
+# --- export ------------------------------------------------------------------
+
+@app.command("export")
+def export(
+    ctx: typer.Context,
+    file: Path = typer.Argument(
+        ..., help="Destination: .json (full backup) or .csv (cards only)."),
+    force: bool = typer.Option(
+        False, "--force", help="Overwrite the file if it already exists."),
+) -> None:
+    """Back up the deck and its SRS state to a .json or .csv file."""
+    # Validate the destination before opening the deck: a typo'd suffix or an
+    # existing backup should fail fast and touch nothing.
+    try:
+        exporter.format_for(file)
+    except exporter.ExportError as e:
+        ui.error(str(e))
+        raise typer.Exit(code=1)
+    if file.exists() and not force:
+        ui.error(f"{file} already exists - pass --force to overwrite it.")
+        raise typer.Exit(code=1)
+    if not file.parent.is_dir():
+        ui.error(f"Folder {file.parent} doesn't exist.")
+        raise typer.Exit(code=1)
+
+    conn = _db(ctx)
+    try:
+        backup = exporter.export_deck(conn, file, datetime.now())
+    finally:
+        conn.close()
+
+    if backup.reviews is None:
+        ui.success(
+            f"Exported {len(backup.cards)} cards to {file} "
+            "(CSV holds cards only - use .json to include review history)."
+        )
+    else:
+        ui.success(
+            f"Exported {len(backup.cards)} cards and "
+            f"{len(backup.reviews)} reviews to {file}."
+        )
+
+
+# --- version -----------------------------------------------------------------
+
+@app.command("version")
+def version_() -> None:
+    """Print the installed version."""
+    ui.info(f"jlpt {__version__}")
+
+
+def _version_callback(value: bool) -> None:
+    """Handle `jlpt --version`. Eager, so it runs during parsing - before the
+    main callback - and exits without creating a config file or opening a deck."""
+    if value:
+        ui.info(f"jlpt {__version__}")
+        raise typer.Exit()
+
+
 # --- help --------------------------------------------------------------------
 
 @app.command("help")
@@ -318,6 +442,9 @@ def main(
     ctx: typer.Context,
     db: str | None = typer.Option(
         None, "--db", help="Path to the SQLite deck (overrides config/env)."),
+    show_version: bool = typer.Option(
+        False, "--version", callback=_version_callback, is_eager=True,
+        help="Show the version and exit."),
 ) -> None:
     """JLPT SRS — a spaced-repetition trainer for JLPT vocabulary."""
     # Resolve configuration ONCE here, before any command runs, and hand it to

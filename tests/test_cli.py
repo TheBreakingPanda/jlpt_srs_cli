@@ -1,12 +1,14 @@
 import csv
 import sqlite3
+from importlib import metadata
 
 import pytest
 from typer.testing import CliRunner
 from datetime import date
 
-from jlpt import cli
+from jlpt import cli, config
 from jlpt.db import create_schema
+from jlpt.export import read_export
 
 runner = CliRunner()
 
@@ -505,3 +507,167 @@ def test_undo_is_repeatable(file_db):
     assert n_reviews == 0
     assert (c1["interval"], c1["repetitions"], c1["due_date"]) == (0, 0, None)
     assert (c2["interval"], c2["repetitions"], c2["due_date"]) == (0, 0, None)
+
+
+# --- edit / export / version helpers -----------------------------------------
+
+def _flat(output: str) -> str:
+    """Collapse whitespace, so Rich's wrapping at 80 columns can't split a
+    phrase the test is looking for across two lines."""
+    return " ".join(output.split())
+
+
+# --- edit --------------------------------------------------------------------
+
+def test_edit_updates_meaning(file_db):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")          # USR001
+    result = runner.invoke(cli.app, ["edit", "USR001", "--meaning", "a book"])
+    assert result.exit_code == 0
+    assert "Updated USR001 (meaning)." in _flat(result.output)
+    conn = _connect(file_db)
+    assert conn.execute(
+        "SELECT back FROM cards WHERE card_id='USR001'").fetchone()[0] == "a book"
+    conn.close()
+
+
+def test_edit_several_fields_shows_the_card(file_db):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")
+    result = runner.invoke(
+        cli.app, ["edit", "USR001", "--kanji", "元", "--reading", "もと"])
+    out = _flat(result.output)
+    assert result.exit_code == 0
+    assert "Updated USR001 (kanji, reading)." in out
+    assert "元" in out and "もと" in out                  # rendered card follows
+
+
+def test_edit_keeps_srs_progress(file_db):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")
+    runner.invoke(cli.app, ["review"], input="ほん\nbook\n")         # now scheduled
+    conn = _connect(file_db)
+    before = tuple(conn.execute(
+        "SELECT ease_factor, interval, repetitions, due_date FROM cards"
+    ).fetchone())
+    conn.close()
+    runner.invoke(cli.app, ["edit", "USR001", "--meaning", "a book"])
+    conn = _connect(file_db)
+    after = tuple(conn.execute(
+        "SELECT ease_factor, interval, repetitions, due_date FROM cards"
+    ).fetchone())
+    conn.close()
+    assert after == before
+
+
+def test_edit_without_flags_errors(file_db):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")
+    result = runner.invoke(cli.app, ["edit", "USR001"])
+    assert result.exit_code == 1
+    assert "Nothing to edit" in _flat(result.output)
+
+
+def test_edit_unknown_card_errors(file_db):
+    result = runner.invoke(cli.app, ["edit", "NOPE", "--meaning", "x"])
+    assert result.exit_code == 1
+    assert "No card with ID NOPE." in result.output
+
+
+def test_edit_blank_value_errors_and_writes_nothing(file_db):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")
+    result = runner.invoke(cli.app, ["edit", "USR001", "--meaning", "  "])
+    assert result.exit_code == 1
+    assert "can't be blank" in _flat(result.output)
+    conn = _connect(file_db)
+    assert conn.execute("SELECT back FROM cards").fetchone()[0] == "book"
+    conn.close()
+
+
+def test_edit_same_value_is_a_noop(file_db):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")
+    result = runner.invoke(cli.app, ["edit", "USR001", "--meaning", "book"])
+    assert result.exit_code == 0
+    assert "No changes" in result.output
+
+
+def test_edit_imported_card_warns_about_reimport(seed):
+    seed([_card("T1")])                                   # source 'word_bank'
+    result = runner.invoke(cli.app, ["edit", "T1", "--meaning", "a book"])
+    assert result.exit_code == 0
+    assert "the next import will overwrite this edit" in _flat(result.output)
+
+
+def test_edit_user_card_has_no_reimport_warning(file_db):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")       # source 'user'
+    result = runner.invoke(cli.app, ["edit", "USR001", "--meaning", "a book"])
+    assert "next import" not in _flat(result.output)
+
+
+# --- export ------------------------------------------------------------------
+
+def test_export_json_backs_up_cards_and_reviews(file_db, tmp_path):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")
+    runner.invoke(cli.app, ["review"], input="ほん\nbook\n")
+    path = tmp_path / "backup.json"
+    result = runner.invoke(cli.app, ["export", str(path)])
+    assert result.exit_code == 0
+    assert "Exported 1 cards and 1 reviews" in _flat(result.output)
+    backup = read_export(path)
+    assert [c["card_id"] for c in backup.cards] == ["USR001"]
+    assert len(backup.reviews) == 1
+
+
+def test_export_csv_says_cards_only(file_db, tmp_path):
+    runner.invoke(cli.app, ["add"], input="本\nほん\nbook\n")
+    path = tmp_path / "backup.csv"
+    result = runner.invoke(cli.app, ["export", str(path)])
+    assert result.exit_code == 0
+    assert "CSV holds cards only" in _flat(result.output)
+    assert len(read_export(path).cards) == 1
+
+
+def test_export_refuses_to_overwrite(file_db, tmp_path):
+    path = tmp_path / "backup.json"
+    path.write_text("keep me", encoding="utf-8")
+    result = runner.invoke(cli.app, ["export", str(path)])
+    assert result.exit_code == 1
+    assert "--force" in _flat(result.output)
+    assert path.read_text(encoding="utf-8") == "keep me"
+
+
+def test_export_force_overwrites(file_db, tmp_path):
+    path = tmp_path / "backup.json"
+    path.write_text("old", encoding="utf-8")
+    result = runner.invoke(cli.app, ["export", str(path), "--force"])
+    assert result.exit_code == 0
+    assert read_export(path).cards == []
+
+
+def test_export_bad_suffix_errors_and_writes_nothing(file_db, tmp_path):
+    path = tmp_path / "backup.txt"
+    result = runner.invoke(cli.app, ["export", str(path)])
+    assert result.exit_code == 1
+    assert "Unsupported export format" in _flat(result.output)
+    assert not path.exists()
+
+
+def test_export_missing_folder_errors(file_db, tmp_path):
+    result = runner.invoke(cli.app, ["export", str(tmp_path / "nope" / "b.json")])
+    assert result.exit_code == 1
+    assert "doesn't exist" in _flat(result.output)
+
+
+# --- version -----------------------------------------------------------------
+
+def test_version_command_prints_package_version():
+    result = runner.invoke(cli.app, ["version"])
+    assert result.exit_code == 0
+    assert result.output.strip() == f"jlpt {metadata.version('jlpt-srs-cli')}"
+
+
+def test_version_flag_prints_package_version():
+    result = runner.invoke(cli.app, ["--version"])
+    assert result.exit_code == 0
+    assert result.output.strip() == f"jlpt {metadata.version('jlpt-srs-cli')}"
+
+
+def test_version_flag_touches_no_config():
+    runner.invoke(cli.app, ["--version"])
+    assert not config.config_path().exists()   # eager: exits before the callback
