@@ -341,6 +341,15 @@ def undo(ctx: typer.Context) -> None:
         if last is None:
             ui.info("Nothing to undo.")
             return
+        if last["ease_before"] is None:
+            # Logged before the snapshot columns existed (see db.migrate): there
+            # is no prior state, and restoring NULLs would wipe the schedule.
+            ui.error(
+                f"Can't undo the review of {last['card_id']} from "
+                f"{last['reviewed_at']}: it predates undo support, so there's "
+                "no earlier state to restore."
+            )
+            raise typer.Exit(code=1)
 
         # Restore the card to the snapshot taken before that review, then delete
         # the review row - both in one transaction so they can't desync.

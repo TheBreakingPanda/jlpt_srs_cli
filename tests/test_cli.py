@@ -671,3 +671,33 @@ def test_version_flag_prints_package_version():
 def test_version_flag_touches_no_config():
     runner.invoke(cli.app, ["--version"])
     assert not config.config_path().exists()   # eager: exits before the callback
+
+
+# --- undo across a migration -------------------------------------------------
+
+def test_undo_refuses_a_review_without_snapshot(file_db):
+    """A review logged before migration has NULL *_before columns: undo must
+    refuse rather than write NULLs over the card's schedule."""
+    conn = _connect(file_db)
+    conn.execute(
+        "INSERT INTO cards (card_id, source, front, back, reading, ease_factor, "
+        "interval, repetitions, due_date) "
+        "VALUES ('EO001', 'word_bank', '本', 'book', 'ほん', 2.6, 6, 2, '2026-10-10')"
+    )
+    conn.execute(
+        "INSERT INTO reviews (card_id, reviewed_at, grade, interval_after, ease_after) "
+        "VALUES ('EO001', '2026-10-04 09:00:00', 5, 6, 2.6)"     # no snapshot
+    )
+    conn.commit()
+    conn.close()
+
+    result = runner.invoke(cli.app, ["undo"])
+    assert result.exit_code == 1
+    assert "predates undo support" in _flat(result.output)
+
+    conn = _connect(file_db)
+    card = conn.execute("SELECT * FROM cards").fetchone()
+    n_reviews = conn.execute("SELECT COUNT(*) FROM reviews").fetchone()[0]
+    conn.close()
+    assert (card["ease_factor"], card["interval"], card["due_date"]) == (2.6, 6, "2026-10-10")
+    assert n_reviews == 1                                    # review kept too

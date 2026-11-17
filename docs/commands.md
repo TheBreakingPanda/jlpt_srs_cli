@@ -1,63 +1,58 @@
 # 💻 JLPT SRS CLI - Commands
 
-> The CLI contract. Entry point `jlpt` (Typer). Not all of this exists yet - this is the target surface.
+> The CLI as shipped in v1. Entry point `jlpt` (Typer); every command takes `--help`. The repo's `README.md` is the user-facing version of this note.
 
 ---
 
 ## Running the CLI
 
-**One-time setup** - register the `jlpt` command (venv active):
+**Installed** (the v1 target; `pipx` is verified in the Phase 4 packaging step):
 
 ```bash
-pip install -e .
+pipx install git+https://github.com/TheBreakingPanda/jlpt_srs_cli.git
+jlpt                 # bare `jlpt` shows the styled command reference
 ```
 
-**Launch** - every session, from a fresh terminal:
+**From the repo** (development), every session:
 
 ```bash
 cd /home/violet/project_base/jlpt_srs_cli   # project root
-source .venv/bin/activate                    # activate the virtualenv
-jlpt --help          # list every command
-jlpt review          # launch a review session
+source .venv/bin/activate                    # or prefix commands with `uv run`
+jlpt --help
+python -m jlpt review                        # same CLI, run as a module
 ```
 
-No install? Run it as a module from the project root:
-
-```bash
-python -m jlpt --help
-python -m jlpt review
-```
-
-The `jlpt` entry point is declared in `pyproject.toml` (`[project.scripts] jlpt = "jlpt.cli:app"`); `python -m jlpt` runs `src/jlpt/__main__.py`. Typer gives every command `--help` for free.
+The entry point is declared in `pyproject.toml` (`[project.scripts] jlpt = "jlpt.cli:app"`); `python -m jlpt` runs `src/jlpt/__main__.py`.
 
 ---
 
-## Contract
+## Shipped commands (v1)
 
-| Command                  | Purpose                                                                                                               |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `jlpt import <file.csv>` | Import/sync vocabulary from a Word Bank CSV export into the deck (by `card_id`; content-only, never resets SRS state) |
-| `jlpt add`               | Add a single card interactively                                                                                       |
-| `jlpt review`            | Quiz the due cards - type your answer, auto-graded by correctness + attempts; `--kana` shows readings instead of kanji |
-| `jlpt stats`             | Show progress - due today, streak, accuracy, totals                                                                   |
+| Command | Options | What it does |
+| --- | --- | --- |
+| `jlpt import [CSV]` | `--source TAG` (default `word_bank`) | Import or re-sync a Word Bank CSV by `card_id`. Content only: SRS state is never reset, and unchanged rows are not written. `CSV` defaults to `data/word_bank.csv`. |
+| `jlpt review` | `--kana`, `--new N` | Quiz every due card plus up to N never-seen ones (N from config, default 25). The grade comes from the typed answers - see Grading. |
+| `jlpt stats` | | Total cards, due today, reviewed today, streak, accuracy. |
+| `jlpt add` | | Prompts for kanji, reading, meaning; the card gets the next `USR###` id and source `user`. |
+| `jlpt list [TEXT]` | `--due`, `--source TAG`, `--limit N` | Table of cards; `TEXT` matches kanji, reading or meaning. |
+| `jlpt show ID` | | Content, SRS state and review history. |
+| `jlpt edit ID` | `--kanji`, `--reading`, `--meaning` | Correct content in one transaction. SRS state is kept, identical values are a no-op, blank values are rejected. Warns when the card came from an import (the next import would revert it). |
+| `jlpt remove ID` | | Asks, then deletes the card and its reviews together. |
+| `jlpt undo` | | Restores the card to its snapshot from before the latest review, and deletes that review. Refuses reviews logged before the snapshot columns existed. |
+| `jlpt export FILE` | `--force` | Backup by file extension: `.json` = cards + reviews + header (lossless); `.csv` = cards only. Won't overwrite without `--force`. A backup, not a sync. |
+| `jlpt version` | | Print the installed version (same as `jlpt --version`). |
+| `jlpt help` | | Command reference (same as bare `jlpt`). |
+
+**Global options** go before the command: `--db PATH` picks the deck for this run; `--version` prints the version and exits without creating a config file or opening a deck.
 
 ---
 
-## More commands (recommended)
-
-Beyond the four core commands, these are worth adding. **Status** marks when each fits.
+## Not built in v1
 
 | Command | Purpose | Status |
-| ------- | ------- | ------ |
-| `jlpt list` | Browse / search / filter the deck (by due, source, or text) | v1 |
-| `jlpt show <card_id>` | One card: content, SRS state, and review history | v1 |
-| `jlpt edit <card_id>` | Correct a card's fields | v1 |
-| `jlpt remove <card_id>` | Delete a card (with confirmation) | v1 |
-| `jlpt undo` | Revert the last review - rescue a misgrade | v1 |
-| `jlpt export <file>` | Back up the deck + SRS state (CSV / JSON) | v1 |
-| `jlpt version` | Print the version (also `--version`) | v1 |
-| `jlpt config` | View / set settings (DB path, daily new-card cap) | Phase 4 |
-| `jlpt reset [<card_id>]` | Reset SRS state to relearn - **destructive**, confirm | Phase 4 |
+| --- | --- | --- |
+| `jlpt config` | View / set settings (DB path, daily new-card cap) | Not built - v1 uses the config file `~/.config/jlpt/config.toml` |
+| `jlpt reset [<card_id>]` | Reset SRS state to relearn - **destructive**, confirm | Deferred (Phase 4 plan: only if cheap) |
 | `jlpt gui` | Launch the desktop app | v2 · P6 |
 | `jlpt tutorial` | Open the in-app tutorial / help | v2 · P7 |
 | `jlpt deck` | List / switch per-level decks (N5 / N4 ...) | v2 · P5 |
@@ -65,86 +60,102 @@ Beyond the four core commands, these are worth adding. **Status** marks when eac
 | `jlpt scheduler` | Switch scheduler - SM-2 / FSRS | v2 · P5 |
 | `jlpt audio <card_id>` | Play the card's pronunciation | v2 · P7 |
 
-> This is the **target surface**, not a commitment to build all of it. The v2 rows are CLI entry points for features already scoped in [[JLPT SRS CLI - Project Plan]].
+> The v2 rows are CLI entry points for features scoped in JLPT SRS CLI - Project Plan, not commitments.
 
 ---
 
-## Examples
+## Examples (real output)
 
 ```bash
-# import a Word Bank export
 jlpt import data/word_bank.csv
-# → Imported 20 cards (5 new, 15 updated).
+# Imported 661 cards (661 new, 0 updated).
 
-# quiz what's due today (kanji prompts by default)
-jlpt review
-#   本
-#   reading (kana): ほん      ✓
-#   meaning:        book      ✓
-#   → correct, first try (grade 5)
+jlpt review                      # kanji prompt: reading, then meaning
+# Kanji: 本
+# Reading?: ほん
+# Meaning?: book
+# Grade: 5
+# Reviewed 1 card(s).
 
-# show readings instead of kanji while you're still learning kanji
-jlpt review --kana
-#   ほん
-#   meaning: book             ✓
+jlpt review --kana               # reading prompt: meaning only
+# Reading: ほん
+# Meaning?: book
 
-# progress
-jlpt stats
-# → Due today: 12 · Reviewed today: 8 · Streak: 5 days · Accuracy (30d): 84%
+jlpt edit CQ001 --meaning "one (thing)"
+# Updated CQ001 (meaning).
+# CQ001 came from 'word_bank' - the next import will overwrite this edit unless you fix it in the source file too.
+# (then the card, as `jlpt show` prints it)
 
-# add one card
-jlpt add
-# → front: 図書館  reading: としょかん  back: library  source: word_bank
+jlpt export ~/backups/jlpt.json
+# Exported 661 cards and 15 reviews to /home/violet/backups/jlpt.json.
+
+jlpt undo                        # on a review from before the migration
+# Can't undo the review of CQ015 from 2026-09-25 21:05:55: it predates undo support, so there's no earlier state to restore.
 ```
 
 ## Grading (SM-2 quality)
 
-The scheduler still runs on the SM-2 0-5 scale, but **you no longer pick the grade** - `jlpt review` derives it from your typed answer and attempts:
+The scheduler runs on the SM-2 0-5 scale, but **you never pick the grade** - `jlpt review` derives it from your typed answers, with one retry per answer:
 
-- all required parts right on the **first try → 5**
-- right **after a retry → 3**
-- **wrong or revealed → fail (< 3**, the card resets)
+| Outcome | Grade | Effect |
+| --- | --- | --- |
+| Every required part right first try | 5 | passes; ease rises |
+| Right, but at least one retry used | 3 | passes; ease drops |
+| Still wrong after the retry | 1 | fails; card restarts (due tomorrow), ease unchanged |
 
-The underlying scale it maps onto: `0` blackout · `1-2` fail · `3` correct but hard · `4` correct, hesitant · `5` correct, instant.
+A kanji prompt requires reading **and** meaning (the meaning isn't asked if the reading fails); a `--kana` prompt requires the meaning only. The underlying scale: `0` blackout · `1-2` fail · `3` correct but hard · `4` correct, hesitant · `5` correct, instant. The maths is in [JLPT SRS CLI - SM-2 Algorithm](SM-2%20algorithm.md).
 
-## Notes
+## Configuration
 
-- The Phase 0 throwaway prototype (`scripts/import_word_bank.py`) has been **deleted** - `jlpt import` (Phase 1) does the job now. Its code remains recoverable in git history.
-- Full flag/option details live in the repo's `docs/commands.md`.
+Two settings, each resolved **flag > environment variable > config file > built-in default**:
+
+| Setting | Flag | Env var | Config key | Default |
+| --- | --- | --- | --- | --- |
+| Deck path | `--db` | `JLPT_DB` | `db_path` | `~/.local/share/jlpt/jlpt.db` |
+| New cards per session | `--new` | `JLPT_NEW_LIMIT` | `new_limit` | `25` |
+
+The config file is `~/.config/jlpt/config.toml`, written with commented defaults on first run. `XDG_CONFIG_HOME` / `XDG_DATA_HOME` move both locations. A non-integer `new_limit` fails loudly with the source named.
 
 ## Development & Testing
 
 One-time setup - editable install with the dev extras (pytest, ruff, pytest-sugar, pytest-html):
 
 ```bash
-pip install -e ".[dev]"
+pip install -e ".[dev]"          # or: uv sync --extra dev
 ```
 
-Run the tests from the project root, venv active:
+Run from the project root, venv active (or prefix with `uv run`):
 
 ```bash
-pytest                          # run everything
-pytest -v                       # verbose - one line per test
-pytest tests/test_importer.py   # a single file
-pytest -k reimport              # only tests matching a keyword
+pytest                          # everything; also writes report.html
+pytest -v                       # one line per test
+pytest tests/test_export.py     # a single file
+pytest -k migrate               # only tests matching a keyword
+ruff check .                    # lint
 ```
 
 **Reporting & logging** (in `pyproject.toml` `[tool.pytest.ini_options]`):
 
-- Every run writes a self-contained **`report.html`** (`pytest-html`), restyled by a custom **dark theme** at **`assets/report.css`**. `report.html` is git-ignored; `assets/report.css` is committed.
-- `pytest-sugar` gives a nicer live progress bar.
-- Tests **narrate their steps.** `conftest.py` provides a `step()` fixture (numbered `INFO` logs) plus an autouse START/END boundary logger. `log_level = "INFO"` captures them into the report's *Captured log*; `log_cli = true` streams them live in the terminal as the run happens.
+- Every run writes a self-contained **`report.html`** (`pytest-html`), restyled by the dark theme **`assets/report.css`**. `report.html` is git-ignored; the CSS is committed.
+- Tests **narrate their steps**: `conftest.py` provides a `step()` fixture (numbered `INFO` logs) and an autouse START/END logger; `log_cli = true` streams them live.
+- Tests are **hermetic**: an autouse fixture points the XDG dirs at a temp folder and clears `JLPT_*` variables, so no test reads or writes the real config or deck.
 
 Test layout (`tests/`):
 
-| File               | Covers                                                                                  |
-| ------------------ | --------------------------------------------------------------------------------------- |
-| `conftest.py`      | shared fixtures: `conn` (in-memory DB, `PRAGMA foreign_keys = ON`, schema loaded), `today`, `step` (step logger) + an autouse test-boundary logger |
-| `test_models.py`   | `Card.from_export_row` column mapping                                                   |
-| `test_db.py`       | schema creation, column defaults, FK enforcement                                        |
-| `test_importer.py` | fresh import, content-only upsert (SRS state preserved), unchanged re-import is a no-op |
-| `test_srs.py`      | SM-2 scheduling (**Phase 2**) - interval progression, rounding, ease floor, failure reset, grade guard |
-| `test_review.py`   | **Phase 3** - due-card selection & ordering, and `apply_review` (pass, fail, not-found guard) |
+| File | Covers |
+| --- | --- |
+| `conftest.py` | `conn` (in-memory DB, foreign keys on, schema loaded), `today`, `step`, the boundary logger, the hermetic-environment fixture |
+| `test_models.py` | `Card.from_export_row` column mapping |
+| `test_db.py` | schema creation, defaults, FK enforcement; **migration** of a pre-snapshot deck (columns added, rows kept, idempotent, review works after) |
+| `test_importer.py` | fresh import, content-only re-sync (SRS kept), unchanged re-import is a no-op |
+| `test_srs.py` | SM-2 scheduling - interval progression, rounding, ease floor, failure reset, grade guard |
+| `test_review.py` | due-card selection and new-card cap; `apply_review` (pass, fail, not found, before-state snapshot) |
+| `test_quiz.py` | grade from attempts; reading and meaning answer checks |
+| `test_stats.py` | totals, due/reviewed today, accuracy, streak edge cases |
+| `test_config.py` | precedence for both settings, fail-loud bad values, XDG paths, first-run file |
+| `test_cards.py` | `update_card` - writes, no-ops, whitelist and blank-value rejection |
+| `test_export.py` | JSON and CSV round-trips, file contents, foreign/broken file rejection |
+| `test_cli.py` | every command end to end through Typer's `CliRunner` |
 
 ## See Also
-- [[JLPT SRS CLI - Architecture]] · [[JLPT SRS CLI - Data Model]] · [[JLPT SRS CLI - MOC]]
+- [JLPT SRS CLI - Architecture](architecture.md) · [JLPT SRS CLI - Data Model](data-model.md) · JLPT SRS CLI - MOC
